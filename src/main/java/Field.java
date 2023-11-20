@@ -12,7 +12,8 @@ public class Field {
     private int height;
     private int width;
     private Position position;
-    private Player player = new Player(10, 10);
+    private Player1 player1 = new Player1(10, 10);
+    private Player2 player2 = new Player2(15, 15);
     private List<Wall> walls;
     private List<Fruit> fruits;
 
@@ -48,7 +49,8 @@ public class Field {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#a6bfe1"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#a6bfe1"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
-        player.draw(graphics);
+        player1.draw(graphics);
+        player2.draw(graphics);
         for (Wall wall : walls)
             wall.draw(graphics);
         for (Fruit fruit : fruits)
@@ -68,14 +70,14 @@ public class Field {
         return true;
     }
 
-    private void movePlayer(Position position) {
+    private void movePlayer(Player player,Position position) {
         if (canPlayerMove(position)){
             player.setPosition(position);
         }
     }
     public void retrieveFruits() {
         for (Fruit fruit : fruits)
-            if (player.getposition().equals(fruit.getposition())){
+            if ((player1.getposition().equals(fruit.getposition())) || (player2.getposition().equals(fruit.getposition()))){
                 fruits.remove(fruit);
                 break;
             }
@@ -85,10 +87,38 @@ public class Field {
 
     public void processKey(KeyStroke key) {
         switch (key.getKeyType()){
-            case ArrowUp: {movePlayer(player.moveup()); break;}
-            case ArrowDown: {movePlayer(player.movedown()); break;}
-            case ArrowLeft: {movePlayer(player.moveleft()); break;}
-            case ArrowRight: {movePlayer(player.moveright()); break;}
+            case ArrowUp: {movePlayer(player2,player2.moveUp()); break;}
+            case ArrowDown: {movePlayer(player2,player2.moveDown());; break;}
+            case ArrowLeft: {movePlayer(player2,player2.moveLeft());; break;}
+            case ArrowRight: {movePlayer(player2,player2.moveRight());; break;}
+
+            case Character: {
+                char character = key.getCharacter();
+                switch (character) {
+                    case 'W':
+                    case 'w': {
+                        movePlayer(player1,player1.moveUp());
+                        break;
+                    }
+                    case 'S':
+                    case 's': {
+                        movePlayer(player1,player1.moveDown());
+                        break;
+                    }
+                    case 'A':
+                    case 'a': {
+                        movePlayer(player1,player1.moveLeft());
+                        break;
+                    }
+                    case 'D':
+                    case 'd': {
+                        movePlayer(player1,player1.moveRight());
+                        break;
+                    }
+                }
+                break;
+            }
+
         }
         retrieveFruits();
     }
