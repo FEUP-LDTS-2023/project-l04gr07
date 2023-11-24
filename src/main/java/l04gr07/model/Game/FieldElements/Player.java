@@ -1,4 +1,7 @@
+package l04gr07.model.Game.FieldElements;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
+import l04gr07.model.Position;
 
 public interface Player {
 

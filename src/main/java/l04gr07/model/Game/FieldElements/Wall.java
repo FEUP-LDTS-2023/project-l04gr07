@@ -1,7 +1,10 @@
-import com.googlecode.lanterna.SGR;
+package l04gr07.model.Game.FieldElements;
+
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import l04gr07.model.Game.FieldElements.Element;
+import l04gr07.model.Position;
 
 public class Wall extends Element {
     public Wall(int x, int y){
