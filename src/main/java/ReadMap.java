@@ -11,10 +11,10 @@ import java.util.List;
 
 public class ReadMap {
 
-    public ReadMap(String fileName,TextGraphics graphics, List<Wall> walls) {
+    public ReadMap(String fileName,TextGraphics graphics, List<Wall> walls, List<Fruit> fruits) {
         try {
             char[][] map = readMapFromFile(fileName);
-            drawMap(map, graphics, walls);
+            drawMap(map, graphics, walls,fruits);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,14 +47,18 @@ public class ReadMap {
         return map;
     }
 
-    private static void drawMap(char[][] map, TextGraphics graphics, List<Wall> walls) {
+    private static void drawMap(char[][] map, TextGraphics graphics, List<Wall> walls,List<Fruit>fruits) {
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 if (map[row][col] == '*') {
-                    walls.add(new Wall(col, row));
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#2f578c"));
-                    graphics.setForegroundColor(TextColor.Factory.fromString("#2f578c"));
-                    graphics.putString(new TerminalPosition(col, row), "M");
+                    Wall wall = new Wall(col, row);
+                    walls.add(wall);
+
+                }
+                if(map[row][col] == '@'){
+                    Fruit fruit = new Fruit(col, row);
+                    fruits.add(fruit);
+
                 }
             }
         }

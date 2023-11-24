@@ -16,22 +16,13 @@ public class Field {
     private Player1 player1 = new Player1(10, 10);
     private Player2 player2 = new Player2(15, 15);
     private List<Wall> walls =new ArrayList<>();
-    private List<Fruit> fruits;
+    private List<Fruit> fruits =new ArrayList<>();
 
     public Field(int width, int height) {
         this.height = height;
         this.width = width;
-        //this.walls = createWalls();
-        this.fruits =createFruits();
-    }
-    private List<Fruit> createFruits() {
-        Random random = new Random();
-        ArrayList<Fruit> fruits = new ArrayList<>();
-        for (int i = 0; i < 7; i++)
-            fruits.add(new Fruit(random.nextInt(width - 2) + 1, random.nextInt( height- 2) + 1));
-        return fruits;
-    }
 
+    }
 
 
     public void draw(TextGraphics graphics) {
@@ -40,9 +31,9 @@ public class Field {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         player1.draw(graphics);
         player2.draw(graphics);
-        ReadMap readMap = new ReadMap("easyMap.txt",graphics,walls);
-        for (Fruit fruit : fruits)
-            fruit.draw(graphics);
+        ReadMap readMap = new ReadMap("easyMap.txt",graphics,walls,fruits);
+        for(Wall wall :walls){wall.draw(graphics);}
+        for(Fruit fruit: fruits){fruit.draw(graphics);}
 
     }
     public void setPosition(Position positionn) {
