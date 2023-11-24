@@ -3,6 +3,7 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.screen.Screen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,35 +15,14 @@ public class Field {
     private Position position;
     private Player1 player1 = new Player1(10, 10);
     private Player2 player2 = new Player2(15, 15);
-    private List<Wall> walls;
-    private List<Fruit> fruits;
+    private List<Wall> walls =new ArrayList<>();
+    private List<Fruit> fruits =new ArrayList<>();
 
-    private List<Wall> createWalls() {
-        List<Wall> walls = new ArrayList<>();
-        for (int c = 0; c < width; c++) {
-            walls.add(new Wall(c, 0));
-            walls.add(new Wall(c, height - 1));
-        }
-        for (int r = 1; r < height - 1; r++) {
-            walls.add(new Wall(0, r));
-            walls.add(new Wall(width - 1, r));
-        }
-        return walls;
-    }
     public Field(int width, int height) {
         this.height = height;
         this.width = width;
-        this.walls = createWalls();
-        this.fruits =createFruits();
-    }
-    private List<Fruit> createFruits() {
-        Random random = new Random();
-        ArrayList<Fruit> fruits = new ArrayList<>();
-        for (int i = 0; i < 7; i++)
-            fruits.add(new Fruit(random.nextInt(width - 2) + 1, random.nextInt( height- 2) + 1));
-        return fruits;
-    }
 
+    }
 
 
     public void draw(TextGraphics graphics) {
@@ -51,10 +31,9 @@ public class Field {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         player1.draw(graphics);
         player2.draw(graphics);
-        for (Wall wall : walls)
-            wall.draw(graphics);
-        for (Fruit fruit : fruits)
-            fruit.draw(graphics);
+        ReadMap readMap = new ReadMap("easyMap.txt",graphics,walls,fruits);
+        for(Wall wall :walls){wall.draw(graphics);}
+        for(Fruit fruit: fruits){fruit.draw(graphics);}
 
     }
     public void setPosition(Position positionn) {
@@ -82,6 +61,7 @@ public class Field {
                 break;
             }
     }
+
 
 
 
@@ -121,6 +101,7 @@ public class Field {
 
         }
         retrieveFruits();
+
     }
 }
 
