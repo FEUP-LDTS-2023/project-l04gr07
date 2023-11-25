@@ -1,3 +1,5 @@
+package l04gr07.model;
+
 public class Position {
     private int x;
     private int y;

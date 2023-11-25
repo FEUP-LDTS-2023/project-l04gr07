@@ -1,13 +1,16 @@
+package l04gr07.model.Game.Field;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.screen.Screen;
+import l04gr07.model.Game.FieldElements.*;
+import l04gr07.model.Game.Field.Builder.*;
+import l04gr07.model.Position;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Field {
     private int height;
@@ -49,7 +52,7 @@ public class Field {
         return true;
     }
 
-    private void movePlayer(Player player,Position position) {
+    private void movePlayer(Player player, Position position) {
         if (canPlayerMove(position)){
             player.setPosition(position);
         }

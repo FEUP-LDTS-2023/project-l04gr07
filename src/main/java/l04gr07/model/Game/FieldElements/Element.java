@@ -1,7 +1,7 @@
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
+package l04gr07.model.Game.FieldElements;
+
 import com.googlecode.lanterna.graphics.TextGraphics;
+import l04gr07.model.Position;
 
 public abstract class Element {
     protected Position position;

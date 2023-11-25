@@ -1,3 +1,5 @@
+package l04gr07.control;
+
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -5,12 +7,13 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyStroke;
+import l04gr07.model.Game.Field.Field;
 
 import java.io.IOException;
 
 
 
-public class Game {
+public class GameController {
     private Screen screen = null;
     private int x = 10;
     private int y = 10;
@@ -39,7 +42,7 @@ public class Game {
         }
     }
 
-    public Game(int width, int heigth) {
+    public GameController(int width, int heigth) {
         try {
             TerminalSize terminalSize = new TerminalSize(width, heigth);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);

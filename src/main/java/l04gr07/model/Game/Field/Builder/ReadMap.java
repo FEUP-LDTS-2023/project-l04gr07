@@ -1,6 +1,6 @@
-
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
+package l04gr07.model.Game.Field.Builder;
+import l04gr07.model.Game.FieldElements.Wall;
+import l04gr07.model.Game.FieldElements.Fruit;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.BufferedReader;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ReadMap {
 
-    public ReadMap(String fileName,TextGraphics graphics, List<Wall> walls, List<Fruit> fruits) {
+    public ReadMap(String fileName, TextGraphics graphics, List<Wall> walls, List<Fruit> fruits) {
         try {
             char[][] map = readMapFromFile(fileName);
             drawMap(map, graphics, walls,fruits);
@@ -47,7 +47,7 @@ public class ReadMap {
         return map;
     }
 
-    private static void drawMap(char[][] map, TextGraphics graphics, List<Wall> walls,List<Fruit>fruits) {
+    private static void drawMap(char[][] map, TextGraphics graphics, List<Wall> walls, List<Fruit>fruits) {
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 if (map[row][col] == '*') {

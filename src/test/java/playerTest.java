@@ -1,5 +1,7 @@
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import l04gr07.model.Game.FieldElements.Player1;
+import l04gr07.model.Game.FieldElements.Player2;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
