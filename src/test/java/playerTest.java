@@ -2,6 +2,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Game.FieldElements.Player1;
 import l04gr07.model.Game.FieldElements.Player2;
+import l04gr07.model.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,7 +15,7 @@ public class playerTest {
         p2.setPosition(p2.moveRight());
         p2.setPosition(p2.moveRight());
         p2.setPosition(p2.moveLeft());
-        assertSame(p2.getposition().getx(), 3);
+        assertSame(p2.getPosition().getx(), 3);
     }
 
     @Test
@@ -26,7 +27,7 @@ public class playerTest {
         p1.setposition(p1.moveLeft());
         p1.setposition(p1.moveLeft());
         p1.setposition(p1.moveRight());
-        assertEquals(p1.getposition().getx(), 2);
+        assertEquals(p1.getPosition().getx(), 2);
         assertEquals(p1.getposition().gety(), 5);
     }
 
