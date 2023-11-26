@@ -9,9 +9,7 @@ import l04gr07.model.Position;
 public class Player1 extends Element implements Player {
 
 
-    public Player1(int x, int y){
-        super(x,y);
-    }
+    public Player1(int x, int y){super(x,y);}
     public void setPosition(Position positionn) {
         position=positionn;
     }
@@ -23,6 +21,8 @@ public class Player1 extends Element implements Player {
         return new Position(position.getx()-1, position.gety());}
     public Position moveRight(){
         return new Position(position.getx()+1, position.gety());}
+
+    public Position getPosition(){return position;}
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#c57d56"));
         graphics.enableModifiers(SGR.BOLD);
