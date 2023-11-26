@@ -1,7 +1,7 @@
 package l04gr07.model.Game.Field.Builder;
+import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Game.FieldElements.Fruit;
-import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,7 +10,10 @@ import java.net.URL;
 import java.util.List;
 
 public class ReadMap {
+    Field field;
+    String filename;
 
+    /*
     public ReadMap(String fileName, TextGraphics graphics, List<Wall> walls, List<Fruit> fruits) {
         try {
             char[][] map = readMapFromFile(fileName);
@@ -19,6 +22,20 @@ public class ReadMap {
             e.printStackTrace();
         }
     }
+    */
+    public ReadMap(String filename){this.filename = filename;}
+
+    public Field processMap() {
+        System.out.println("PROCESSED MAP");
+        try {
+            char[][] map = readMapFromFile(filename);
+            return drawMap(map);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     private static char[][] readMapFromFile(String fileName) throws IOException {
         URL resource = ReadMap.class.getClassLoader().getResource(fileName);
@@ -47,7 +64,10 @@ public class ReadMap {
         return map;
     }
 
-    private static void drawMap(char[][] map, TextGraphics graphics, List<Wall> walls, List<Fruit>fruits) {
+    public static Field drawMap(char[][] map) {
+        Field field = new Field(55,23);
+        List<Wall> walls = field.getWalls();
+        List<Fruit> fruits = field.getFruits();
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 if (map[row][col] == '*') {
@@ -62,5 +82,6 @@ public class ReadMap {
                 }
             }
         }
+        return field;
     }
 }

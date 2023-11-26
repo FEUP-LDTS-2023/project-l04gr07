@@ -23,6 +23,7 @@ public class Player2 extends Element implements Player {
         return new Position(position.getx()-1, position.gety());}
     public Position moveRight(){
         return new Position(position.getx()+1, position.gety());}
+    public Position getPosition(){return position;}
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#e2619f"));
         graphics.enableModifiers(SGR.BOLD);

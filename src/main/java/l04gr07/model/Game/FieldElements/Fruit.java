@@ -4,10 +4,14 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Game.FieldElements.Element;
+import l04gr07.model.Position;
 
 public class Fruit extends Element {
     public Fruit(int x, int y){
         super(x,y);
+    }
+    public Position getPosition() {
+        return position;
     }
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
