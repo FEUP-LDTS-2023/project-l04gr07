@@ -7,7 +7,7 @@ import l04gr07.states.State;
 
 import java.io.IOException;
 
-public class Controller {
+public class Controller implements Control{
     private State state;
     public void run() throws IOException {
         if (state == null) {
@@ -17,4 +17,8 @@ public class Controller {
 
     }
 
+    @Override
+    public void processKey(KeyStroke key) {
+
+    }
 }

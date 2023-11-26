@@ -1,4 +1,10 @@
 package l04gr07.control;
 
-public class InstructionController {
+import com.googlecode.lanterna.input.KeyStroke;
+
+public class InstructionController implements Control{
+    @Override
+    public void processKey(KeyStroke key) {
+
+    }
 }

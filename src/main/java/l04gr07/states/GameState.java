@@ -5,6 +5,7 @@ import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
 import l04gr07.control.GameController;
 import l04gr07.gui.LanternGUI;
+import l04gr07.model.Game.Difficulty.EasyDifficulty;
 import l04gr07.model.Game.GameModel;
 import l04gr07.model.Model;
 import l04gr07.view.GameView.GameView;
@@ -37,7 +38,8 @@ public class GameState extends State {
 
     @Override
     public void initializing() throws IOException {
-        gameModel = new GameModel("easyMap.txt");
+       // gameModel = new GameModel("easyMap.txt");
+        gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());

@@ -1,5 +1,10 @@
 package l04gr07.model.Game.Difficulty;
 
-public class MediumDifficulty {
-    void createMap(){}
+import l04gr07.model.Game.Field.Field;
+
+public class MediumDifficulty implements DifficultyStrategy{
+    @Override
+    public Field createField() {
+        return null;
+    }
 }

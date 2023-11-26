@@ -1,4 +1,6 @@
 package l04gr07.view.ElementsView.PlayerView;
 
-interface NormalPlayerView {
+import l04gr07.view.ElementsView.PlayerViewer;
+
+interface NormalPlayerView extends PlayerViewer {
 }

@@ -1,5 +1,7 @@
 package l04gr07.model.Game.Difficulty;
 
-interface DifficultyStrategy {
-    void createMap();
+import l04gr07.model.Game.Field.Field;
+
+public interface DifficultyStrategy {
+    public Field createField();
 }

@@ -7,8 +7,9 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Player1;
 import l04gr07.view.ElementsView.ElementsViewer;
+import l04gr07.view.ElementsView.PlayerViewer;
 
-public class Player1View  extends ElementsViewer {
+public class Player1View  extends ElementsViewer implements NormalPlayerView {
 
     private Player player1;
     public Player1View(Player player1, TextGraphics graphics) {
