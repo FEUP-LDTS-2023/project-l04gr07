@@ -22,7 +22,6 @@ public class ReadMap {
     }
 
     public Field processMap() {
-        System.out.println("PROCESSED MAP");
         try {
             char[][] map = readMapFromFile(filename);
             return drawMap(map);
