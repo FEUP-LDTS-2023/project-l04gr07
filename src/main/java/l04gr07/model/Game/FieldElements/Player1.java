@@ -23,10 +23,11 @@ public class Player1 extends Element implements Player {
         return new Position(position.getx()+1, position.gety());}
 
     public Position getPosition(){return position;}
+    /*
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#c57d56"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(position.getx(), position.gety()), "O");
-    }
+    }*/
 }
 

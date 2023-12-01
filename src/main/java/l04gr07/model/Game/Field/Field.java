@@ -21,6 +21,7 @@ public class Field {
     private Player2 player2 = new Player2(15, 15);
     private List<Wall> walls =new ArrayList<>();
     private List<Fruit> fruits =new ArrayList<>();
+    private IceCube iceCube;
 
 
     public Field(int width, int height) {
@@ -28,6 +29,9 @@ public class Field {
         this.width = width;
 
     }
+
+    public IceCube getIceCube(){return iceCube;}
+    public void setIceCube(IceCube iceCube){this.iceCube = iceCube;}
     public List<Wall> getWalls(){return walls;}
     public List<Fruit> getFruits(){return fruits;}
 

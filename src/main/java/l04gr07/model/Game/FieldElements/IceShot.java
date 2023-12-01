@@ -7,8 +7,4 @@ public class IceShot extends Element{
         super(x, y);
     }
 
-    @Override
-    public void draw(TextGraphics graphics) {
-
-    }
 }

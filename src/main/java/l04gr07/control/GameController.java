@@ -48,12 +48,15 @@ public class GameController implements Control {
     }
 
     public void retrieveFruits() {
+        if(field.getFruits().size() == 0){notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
             if ((field.getPlayer1().getPosition().equals(fruit.getposition())) || (field.getPlayer2().getPosition().equals(fruit.getposition()))) {
                 field.getFruits().remove(fruit);
                 break;
             }
     }
+    public void notifyIceCubeObserver(){
+        gameState.getViewer().spawnIceCube();}
 
     @Override
     public void processKey(KeyStroke key) {
@@ -113,6 +116,5 @@ public class GameController implements Control {
         }
         retrieveFruits();
     }
-
 
 }

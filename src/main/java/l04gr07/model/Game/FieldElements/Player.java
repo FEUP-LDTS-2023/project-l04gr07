@@ -10,7 +10,7 @@ public interface Player {
     public abstract Position moveDown();
     public abstract Position moveLeft();
     public abstract Position moveRight();
-    public abstract void draw(TextGraphics graphics);
+   // public abstract void draw(TextGraphics graphics);
     public Position getPosition();
 
 }
