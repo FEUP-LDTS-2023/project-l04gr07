@@ -1,5 +1,6 @@
 package l04gr07.states;
 
+import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
 import l04gr07.control.Control;
 import l04gr07.model.Model;
 import l04gr07.view.Viewer;
@@ -7,6 +8,8 @@ import l04gr07.view.Viewer;
 import java.io.IOException;
 
 public class EndScreenState extends State{
+
+    private Boolean running=false;
     @Override
     public Viewer getViewer() {
         return null;
@@ -21,6 +24,13 @@ public class EndScreenState extends State{
     public Model getModel() {
         return null;
     }
+    @Override
+    public boolean isRunning(){return running;}
+    @Override
+    public void stopRunning(){running = false;}
+
+    @Override
+    public State nextState(){return null;}
 
     @Override
     public void initializing() throws IOException {

@@ -13,6 +13,8 @@ import l04gr07.view.Viewer;
 
 import java.io.IOException;
 
+import static java.lang.System.exit;
+
 public class GameState extends State {
     private GameView gameView;
     private GameModel gameModel;
@@ -20,6 +22,9 @@ public class GameState extends State {
     private GameController gameControl;
     private LanternGUI gui;
 
+    private Boolean running = false;
+    @Override
+    public State nextState(){return new EndScreenState();}
     @Override
     public Viewer getViewer() {
         return gameView;
@@ -34,11 +39,15 @@ public class GameState extends State {
     public GameModel getModel() {
         return gameModel;
     }
+    @Override
+    public boolean isRunning(){return running;}
+    @Override
+    public void stopRunning(){running = false;}
 
 
     @Override
     public void initializing() throws IOException {
-       // gameModel = new GameModel("easyMap.txt");
+        running = true;
         gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
@@ -51,8 +60,8 @@ public class GameState extends State {
             gameView.draw();
             KeyStroke key = gui.getScreen().readInput();
             gameControl.processKey(key);
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
-                gui.getScreen().close();
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q' &&key.getCharacter() == 'Q'){
+                exit(0);gui.getScreen().close();
             }
             if (key.getKeyType() == KeyType.EOF){break;}
         }

@@ -7,6 +7,7 @@ import l04gr07.view.Viewer;
 import java.io.IOException;
 
 public class InstructionState extends State{
+    private Boolean running=false;
     @Override
     public Viewer getViewer() {
         return null;
@@ -21,6 +22,13 @@ public class InstructionState extends State{
     public Model getModel() {
         return null;
     }
+    @Override
+    public boolean isRunning(){return running;}
+    @Override
+    public void stopRunning(){running = false;}
+
+    @Override
+    public State nextState(){return new MainMenuState();}
 
     @Override
     public void initializing() throws IOException {

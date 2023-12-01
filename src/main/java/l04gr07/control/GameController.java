@@ -16,6 +16,7 @@ import l04gr07.states.GameState;
 
 import java.io.IOException;
 
+import static java.lang.System.exit;
 
 
 public class GameController implements Control {
@@ -98,6 +99,11 @@ public class GameController implements Control {
                     case 'D':
                     case 'd': {
                         movePlayer(field.getPlayer1(), field.getPlayer1().moveRight());
+                        break;
+                    }
+                    case 'Q':
+                    case 'q': {
+                        exit(0);
                         break;
                     }
                 }
