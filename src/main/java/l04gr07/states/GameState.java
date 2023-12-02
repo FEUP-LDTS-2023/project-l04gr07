@@ -11,7 +11,9 @@ import l04gr07.model.Model;
 import l04gr07.view.GameView.GameView;
 import l04gr07.view.Viewer;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static java.lang.System.exit;
 
@@ -46,7 +48,7 @@ public class GameState extends State {
 
 
     @Override
-    public void initializing() throws IOException {
+    public void initializing() throws IOException, URISyntaxException, FontFormatException {
         running = true;
         gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
@@ -55,7 +57,7 @@ public class GameState extends State {
         gameControl = new GameController(this);
         run();
     }
-    public void run() throws IOException{
+    public void run() throws IOException, URISyntaxException, FontFormatException {
         while (true){
             gameView.draw();
             KeyStroke key = gui.getScreen().readInput();
