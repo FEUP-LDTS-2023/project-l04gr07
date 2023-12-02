@@ -7,8 +7,4 @@ public class Enemy extends Element{
         super(x, y);
     }
 
-    @Override
-    public void draw(TextGraphics graphics) {
-
-    }
 }
