@@ -41,6 +41,9 @@ public class GameController implements Control {
         return true;
     }
 
+    public void randomEnemy(long lastMoviment, long time){
+
+    }
 
     private void movePlayer(Player player, Position position) {
         if (canPlayerMove(position)) {
@@ -125,5 +128,7 @@ public class GameController implements Control {
         if(!spawnIceCube && field.getIceCube()!=null) retrieveFruits();
         if(spawnIceCube){retrieveIceCube();}
     }
+
+
 
 }

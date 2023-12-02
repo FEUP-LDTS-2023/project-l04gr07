@@ -64,6 +64,7 @@ public class GameState extends State {
                 exit(0);gui.getScreen().close();
             }
             if (key.getKeyType() == KeyType.EOF){break;}
+
         }
     }
 

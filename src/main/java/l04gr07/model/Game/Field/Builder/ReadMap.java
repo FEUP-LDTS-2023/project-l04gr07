@@ -1,6 +1,7 @@
 package l04gr07.model.Game.Field.Builder;
 
 import l04gr07.model.Game.Field.Field;
+import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Game.FieldElements.Fruit;
 
@@ -75,6 +76,7 @@ public class ReadMap {
         Field field = new Field(55, 23);
         List<Wall> walls = field.getWalls();
         List<Fruit> fruits = field.getFruits();
+        List<Enemy> enemies=field.getEnemies();
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 if (map[row][col] == '*') {
@@ -84,6 +86,10 @@ public class ReadMap {
                 if (map[row][col] == '@') {
                     Fruit fruit = new Fruit(col, row);
                     fruits.add(fruit);
+                }
+                if (map[row][col] == 'M') {
+                    Enemy enemy = new Enemy(col, row);
+                    enemies.add(enemy);
                 }
             }
         }
