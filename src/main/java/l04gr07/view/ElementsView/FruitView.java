@@ -4,7 +4,6 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Game.FieldElements.Fruit;
-import l04gr07.model.Game.FieldElements.Player;
 
 public class FruitView extends ElementsViewer{
     private Fruit fruit;

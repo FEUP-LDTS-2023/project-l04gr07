@@ -1,11 +1,6 @@
 package l04gr07.control;
 
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyStroke;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Fruit;
@@ -14,14 +9,13 @@ import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Position;
 import l04gr07.states.GameState;
 
-import java.io.IOException;
-
 import static java.lang.System.exit;
 
 
 public class GameController implements Control {
     private Screen screen = null;
-    private Field field = new Field(25, 25);
+    //private Field field = new Field(25, 25);
+    private Field field;
     private GameState gameState;
     protected Boolean spawnIceCube = false;
 
@@ -60,6 +54,7 @@ public class GameController implements Control {
             if ((field.getPlayer1().getPosition().equals(field.getIceCube().getposition())) || (field.getPlayer2().getPosition().equals(field.getIceCube().getposition()))) {
                 spawnIceCube = false;notifyIceCubeObserver();
                 field.setIceCube(null);
+
             }
     }
     public void notifyIceCubeObserver(){
