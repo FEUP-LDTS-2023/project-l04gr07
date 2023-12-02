@@ -39,13 +39,17 @@ public class Field {
 
     public IceCube getIceCube(){return iceCube;}
     public void setIceCube(IceCube iceCube){this.iceCube = iceCube;}
+    public void setPlayers(List<Player> players){
+        System.out.println("SET PLAYERS");
+        System.out.println(players.size());
+        this.players = players;}
     public List<Wall> getWalls(){return walls;}
     public List<Fruit> getFruits(){return fruits;}
 
     public TextGraphics getGraphics(){return graphics;}
 
-    public void setPosition(Position positionn) {
-        position=positionn;
+    public void setPosition(Position position) {
+        this.position=position;
     }
 
     /*
@@ -61,7 +65,11 @@ public class Field {
         return players.get(0);
     }
     public Player getPlayer2() {
-        return players.get(1);
+        if(players.size()==2) return players.get(1);
+        else return null;
+    }
+    public List<Player> getPlayers() {
+        return players;
     }
 
     public int getHeight() {
@@ -70,8 +78,11 @@ public class Field {
     public int getWidth() {
         return width;
     }
-    public PlayerState getPlayerState(){return playerState;}
-    public void setPlayerState(PlayerState playerState){this.playerState = playerState;}
+    public PlayerState getPlayerState(){
+        return playerState;}
+    public void setPlayerState(PlayerState playerState){
+        this.playerState = playerState;
+    }
 
 }
 

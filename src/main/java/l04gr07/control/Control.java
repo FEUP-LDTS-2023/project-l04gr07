@@ -8,4 +8,5 @@ import java.net.URISyntaxException;
 
 public interface Control {
     void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException;
+
 }

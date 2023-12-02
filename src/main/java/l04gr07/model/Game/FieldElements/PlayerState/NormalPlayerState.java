@@ -2,6 +2,7 @@ package l04gr07.model.Game.FieldElements.PlayerState;
 
 import l04gr07.control.PlayerController;
 import l04gr07.model.Game.FieldElements.Player;
+import l04gr07.model.Position;
 import l04gr07.states.State;
 import l04gr07.view.ElementsView.PlayerViewer;
 
@@ -28,12 +29,14 @@ public class NormalPlayerState extends PlayerState{
 
     @Override
     public List<Player> getModel() {
+        System.out.println("Got Normal State players");
         return playerModels;
     }
 
 
     @Override
     public void initializing() throws IOException, URISyntaxException, FontFormatException {
+        System.out.println("NormalIceCream state");
         Player player1 = new Player(10, 10);
         Player player2 = new Player(15, 15);
         playerModels.add(player1);
@@ -51,7 +54,7 @@ public class NormalPlayerState extends PlayerState{
     }
 
     @Override
-    public State nextState() {
+    public PlayerState nextState() {
         return null;
     }
 }

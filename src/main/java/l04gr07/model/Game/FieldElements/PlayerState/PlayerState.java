@@ -24,6 +24,6 @@ public abstract class PlayerState {
     public abstract void run() throws IOException, URISyntaxException, FontFormatException;
     public abstract void stopRunning();
 
-    public abstract State nextState();
+    public abstract PlayerState nextState();
 
 }
