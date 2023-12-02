@@ -31,12 +31,12 @@ public class InstructionState extends State{
     public State nextState(){return new MainMenuState();}
 
     @Override
-    public void initializing() throws IOException {
+    public void initializing(long time) throws IOException {
 
     }
 
     @Override
-    public void run() throws IOException {
+    public void run(long time) throws IOException {
 
     }
 }

@@ -8,6 +8,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyStroke;
 import l04gr07.model.Game.Field.Field;
+import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
@@ -24,7 +25,7 @@ public class GameController implements Control {
     private Field field = new Field(25, 25);
     private GameState gameState;
     protected Boolean spawnIceCube = false;
-
+    private long lastMovement=0;
 
     public GameController(GameState gameState) {
         this.gameState = gameState;
@@ -41,8 +42,26 @@ public class GameController implements Control {
         return true;
     }
 
-    public void randomEnemy(long lastMoviment, long time){
+    public void randomEnemy(long time){
+        time=System.currentTimeMillis();
 
+            if (time - lastMovement > 500) {
+                for (Enemy enemy : field.getEnemies())
+                    moveEnemy(enemy, enemy.getPosition().getRandomPosition());
+                lastMovement = time;
+
+            }
+            //System.out.println("random");
+
+    }
+
+    public void moveEnemy(Enemy enemy, Position position){
+        if (field.isEmpty(position)){
+            enemy.setposition(position);
+            if(field.getPlayer1().getPosition().equals(position) || field.getPlayer2().getPosition().equals(position)){
+                System.exit(0);
+            }
+        }
     }
 
     private void movePlayer(Player player, Position position) {

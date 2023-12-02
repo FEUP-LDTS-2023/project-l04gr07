@@ -46,17 +46,18 @@ public class GameState extends State {
 
 
     @Override
-    public void initializing() throws IOException {
+    public void initializing(long time) throws IOException {
         running = true;
         gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());
         gameControl = new GameController(this);
-        run();
+        run(time);
     }
-    public void run() throws IOException{
+    public void run(long time) throws IOException{
         while (true){
+            gameControl.randomEnemy(time);
             gameView.draw();
             KeyStroke key = gui.getScreen().readInput();
             gameControl.processKey(key);
@@ -64,6 +65,7 @@ public class GameState extends State {
                 exit(0);gui.getScreen().close();
             }
             if (key.getKeyType() == KeyType.EOF){break;}
+
 
         }
     }

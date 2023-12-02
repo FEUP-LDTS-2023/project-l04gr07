@@ -47,18 +47,18 @@ public class MainMenuState extends State{
     public LanternGUI getGUI(){return gui;}
 
     @Override
-    public void initializing() throws IOException, URISyntaxException, FontFormatException {
+    public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
         mainMenuModel = new MainMenuModel();
         gui = new LanternGUI();
         gui.createMenuScreen(40,30);
         mainMenuView = new MainMenuView(mainMenuModel, gui.getScreen());
         mainMenuControl = new MainMenuController(mainMenuModel,this);
-        run();
+        run(time);
     }
 
     @Override
-    public void run() throws IOException, URISyntaxException, FontFormatException {
+    public void run(long time) throws IOException, URISyntaxException, FontFormatException {
         while (true){
             mainMenuView.draw();
             KeyStroke key = gui.getScreen().readInput();

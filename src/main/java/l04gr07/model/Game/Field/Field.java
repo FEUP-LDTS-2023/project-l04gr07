@@ -57,5 +57,19 @@ public class Field {
         return width;
     }
 
+    public boolean isEmpty(Position position) {
+        for (Wall wall : walls)
+            if (wall.getPosition().equals(position))
+                return false;
+        return true;
+    }
+
+    public boolean isMonster(Position position) {
+        for (Enemy monster : enemies)
+            if (monster.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
 }
 

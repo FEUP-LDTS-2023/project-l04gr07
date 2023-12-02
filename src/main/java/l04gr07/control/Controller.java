@@ -19,16 +19,17 @@ public class Controller {
     public void run() throws IOException, URISyntaxException, FontFormatException {
         int FPS = 10;
         int frameTime = 1000 / FPS;
+        long startTime = System.currentTimeMillis();
 
         if (controllerState == null) {
             controllerState = new MainMenuState();
-            controllerState.initializing();
+            controllerState.initializing(startTime);
         }
-        controllerState.initializing();
+        controllerState.initializing(startTime);
         while (this.controllerState != null) {
-            long startTime = System.currentTimeMillis();
+            startTime = System.currentTimeMillis();
 
-            controllerState.run();
+            controllerState.run(startTime);
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
