@@ -23,6 +23,7 @@ public class GameController implements Control {
     private Screen screen = null;
     private Field field = new Field(25, 25);
     private GameState gameState;
+    protected Boolean spawnIceCube = false;
 
 
     public GameController(GameState gameState) {
@@ -48,15 +49,22 @@ public class GameController implements Control {
     }
 
     public void retrieveFruits() {
-        if(field.getFruits().size() == 0){notifyIceCubeObserver();}
+        if(field.getFruits().size() == 0){spawnIceCube = true;notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
             if ((field.getPlayer1().getPosition().equals(fruit.getposition())) || (field.getPlayer2().getPosition().equals(fruit.getposition()))) {
                 field.getFruits().remove(fruit);
                 break;
             }
     }
+    public void retrieveIceCube() {
+            if ((field.getPlayer1().getPosition().equals(field.getIceCube().getposition())) || (field.getPlayer2().getPosition().equals(field.getIceCube().getposition()))) {
+                spawnIceCube = false;notifyIceCubeObserver();
+                field.setIceCube(null);
+            }
+    }
     public void notifyIceCubeObserver(){
-        gameState.getViewer().spawnIceCube();}
+        if(spawnIceCube){gameState.getViewer().spawnIceCube();}
+        else gameState.getViewer().deSpawnIceCube(); }
 
     @Override
     public void processKey(KeyStroke key) {
@@ -114,7 +122,8 @@ public class GameController implements Control {
             }
 
         }
-        retrieveFruits();
+        if(!spawnIceCube && field.getIceCube()!=null) retrieveFruits();
+        if(spawnIceCube){retrieveIceCube();}
     }
 
 }

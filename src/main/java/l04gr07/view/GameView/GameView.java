@@ -48,7 +48,9 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(55, 23), ' ');
         player2Viewer.draw();
         player1Viewer.draw();
-        if(drawIceCube){iceCubeViewer.draw();}
+        if(drawIceCube){iceCubeViewer.draw();
+            System.out.println("DRAWN ICECUBE");
+        }
         if(gameModel.getField().getFruits().size()!=fruitViewers.size()){
             fruitViewers =new ArrayList<>();
             for(Fruit fruit : gameModel.getField().getFruits()) {
