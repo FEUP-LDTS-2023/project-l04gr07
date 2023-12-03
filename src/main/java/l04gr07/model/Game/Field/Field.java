@@ -44,6 +44,8 @@ public class Field {
         System.out.println(players.size());
         this.players = players;}
     public List<Wall> getWalls(){return walls;}
+    public void setWalls(List<Wall> walls){this.walls = walls;}
+
     public List<Fruit> getFruits(){return fruits;}
 
     public TextGraphics getGraphics(){return graphics;}
