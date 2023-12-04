@@ -24,6 +24,7 @@ public class Field {
     private List<Fruit> fruits =new ArrayList<>();
     private List<Enemy> enemies=new ArrayList<>();
     private IceCube iceCube;
+    private List<IceShot> iceshots= new ArrayList<>();
 
 
     public Field(int width, int height) {
@@ -51,6 +52,10 @@ public class Field {
     public List<Enemy> getEnemies(){return enemies;}
 
     public TextGraphics getGraphics(){return graphics;}
+    public List<IceShot> getIceShot() {
+        //  System.out.println("iceshot");
+        return iceshots;
+    }
 
     public void setPosition(Position position) {
         this.position=position;
