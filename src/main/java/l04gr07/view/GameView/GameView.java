@@ -69,6 +69,12 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
                 fruitViewers.add(new FruitView(fruit, graphics));
             }
         }
+        if(gameModel.getField().getWalls().size()!=wallViewers.size()){
+            wallViewers =new ArrayList<>();
+            for(Wall wall : gameModel.getField().getWalls()) {
+                wallViewers.add(new WallView(wall, graphics));
+            }
+        }
 
         for(WallView wallView : wallViewers)
             wallView.draw();
