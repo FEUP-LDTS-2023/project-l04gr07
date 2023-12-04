@@ -3,6 +3,7 @@ package l04gr07.control;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.input.KeyStroke;
 import l04gr07.model.Game.Field.Field;
+import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.PlayerState.HugeIceCreamState;
@@ -25,6 +26,8 @@ public class GameController implements Control {
     private Field field;
     private PlayerController playerController;
     private GameState gameState;
+
+    private long lastMovement=0;
     private PlayerState playerState;
     protected Boolean isHugeIceCream = false;
     protected Boolean iceCube = false;
@@ -35,6 +38,53 @@ public class GameController implements Control {
         this.field = gameState.getModel().getField();
         this.playerState = field.getPlayerState();
         this.playerController = new PlayerController(field);
+    }
+
+    public boolean canPlayerMove(Position position) {
+        if ((position.getx() < 0) || (position.getx() > field.getWidth() - 1)) return false;
+        if ((position.gety() > field.getHeight() - 1) || (position.gety() < 0)) return false;
+        for (Wall wall : field.getWalls())
+            if (wall.getPosition().equals(position)) {
+                return false;
+            }
+        for(Enemy enemy: field.getEnemies()){
+            if(enemy.getPosition().equals(position)){
+                System.exit(0);
+            }
+        }
+        return true;
+    }
+
+    public void randomEnemy(long time){
+        time=System.currentTimeMillis();
+
+            if (time - lastMovement > 500) {
+                for (Enemy enemy : field.getEnemies())
+                    moveEnemy(enemy, enemy.getPosition().getRandomPosition());
+                lastMovement = time;
+
+            }
+
+    }
+
+    public void moveEnemy(Enemy enemy, Position position){
+        if (field.isEmpty(position)){
+            enemy.setposition(position);
+            if(field.getPlayer1().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer1().getPosition().equals(enemy.getPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition())){
+                System.exit(0);
+            }
+        }
+    }
+
+    private void movePlayer(Player player, Position position) {
+        if (canPlayerMove(position)) {
+            player.setPosition(position);
+            for(Enemy enemy: field.getEnemies()){
+                if(enemy.getPosition().equals(position)){
+                    System.exit(0);
+                }
+            }
+        }
     }
 
     public void retrieveFruits() {

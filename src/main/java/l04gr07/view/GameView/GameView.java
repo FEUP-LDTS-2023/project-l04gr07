@@ -7,17 +7,19 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import l04gr07.control.IceCubeObserver;
+import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Game.GameModel;
+
+import l04gr07.view.ElementsView.*;
 import l04gr07.view.ElementsView.FruitView;
 import l04gr07.view.ElementsView.IceCubeView;
 import l04gr07.view.ElementsView.PlayerView.HugeIceCreamView;
+
 import l04gr07.view.ElementsView.PlayerView.Player1View;
 import l04gr07.view.ElementsView.PlayerView.Player2View;
-import l04gr07.view.ElementsView.PlayerViewer;
-import l04gr07.view.ElementsView.WallView;
 import l04gr07.view.Viewer;
 
 import java.io.IOException;
@@ -33,6 +35,7 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
     private Player2View player2Viewer;
     private List<WallView>  wallViewers;
     private List<FruitView> fruitViewers;
+    private List<EnemyView> enemyViewers;
     private IceCubeView iceCubeViewer;
 
 
@@ -81,6 +84,9 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
         for(FruitView fruitView : fruitViewers) {
             fruitView.draw();
         }
+        for(EnemyView enemyView: enemyViewers ){
+            enemyView.draw();
+        }
         screen.refresh();
 
 
@@ -107,6 +113,10 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
         fruitViewers =new ArrayList<>();
         for(Fruit fruit : gameModel.getField().getFruits()) {
             fruitViewers.add(new FruitView(fruit, graphics));
+        }
+        enemyViewers=new ArrayList<>();
+        for(Enemy enemy: gameModel.getField().getEnemies()){
+            enemyViewers.add(new EnemyView(enemy, graphics));
         }
     }
 

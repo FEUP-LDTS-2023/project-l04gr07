@@ -17,12 +17,13 @@ public abstract class State {
 
     public abstract Model getModel();
 
-    public abstract void initializing() throws IOException, URISyntaxException, FontFormatException;
-    public abstract void run() throws IOException, URISyntaxException, FontFormatException;
+    public abstract void initializing(long time) throws IOException, URISyntaxException, FontFormatException;
+    public abstract void run(long time) throws IOException, URISyntaxException, FontFormatException;
 
     public abstract boolean isRunning();
     public abstract void stopRunning();
 
     public abstract State nextState();
+
 
 }

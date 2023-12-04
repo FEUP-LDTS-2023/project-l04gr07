@@ -22,6 +22,7 @@ public class Field {
     //private Player2 player2 = new Player2(15, 15);
     private List<Wall> walls =new ArrayList<>();
     private List<Fruit> fruits =new ArrayList<>();
+    private List<Enemy> enemies=new ArrayList<>();
     private IceCube iceCube;
 
 
@@ -47,6 +48,7 @@ public class Field {
     public void setWalls(List<Wall> walls){this.walls = walls;}
 
     public List<Fruit> getFruits(){return fruits;}
+    public List<Enemy> getEnemies(){return enemies;}
 
     public TextGraphics getGraphics(){return graphics;}
 
@@ -84,6 +86,20 @@ public class Field {
         return playerState;}
     public void setPlayerState(PlayerState playerState){
         this.playerState = playerState;
+    }
+
+    public boolean isEmpty(Position position) {
+        for (Wall wall : walls)
+            if (wall.getPosition().equals(position))
+                return false;
+        return true;
+    }
+
+    public boolean isMonster(Position position) {
+        for (Enemy monster : enemies)
+            if (monster.getPosition().equals(position))
+                return true;
+        return false;
     }
 
 }

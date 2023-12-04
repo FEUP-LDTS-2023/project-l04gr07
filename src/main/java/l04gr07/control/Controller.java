@@ -17,12 +17,17 @@ public class Controller {
     private Viewer viewer;
 
     public void run() throws IOException, URISyntaxException, FontFormatException {
+        long startTime = System.currentTimeMillis();
+
         if (controllerState == null) {
             controllerState = new MainMenuState();
-            controllerState.initializing();
+            controllerState.initializing(startTime);
+
         }
-        controllerState.initializing();
-    }
+        controllerState.initializing(startTime);
+
+}
+
 
     public void setControllerState(State  controllerState) throws IOException, URISyntaxException, FontFormatException {
         this.controllerState = controllerState;
