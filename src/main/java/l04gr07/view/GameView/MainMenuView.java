@@ -27,18 +27,7 @@ public class MainMenuView extends MenuViewer {
 
         screen.refresh();
     }
-    public void drawText(Position position, String text, String color) {
-        TextGraphics tg = screen.newTextGraphics();
-        if (Objects.equals(text, " ") || Objects.equals(text, "  ")) tg.setBackgroundColor(TextColor.Factory.fromString(color));
-        else if (Objects.equals(text, "SHOP$")){
-            for (int i = 0; i <= text.length()-1; i++) {
-                tg.setBackgroundColor(tg.getCharacter(position.getx() + i, position.gety()).getBackgroundColor());
-                tg.setForegroundColor(TextColor.Factory.fromString(color));
-            }
-        }
-        else {tg.setForegroundColor(TextColor.Factory.fromString(color));}
-        tg.putString(position.getx(), position.gety(), text);
-    }
+
     public void drawMenu(Position position, String string, String color){;
         drawText(position,string,color);
     }
