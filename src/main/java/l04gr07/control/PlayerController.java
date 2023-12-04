@@ -7,21 +7,31 @@ import l04gr07.model.Game.FieldElements.IceShot;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Position;
+import l04gr07.states.GameState;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.System.currentTimeMillis;
 import static java.lang.System.exit;
 
 public class PlayerController implements Control{
 
     private Field field;
-
+    private long lastMovement=0;
     private Boolean isHugeIceCream = false;
-
-    public PlayerController(Field field){
+    private GameController gameController;
+    public PlayerController(Field field, GameController gameController){
         this.field = field;
+        this.gameController=gameController;
     }
+   /* public void MoveUp(){
+        for (IceShot iceShot: field.getIceShot()) {
+            System.out.println("oi");
+            gameController.randomIceShot(currentTimeMillis());
+            }
+    }*/
 
 
     public boolean canPlayerMove(Position position) {
@@ -169,8 +179,9 @@ public class PlayerController implements Control{
                     field.getPlayer2().setLastDirection("UP");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveUp());}
                 else {
-                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()-1);
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()-1,"UP");
                     field.getIceShot().add(iceshot);
+                   //gameController.randomIceShot("UP");
                 }
                 break;}
             case ArrowDown: {
@@ -178,8 +189,9 @@ public class PlayerController implements Control{
                     field.getPlayer2().setLastDirection("DOWN");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveDown());}
                 else {
-                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()+1);
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()+1,"DOWN");
                     field.getIceShot().add(iceshot);
+                    //iceshot.MoveDown();
                 }
                 break;}
             //else : shoot down
@@ -188,8 +200,9 @@ public class PlayerController implements Control{
                     field.getPlayer2().setLastDirection("LEFT");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveLeft());}
                 else {
-                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()-1, field.getPlayer1().getPosition().gety());
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()-1, field.getPlayer1().getPosition().gety(),"LEFT");
                     field.getIceShot().add(iceshot);
+                    //iceshot.MoveLeft();
                 }
                 break;}
             //else : shoot left
@@ -198,8 +211,9 @@ public class PlayerController implements Control{
                     field.getPlayer2().setLastDirection("RIGHT");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveRight());}
                 else {
-                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()+1, field.getPlayer1().getPosition().gety());
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()+1, field.getPlayer1().getPosition().gety(),"RIGHT");
                     field.getIceShot().add(iceshot);
+                   // iceshot.MoveRight();
                 }
                 break;}
             //else : shoot right
