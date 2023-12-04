@@ -24,10 +24,12 @@ public class Controller {
         if (controllerState == null) {
             controllerState = new MainMenuState();
             controllerState.initializing(startTime);
+
         }
         controllerState.initializing(startTime);
         while (this.controllerState != null) {
             startTime = System.currentTimeMillis();
+
 
             controllerState.run(startTime);
 

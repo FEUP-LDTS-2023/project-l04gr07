@@ -55,19 +55,35 @@ public class GameState extends State {
         gameControl = new GameController(this);
         run(time);
     }
+    private static final int FPS = 60;
+    private static final long frameTime = 1000 / FPS;
     public void run(long time) throws IOException{
+        long startTime=System.currentTimeMillis();
+
         while (true){
+            long currentTime=System.currentTimeMillis();
             gameControl.randomEnemy(time);
             gameView.draw();
-            KeyStroke key = gui.getScreen().readInput();
-            gameControl.processKey(key);
+            KeyStroke key = gui.getScreen().pollInput();
+            if(key!=null){
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q' &&key.getCharacter() == 'Q'){
                 exit(0);gui.getScreen().close();
             }
             if (key.getKeyType() == KeyType.EOF){break;}
+                gameControl.processKey(key);}
 
+            long elapsedTime = System.currentTimeMillis() - currentTime;
+            long sleepTime = frameTime - elapsedTime;
+            try {
+                if (sleepTime > 0) {
+                    Thread.sleep(sleepTime);
+                }
+            } catch (InterruptedException e) {
 
+            }
         }
     }
+
+
 
 }
