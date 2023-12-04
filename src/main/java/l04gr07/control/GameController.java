@@ -1,35 +1,43 @@
 package l04gr07.control;
 
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyStroke;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
 import l04gr07.model.Game.FieldElements.Player;
+import l04gr07.model.Game.FieldElements.PlayerState.HugeIceCreamState;
+import l04gr07.model.Game.FieldElements.PlayerState.PlayerState;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Position;
 import l04gr07.states.GameState;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import static java.lang.System.exit;
 
 
 public class GameController implements Control {
     private Screen screen = null;
-    private Field field = new Field(25, 25);
+    //private Field field = new Field(25, 25);
+    private Field field;
+    private PlayerController playerController;
     private GameState gameState;
-    protected Boolean spawnIceCube = false;
+
     private long lastMovement=0;
+    private PlayerState playerState;
+    protected Boolean isHugeIceCream = false;
+    protected Boolean iceCube = false;
+
 
     public GameController(GameState gameState) {
         this.gameState = gameState;
         this.field = gameState.getModel().getField();
+        this.playerState = field.getPlayerState();
+        this.playerController = new PlayerController(field);
     }
 
     public boolean canPlayerMove(Position position) {
@@ -80,83 +88,37 @@ public class GameController implements Control {
     }
 
     public void retrieveFruits() {
-        if(field.getFruits().size() == 0){spawnIceCube = true;notifyIceCubeObserver();}
+        if(field.getFruits().size() == 0){iceCube = true;notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
             if ((field.getPlayer1().getPosition().equals(fruit.getposition())) || (field.getPlayer2().getPosition().equals(fruit.getposition()))) {
                 field.getFruits().remove(fruit);
                 break;
             }
     }
-    public void retrieveIceCube() {
+    public void retrieveIceCube() throws IOException, URISyntaxException, FontFormatException {
             if ((field.getPlayer1().getPosition().equals(field.getIceCube().getposition())) || (field.getPlayer2().getPosition().equals(field.getIceCube().getposition()))) {
-                spawnIceCube = false;notifyIceCubeObserver();
+                Position position;
+                if(field.getPlayer1().getPosition().equals(field.getIceCube().getposition())){position = field.getPlayer1().getPosition();}
+                else{position = field.getPlayer2().getPosition();}
+                iceCube = false;notifyIceCubeObserver();
+                isHugeIceCream = true;playerController.setHugeIceCream(true);
                 field.setIceCube(null);
+                field.setPlayerState(new HugeIceCreamState(position));
+                field.getPlayerState().initializing();
+                field.setPlayers(field.getPlayerState().getModel());
+
             }
     }
     public void notifyIceCubeObserver(){
-        if(spawnIceCube){gameState.getViewer().spawnIceCube();}
+        if(iceCube){gameState.getViewer().spawnIceCube();}
         else gameState.getViewer().deSpawnIceCube(); }
 
     @Override
-    public void processKey(KeyStroke key) {
-        switch (key.getKeyType()) {
-            case ArrowUp: {
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveUp());
-                break;
-            }
-            case ArrowDown: {
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveDown());
-                ;
-                break;
-            }
-            case ArrowLeft: {
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveLeft());
-                ;
-                break;
-            }
-            case ArrowRight: {
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveRight());
-                ;
-                break;
-            }
-
-            case Character: {
-                char character = key.getCharacter();
-                switch (character) {
-                    case 'W':
-                    case 'w': {
-                        movePlayer(field.getPlayer1(), field.getPlayer1().moveUp());
-                        break;
-                    }
-                    case 'S':
-                    case 's': {
-                        movePlayer(field.getPlayer1(), field.getPlayer1().moveDown());
-                        break;
-                    }
-                    case 'A':
-                    case 'a': {
-                        movePlayer(field.getPlayer1(), field.getPlayer1().moveLeft());
-                        break;
-                    }
-                    case 'D':
-                    case 'd': {
-                        movePlayer(field.getPlayer1(), field.getPlayer1().moveRight());
-                        break;
-                    }
-                    case 'Q':
-                    case 'q': {
-                        exit(0);
-                        break;
-                    }
-                }
-                break;
-            }
-
-        }
-        if(!spawnIceCube && field.getIceCube()!=null) retrieveFruits();
-        if(spawnIceCube){retrieveIceCube();}
+    public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
+        playerController.processKey(key);
+        if(!iceCube && field.getIceCube()!=null && !isHugeIceCream) retrieveFruits();
+        if(iceCube && !isHugeIceCream){retrieveIceCube();}
     }
-
 
 
 }

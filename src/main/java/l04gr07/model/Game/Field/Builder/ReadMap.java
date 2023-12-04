@@ -1,14 +1,20 @@
 package l04gr07.model.Game.Field.Builder;
 
 import l04gr07.model.Game.Field.Field;
+
 import l04gr07.model.Game.FieldElements.Enemy;
+
+import l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerState;
+
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Game.FieldElements.Fruit;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -28,6 +34,10 @@ public class ReadMap {
             return drawMap(map);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
@@ -72,8 +82,9 @@ public class ReadMap {
         }
     }
 
-    public Field drawMap(char[][] map) {
-        Field field = new Field(55, 23);
+    public Field drawMap(char[][] map) throws IOException, URISyntaxException, FontFormatException {
+        //Field field = new Field(55, 23);
+        Field field = new Field(55, 23,new NormalPlayerState());
         List<Wall> walls = field.getWalls();
         List<Fruit> fruits = field.getFruits();
         List<Enemy> enemies=field.getEnemies();

@@ -11,7 +11,9 @@ import l04gr07.model.Model;
 import l04gr07.view.GameView.GameView;
 import l04gr07.view.Viewer;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static java.lang.System.exit;
 
@@ -46,7 +48,7 @@ public class GameState extends State {
 
 
     @Override
-    public void initializing(long time) throws IOException {
+    public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
         gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
@@ -57,9 +59,10 @@ public class GameState extends State {
     }
     private static final int FPS = 60;
     private static final long frameTime = 1000 / FPS;
-    public void run(long time) throws IOException{
-        long startTime=System.currentTimeMillis();
 
+       
+    public void run(long time) throws IOException, URISyntaxException, FontFormatException {
+        long startTime=System.currentTimeMillis();
         while (true){
             long currentTime=System.currentTimeMillis();
             gameControl.randomEnemy(time);

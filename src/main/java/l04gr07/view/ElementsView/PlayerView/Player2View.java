@@ -6,7 +6,6 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.view.ElementsView.ElementsViewer;
-import l04gr07.view.ElementsView.PlayerViewer;
 
 public class Player2View extends ElementsViewer implements NormalPlayerView {
 
