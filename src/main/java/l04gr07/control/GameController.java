@@ -40,20 +40,6 @@ public class GameController implements Control {
         this.playerController = new PlayerController(field);
     }
 
-    public boolean canPlayerMove(Position position) {
-        if ((position.getx() < 0) || (position.getx() > field.getWidth() - 1)) return false;
-        if ((position.gety() > field.getHeight() - 1) || (position.gety() < 0)) return false;
-        for (Wall wall : field.getWalls())
-            if (wall.getPosition().equals(position)) {
-                return false;
-            }
-        for(Enemy enemy: field.getEnemies()){
-            if(enemy.getPosition().equals(position)){
-                System.exit(0);
-            }
-        }
-        return true;
-    }
 
     public void randomEnemy(long time){
         time=System.currentTimeMillis();
@@ -70,20 +56,9 @@ public class GameController implements Control {
     public void moveEnemy(Enemy enemy, Position position){
         if (field.isEmpty(position)){
             enemy.setposition(position);
-            if(field.getPlayer1().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer1().getPosition().equals(enemy.getPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition())){
+            /*if(field.getPlayer1().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer1().getPosition().equals(enemy.getPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition())){
                 System.exit(0);
-            }
-        }
-    }
-
-    private void movePlayer(Player player, Position position) {
-        if (canPlayerMove(position)) {
-            player.setPosition(position);
-            for(Enemy enemy: field.getEnemies()){
-                if(enemy.getPosition().equals(position)){
-                    System.exit(0);
-                }
-            }
+            }*/
         }
     }
 

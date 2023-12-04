@@ -2,6 +2,7 @@ package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import l04gr07.model.Game.Field.Field;
+import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Position;
@@ -25,10 +26,16 @@ public class PlayerController implements Control{
     public boolean canPlayerMove(Position position) {
         if ((position.getx() < 0) || (position.getx() > field.getWidth() - 1)) return false;
         if ((position.gety() > field.getHeight() - 1) || (position.gety() < 0)) return false;
-        for (Wall wall : field.getWalls())
+        for (Wall wall : field.getWalls()) {
             if (wall.getPosition().equals(position)) {
                 return false;
             }
+        }
+        for(Enemy enemy: field.getEnemies()){
+            if(enemy.getPosition().equals(position)){
+                System.exit(0);
+            }
+        }
         return true;
     }
 
@@ -36,6 +43,11 @@ public class PlayerController implements Control{
     private void movePlayer(Player player, Position position) {
         if (canPlayerMove(position)) {
             player.setPosition(position);
+        }
+        for(Enemy enemy: field.getEnemies()){
+            if(enemy.getPosition().equals(position)){
+                System.exit(0);
+            }
         }
     }
 
