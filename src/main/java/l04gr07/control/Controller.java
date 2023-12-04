@@ -17,8 +17,6 @@ public class Controller {
     private Viewer viewer;
 
     public void run() throws IOException, URISyntaxException, FontFormatException {
-        int FPS = 10;
-        int frameTime = 1000 / FPS;
         long startTime = System.currentTimeMillis();
 
         if (controllerState == null) {
@@ -27,20 +25,7 @@ public class Controller {
 
         }
         controllerState.initializing(startTime);
-        while (this.controllerState != null) {
-            startTime = System.currentTimeMillis();
 
-
-            controllerState.run(startTime);
-
-            long elapsedTime = System.currentTimeMillis() - startTime;
-            long sleepTime = frameTime - elapsedTime;
-
-            try {
-                if (sleepTime > 0) Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
-            }
-        }
 }
 
 

@@ -39,6 +39,11 @@ public class GameController implements Control {
             if (wall.getPosition().equals(position)) {
                 return false;
             }
+        for(Enemy enemy: field.getEnemies()){
+            if(enemy.getPosition().equals(position)){
+                System.exit(0);
+            }
+        }
         return true;
     }
 
@@ -51,14 +56,13 @@ public class GameController implements Control {
                 lastMovement = time;
 
             }
-            //System.out.println("random");
 
     }
 
     public void moveEnemy(Enemy enemy, Position position){
         if (field.isEmpty(position)){
             enemy.setposition(position);
-            if(field.getPlayer1().getPosition().equals(position) || field.getPlayer2().getPosition().equals(position)){
+            if(field.getPlayer1().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer1().getPosition().equals(enemy.getPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition())){
                 System.exit(0);
             }
         }
@@ -67,6 +71,11 @@ public class GameController implements Control {
     private void movePlayer(Player player, Position position) {
         if (canPlayerMove(position)) {
             player.setPosition(position);
+            for(Enemy enemy: field.getEnemies()){
+                if(enemy.getPosition().equals(position)){
+                    System.exit(0);
+                }
+            }
         }
     }
 
