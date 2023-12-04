@@ -18,7 +18,10 @@ public class InstructionView extends MenuViewer {
 
     @Override
     public void draw() throws IOException {
-        drawText(new Position(1, 9), "\t\tBad Ice Cream : Menu", "#00CED1");
+        drawText(new Position(7, 3), "\t\tInstructions", "#00CED1");
+        drawText(new Position(1, 5), "Este jogo e composto por 2 players que ", "#00CED1");
+        drawText(new Position(1, 6), "devem trabalhar em conjunto para matar os monstros", "#00CED1");
+        drawText(new Position(1, 7), "O player1 é movido pelos setas do teclado e o player2 por 'WASD'", "#00CED1");
         screen.refresh();
     }
 }

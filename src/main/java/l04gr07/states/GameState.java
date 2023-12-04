@@ -25,8 +25,9 @@ public class GameState extends State {
     private LanternGUI gui;
 
     private Boolean running = false;
+
     @Override
-    public State nextState(){return new EndScreenState();}
+    public State nextState(){return new GameOverState();}
     @Override
     public Viewer getViewer() {
         return gameView;
@@ -45,6 +46,7 @@ public class GameState extends State {
     public boolean isRunning(){return running;}
     @Override
     public void stopRunning(){running = false;}
+    public LanternGUI getGUI(){return gui;}
 
 
     @Override
