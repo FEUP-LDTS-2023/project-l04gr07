@@ -51,7 +51,7 @@ public class InstructionState extends State{
         running = true;
         instructionModel = new InstructionsModel();
         gui = new LanternGUI();
-        gui.createInstructionsScreen(40,30);
+        gui.createInstructionsScreen(70,65);
         instructionView = new InstructionView(instructionModel, gui.getScreen());
         instructionController = new InstructionController(instructionModel, this);
         run(time);
