@@ -5,25 +5,37 @@ import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
+import l04gr07.model.Game.GameModel;
+import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.model.Position;
+import l04gr07.states.GameOverState;
+import l04gr07.states.GameState;
+import l04gr07.states.InstructionState;
+import l04gr07.states.MainMenuState;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.System.exit;
 
-public class PlayerController implements Control{
-
+public class PlayerController extends Controller implements Control{
+    private final GameModel gameModel;
+    private GameState gameState;
     private Field field;
 
     private Boolean isHugeIceCream = false;
 
-    public PlayerController(Field field){
+    public PlayerController(Field field, GameModel gameModel, GameState gameState){
         this.field = field;
+        this.gameModel=gameModel;
+        this.gameState=gameState;
     }
 
 
-    public boolean canPlayerMove(Position position) {
+    public boolean canPlayerMove(Position position) throws IOException, URISyntaxException, FontFormatException {
         if ((position.getx() < 0) || (position.getx() > field.getWidth() - 1)) return false;
         if ((position.gety() > field.getHeight() - 1) || (position.gety() < 0)) return false;
         for (Wall wall : field.getWalls()) {
@@ -33,20 +45,20 @@ public class PlayerController implements Control{
         }
         for(Enemy enemy: field.getEnemies()){
             if(enemy.getPosition().equals(position)){
-                System.exit(0);
+                gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
             }
         }
         return true;
     }
 
 
-    private void movePlayer(Player player, Position position) {
+    private void movePlayer(Player player, Position position) throws IOException, URISyntaxException, FontFormatException {
         if (canPlayerMove(position)) {
             player.setPosition(position);
         }
         for(Enemy enemy: field.getEnemies()){
             if(enemy.getPosition().equals(position)){
-                System.exit(0);
+                gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
             }
         }
     }
@@ -158,7 +170,7 @@ public class PlayerController implements Control{
 
 
     @Override
-    public void processKey(KeyStroke key) {
+    public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         switch (key.getKeyType()) {
             case Enter:{
                 iceWall(field.getPlayer2());break;}

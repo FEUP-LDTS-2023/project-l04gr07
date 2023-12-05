@@ -18,6 +18,7 @@ public class InstructionView extends MenuViewer {
 
     @Override
     public void draw() throws IOException {
+
         drawText(new Position(15, 3), "Instructions", "#00CED1");
         drawText(new Position(1, 6), "Goal:", "#FFD700");
         drawText(new Position(7,6),"Collect all fruits, catch ice cube and", "#FFFFFF");
