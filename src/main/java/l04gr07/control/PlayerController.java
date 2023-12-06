@@ -33,7 +33,7 @@ public class PlayerController extends Controller implements Control{
     public PlayerController(Field field, GameController gameController){
         this.field = field;
         this.gameController=gameController;
-      
+        this.gameModel = this.gameController.getGameState().getModel();
 
 /*
     public PlayerController(Field field, GameModel gameModel, GameState gameState){

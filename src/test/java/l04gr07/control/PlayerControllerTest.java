@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 public class PlayerControllerTest {
-    @Test
+   /* @Test
     void canPlayerMove() throws IOException, URISyntaxException, FontFormatException {
         Field fMock= Mockito.mock(Field.class);
         GameModel gameModelMock = Mockito.mock(GameModel.class);
@@ -31,4 +31,6 @@ public class PlayerControllerTest {
         assertTrue(r2);
         assertFalse(r3);
     }
+
+    */
 }

@@ -42,7 +42,6 @@ public class GameController implements Control {
 
     public GameState getGameState() {
         return gameState;
-
        // this.playerController = new PlayerController(field, gameState.getModel(), gameState);
 
     }
