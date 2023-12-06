@@ -4,12 +4,12 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
 import l04gr07.control.GameController;
+import l04gr07.control.PlayerController;
 import l04gr07.gui.LanternGUI;
 import l04gr07.model.Game.Difficulty.DifficultyStrategy;
 import l04gr07.model.Game.Difficulty.EasyDifficulty;
 import l04gr07.model.Game.Difficulty.HardDifficulty;
 import l04gr07.model.Game.GameModel;
-import l04gr07.model.Model;
 import l04gr07.view.GameView.GameView;
 import l04gr07.view.Viewer;
 
@@ -24,6 +24,7 @@ public class GameState extends State {
     private GameModel gameModel;
 
     private GameController gameControl;
+    private PlayerController playerControl;
     private LanternGUI gui;
 
     private Boolean running = false;
@@ -66,18 +67,20 @@ public class GameState extends State {
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());
-        gameControl = new GameController(this);
+        gameControl = new GameController(this,time);
         run(time);
     }
     private static final int FPS = 60;
     private static final long frameTime = 1000 / FPS;
 
-       
+
     public void run(long time) throws IOException, URISyntaxException, FontFormatException {
         long startTime=System.currentTimeMillis();
         while (true){
             long currentTime=System.currentTimeMillis();
             gameControl.randomEnemy(time);
+            gameControl.setTime(time);
+            gameControl.IceShot();
             gameView.draw();
             KeyStroke key = gui.getScreen().pollInput();
             if(key!=null){

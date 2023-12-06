@@ -3,8 +3,6 @@ package l04gr07.view.GameView;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import l04gr07.control.IceCubeObserver;
 import l04gr07.model.Game.FieldElements.Enemy;
@@ -12,19 +10,14 @@ import l04gr07.model.Game.FieldElements.Fruit;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Game.GameModel;
-
 import l04gr07.view.ElementsView.*;
-import l04gr07.view.ElementsView.FruitView;
-import l04gr07.view.ElementsView.IceCubeView;
 import l04gr07.view.ElementsView.PlayerView.HugeIceCreamView;
-
 import l04gr07.view.ElementsView.PlayerView.Player1View;
 import l04gr07.view.ElementsView.PlayerView.Player2View;
 import l04gr07.view.Viewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class GameView extends Viewer<GameModel> implements IceCubeObserver {
@@ -36,6 +29,7 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
     private List<WallView>  wallViewers;
     private List<FruitView> fruitViewers;
     private List<EnemyView> enemyViewers;
+    private IceShotView iceShotViewer;
     private IceCubeView iceCubeViewer;
 
 
@@ -72,6 +66,14 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
                 fruitViewers.add(new FruitView(fruit, graphics));
             }
         }
+     /*   if(gameModel.getField().getIceShot().size()!=iceShotViewers.size()){
+            iceShotViewers=new ArrayList<>();
+            for(IceShot iceShot : gameModel.getField().getIceShot()) {
+                iceShotViewers.add(new IceShotView(iceShot, graphics));
+            }
+        }*/
+        iceShotViewer = new IceShotView(gameModel.getField().getIceShot(), graphics);
+            iceShotViewer.draw();
         if(gameModel.getField().getWalls().size()!=wallViewers.size()){
             wallViewers =new ArrayList<>();
             for(Wall wall : gameModel.getField().getWalls()) {
@@ -121,3 +123,4 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
     }
 
 }
+
