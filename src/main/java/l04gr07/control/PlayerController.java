@@ -64,30 +64,34 @@ public class PlayerController extends Controller implements Control{
     }
 
     private void iceWall(Player player){
+
         Position playerPos = player.getPosition();
+        Boolean create = createWalls(player);
+        if(create){createWalls(player);}
+
         for(Wall wall : field.getWalls()){
             Position wallPos = wall.getPosition();
             switch(player.getLastDirection()) {
                 case "UP" : {
-                    if((wallPos.getx() ==playerPos.getx())&& (wallPos.gety() == playerPos.gety()-1)){
+                    if((wallPos.getx() ==playerPos.getx())&& (wallPos.gety() == playerPos.gety()-1) && !create){
                         breakWalls(wall,player.getLastDirection());
                     }
                     break;
                 }
                 case "DOWN" : {
-                    if((wallPos.getx() == playerPos.getx())&& (wallPos.gety() == playerPos.gety()+1)){
+                    if((wallPos.getx() == playerPos.getx())&& (wallPos.gety() == playerPos.gety()+1) && !create){
                         breakWalls(wall,player.getLastDirection());
                     }
                     break;
                 }
                 case "LEFT" : {
-                    if((wallPos.getx() == playerPos.getx()-1)&& (wallPos.gety() == playerPos.gety())){
+                    if((wallPos.getx() == playerPos.getx()-1)&& (wallPos.gety() == playerPos.gety()) && !create){
                         breakWalls(wall,player.getLastDirection());
                     }
                     break;
                 }
                 case "RIGHT" : {
-                    if((wallPos.getx() == playerPos.getx()+1)&& (wallPos.gety() == playerPos.gety())){
+                    if((wallPos.getx() == playerPos.getx()+1)&& (wallPos.gety() == playerPos.gety())&& !create){
                         breakWalls(wall,player.getLastDirection());
                     }
                     break;
@@ -97,6 +101,77 @@ public class PlayerController extends Controller implements Control{
             }
         }
     }
+
+    private Boolean createWalls(Player player){
+        String direction = player.getLastDirection();
+        Position playerPos = player.getPosition();
+        switch(direction){
+            case "UP" : {
+                Position wallPos = new Position(playerPos.getx(),playerPos.gety()-1);
+                if(field.isEmpty(wallPos) && !field.isPlayer(wallPos)){
+                    int x = wallPos.getx();
+                    int y = wallPos.gety();
+                    while(field.isEmpty(wallPos) && y >= 0){
+                       // System.out.println("CREATED WALLS");
+                        Wall wall = new Wall(x ,y);
+                        y--;
+                        wallPos = new Position(x,y);
+                        field.getWalls().add(wall);}
+                    return true;
+                }
+                break;
+            }
+            case "DOWN" : {
+                System.out.println("CREATED WALLS");
+                Position wallPos = new Position(playerPos.getx(),playerPos.gety()+1);
+                if(field.isEmpty(wallPos) && !field.isPlayer(wallPos)){
+                    int x = wallPos.getx();
+                    int y = wallPos.gety();
+                    while(field.isEmpty(wallPos) && y <= field.getHeight()){
+                        Wall wall = new Wall(x ,y);
+                        y++;
+                        wallPos = new Position(x,y);
+                        field.getWalls().add(wall);}
+                    return true;
+                }
+                break;
+            }
+            case "LEFT" : {
+                Position wallPos = new Position(playerPos.getx()-1,playerPos.gety());
+                if(field.isEmpty(wallPos)&& !field.isPlayer(wallPos)){
+                    int x = wallPos.getx();
+                    int y = wallPos.gety();
+                    while(field.isEmpty(wallPos) && x >= 0){
+                        System.out.println("CREATED WALLS");
+                        Wall wall = new Wall(x ,y);
+                        x--;
+                        wallPos = new Position(x,y);
+                        field.getWalls().add(wall);}
+                    return true;
+                }
+                break;
+            }
+            case "RIGHT" : {
+                Position wallPos = new Position(playerPos.getx()+1,playerPos.gety());
+                if(field.isEmpty(wallPos)&& !field.isPlayer(wallPos)){
+                    int x = wallPos.getx();
+                    int y = wallPos.gety();
+                    while(field.isEmpty(wallPos) && x <= field.getWidth()){
+                        System.out.println("CREATED WALLS");
+                        Wall wall = new Wall(x ,y);
+                        x++;
+                        wallPos = new Position(x,y);
+                        field.getWalls().add(wall);}
+                    return true;
+                }
+                break;
+            }
+        }
+        return false;
+    }
+
+
+
 
     private void breakWalls(Wall wall, String direction){
         Position wallPos = wall.getPosition();
@@ -173,7 +248,7 @@ public class PlayerController extends Controller implements Control{
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         switch (key.getKeyType()) {
             case Enter:{
-                iceWall(field.getPlayer2());break;}
+                if (!isHugeIceCream){iceWall(field.getPlayer2());break;}}
 
             case ArrowUp: {
                 if (!isHugeIceCream){

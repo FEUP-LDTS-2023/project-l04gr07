@@ -94,6 +94,12 @@ public class Field {
                 return false;
         return true;
     }
+    public boolean isPlayer(Position position) {
+        for (Player player : players)
+            if (player.getPosition().equals(position))
+                return true;
+        return false;
+    }
 
     public boolean isMonster(Position position) {
         for (Enemy monster : enemies)
