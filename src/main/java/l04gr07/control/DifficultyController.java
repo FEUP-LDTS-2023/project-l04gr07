@@ -1,0 +1,51 @@
+package l04gr07.control;
+
+import com.googlecode.lanterna.input.KeyStroke;
+import l04gr07.model.Menu.DifficultyModel;
+import l04gr07.model.Menu.MainMenuModel;
+import l04gr07.states.DifficultyState;
+import l04gr07.states.GameState;
+import l04gr07.states.InstructionState;
+import l04gr07.states.MainMenuState;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
+import static java.lang.System.exit;
+
+public class DifficultyController extends Controller implements Control{
+    private long lastMovement=0;
+    private final DifficultyModel difficultyModel;
+    private DifficultyState difficultyState;
+
+    public DifficultyController(DifficultyModel difficultyModel, DifficultyState difficultyState) {
+        this.difficultyModel = difficultyModel;
+        this.difficultyState = difficultyState;
+
+    }
+    @Override
+    public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
+        System.out.println("PROCESSING KEYS");
+        switch(key.getKeyType()){
+            case ArrowUp -> difficultyModel.previousOption();
+            case ArrowDown -> difficultyModel.nextOption();
+            case Enter -> {
+                System.out.println("ENTER");
+                if (difficultyModel.isSelected(3)) {setControllerState(new MainMenuState());}
+                if (difficultyModel.isSelected(2)) {
+                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState());}
+                if (difficultyModel.isSelected(1)) {
+                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState());}
+                if (difficultyModel.isSelected(0)) {
+                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState());}
+
+
+            }
+            case Character -> {
+                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
+                    exit(0);
+            }
+        }
+    }
+}
