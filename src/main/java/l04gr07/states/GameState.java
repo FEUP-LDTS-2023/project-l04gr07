@@ -5,7 +5,9 @@ import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
 import l04gr07.control.GameController;
 import l04gr07.gui.LanternGUI;
+import l04gr07.model.Game.Difficulty.DifficultyStrategy;
 import l04gr07.model.Game.Difficulty.EasyDifficulty;
+import l04gr07.model.Game.Difficulty.HardDifficulty;
 import l04gr07.model.Game.GameModel;
 import l04gr07.model.Model;
 import l04gr07.view.GameView.GameView;
@@ -25,6 +27,14 @@ public class GameState extends State {
     private LanternGUI gui;
 
     private Boolean running = false;
+    public GameState(){}
+
+    public GameState(DifficultyStrategy difficulty) throws IOException {
+        super();
+        //gameView = new GameView(gameModel, gui.getScreen());
+        //gameControl = new GameController(this);
+        gameModel = new GameModel(difficulty);
+    }
 
     @Override
     public State nextState(){return new GameOverState();}
@@ -52,7 +62,7 @@ public class GameState extends State {
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
-        gameModel = new GameModel(new EasyDifficulty());
+        //gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());
