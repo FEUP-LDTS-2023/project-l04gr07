@@ -1,9 +1,11 @@
 package l04gr07.control;
 
-import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.screen.Screen;
 import l04gr07.model.Game.Field.Field;
-import l04gr07.model.Game.FieldElements.*;
+import l04gr07.model.Game.FieldElements.Enemy;
+import l04gr07.model.Game.FieldElements.Fruit;
+import l04gr07.model.Game.FieldElements.IceShot;
 import l04gr07.model.Game.FieldElements.PlayerState.HugeIceCreamState;
 import l04gr07.model.Game.FieldElements.PlayerState.PlayerState;
 import l04gr07.model.Position;
@@ -12,9 +14,6 @@ import l04gr07.states.GameState;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-
-import static java.lang.System.exit;
 
 
 public class GameController implements Control {
@@ -41,7 +40,7 @@ public class GameController implements Control {
 
     public void randomIceShot(IceShot iceShot){
         String direction = iceShot.getDirection();
-        System.out.println("Random iceshot");
+      //  System.out.println("Random iceshot");
         time=System.currentTimeMillis();
         if (time - lastMovementIce > 500) {
            // for (IceShot iceShot : field.getIceShot())
@@ -54,8 +53,10 @@ public class GameController implements Control {
         Position nextPosition = iceShot.getPosition();
         switch(direction){
             case "UP": {
+                System.out.println("upp");
                 nextPosition = new Position(iceShot.getPosition().getx(),iceShot.getPosition().gety()-1);
                 break;}
+            case "NO":{break;}
             }
         if (field.isEmpty(nextPosition)){
             iceShot.setposition(nextPosition);
@@ -139,6 +140,8 @@ public class GameController implements Control {
         if(!iceCube && field.getIceCube()!=null && !isHugeIceCream) retrieveFruits();
         if(iceCube && !isHugeIceCream){retrieveIceCube();}
     }
-    public void IceShot(){    System.out.println("PROCESS KEY CONTROLLER");
-        for(IceShot iceShot : field.getIceShot()){randomIceShot(iceShot);}}
+    public void IceShot(){
+        if(field.getIceShot().getDirection()=="NO"){iceShot= new IceShot(-1,-1,"NO");}
+        randomIceShot(field.getIceShot());
+    }
 }

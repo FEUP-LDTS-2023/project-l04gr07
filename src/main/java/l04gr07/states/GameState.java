@@ -7,9 +7,7 @@ import l04gr07.control.GameController;
 import l04gr07.control.PlayerController;
 import l04gr07.gui.LanternGUI;
 import l04gr07.model.Game.Difficulty.EasyDifficulty;
-import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.GameModel;
-import l04gr07.model.Model;
 import l04gr07.view.GameView.GameView;
 import l04gr07.view.Viewer;
 
