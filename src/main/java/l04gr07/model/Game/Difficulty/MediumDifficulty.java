@@ -7,7 +7,7 @@ import l04gr07.model.Game.FieldElements.IceCube;
 public class MediumDifficulty implements DifficultyStrategy{
     @Override
     public Field createField() {
-        ReadMap readMap = new ReadMap("mediumMap.txt");
+        ReadMap readMap = new ReadMap("mediumMap.txt", 400);
         Field field = readMap.processMap();
         field.setIceCube(new IceCube(2,2));
         return field;
