@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class playersTest {
+public class PlayerTest {
     @Test
     public void moveHorizontalPlayer2(){
         Player p2= new Player(2, 1);
@@ -30,7 +30,7 @@ public class playersTest {
     }
 
     @Test
-    void testGetLastDirection() {
+    void testLastDirection() {
         Player player = new Player(0, 0);
         player.setLastDirection("UP");
         String lastDirection = player.getLastDirection();
