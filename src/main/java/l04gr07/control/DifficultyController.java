@@ -32,7 +32,7 @@ public class DifficultyController extends Controller implements Control{
             case ArrowDown -> difficultyModel.nextOption();
             case Enter -> {
                 System.out.println("ENTER");
-                if (difficultyModel.isSelected(3)) {setControllerState(new MainMenuState());}
+                if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new MainMenuState());}
                 if (difficultyModel.isSelected(2)) {
                     difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState());}
                 if (difficultyModel.isSelected(1)) {
