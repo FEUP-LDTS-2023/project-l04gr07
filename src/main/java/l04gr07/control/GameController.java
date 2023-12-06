@@ -30,6 +30,15 @@ public class GameController implements Control {
     protected Boolean isHugeIceCream = false;
     protected Boolean iceCube = false;
 
+
+    public GameController(GameState gameState, long time) {
+        this.gameState = gameState;
+        this.field = gameState.getModel().getField();
+        this.playerState = field.getPlayerState();
+        this.playerController = new PlayerController(field, this);
+        this.time=time;
+    }
+
     public GameState getGameState() {
         return gameState;
     }
@@ -53,14 +62,24 @@ public class GameController implements Control {
         Position nextPosition = iceShot.getPosition();
         switch(direction){
             case "UP": {
-                System.out.println("upp");
                 nextPosition = new Position(iceShot.getPosition().getx(),iceShot.getPosition().gety()-1);
+                break;}
+            case "DOWN": {
+                nextPosition = new Position(iceShot.getPosition().getx(),iceShot.getPosition().gety()+1);
+                break;}
+            case "LEFT": {
+                nextPosition = new Position(iceShot.getPosition().getx()-1,iceShot.getPosition().gety());
+                break;}
+            case "RIGHT": {
+                nextPosition = new Position(iceShot.getPosition().getx()+1,iceShot.getPosition().gety());
                 break;}
             case "NO":{break;}
             }
         if (field.isEmpty(nextPosition)){
             iceShot.setposition(nextPosition);
         }
+        if(!field.isEmpty(nextPosition)){
+            iceShot.setposition(new Position(-1,-1));}
     }
     public void randomEnemy(long time){
         time=System.currentTimeMillis();
@@ -77,35 +96,6 @@ public class GameController implements Control {
             enemy.setposition(position);
         }
     }
-
-    public GameController(GameState gameState, long time) {
-        this.gameState = gameState;
-        this.field = gameState.getModel().getField();
-        this.playerState = field.getPlayerState();
-        this.playerController = new PlayerController(field, this);
-        this.time=time;
-    }
-
-    /*public void randomEnemy(long time){
-        time=System.currentTimeMillis();
-
-            if (time - lastMovement > 500) {
-                for (Enemy enemy : field.getEnemies())
-                    moveEnemy(enemy, enemy.getPosition().getRandomPosition());
-                lastMovement = time;
-
-            }
-
-    }
-
-    public void moveEnemy(Enemy enemy, Position position){
-        if (field.isEmpty(position)){
-            enemy.setposition(position);
-           // if(field.getPlayer1().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition().getRandomPosition()) || field.getPlayer1().getPosition().equals(enemy.getPosition()) || field.getPlayer2().getPosition().equals(enemy.getPosition())){
-           //     System.exit(0);
-           // }
-        }
-    }*/
 
     public void retrieveFruits() {
         if(field.getFruits().size() == 0){iceCube = true;notifyIceCubeObserver();}
