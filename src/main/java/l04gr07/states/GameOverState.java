@@ -3,24 +3,24 @@ package l04gr07.states;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
+import l04gr07.control.GameOverController;
 import l04gr07.control.InstructionController;
-import l04gr07.control.MainMenuController;
 import l04gr07.gui.LanternGUI;
+import l04gr07.model.Menu.GameOverModel;
 import l04gr07.model.Menu.InstructionsModel;
-import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.model.Model;
+import l04gr07.view.GameView.GameOverView;
 import l04gr07.view.GameView.InstructionView;
-import l04gr07.view.GameView.MainMenuView;
 import l04gr07.view.Viewer;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class InstructionState extends State{
-    private InstructionView instructionView;
-    private InstructionsModel instructionModel;
-    private InstructionController instructionController;
+public class GameOverState extends State{
+    private GameOverView gameOverView;
+    private GameOverModel gameOverModel;
+    private GameOverController gameOverController;
 
     private LanternGUI gui;
     private Boolean running=false;
@@ -44,30 +44,29 @@ public class InstructionState extends State{
     public void stopRunning(){running = false;}
 
     @Override
-    public State nextState(){return new MainMenuState();}
+    public State nextState(){return new EndScreenState();}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
-        instructionModel = new InstructionsModel();
+        gameOverModel = new GameOverModel();
         gui = new LanternGUI();
-        gui.createInstructionsScreen(70,65);
-        instructionView = new InstructionView(instructionModel, gui.getScreen());
-        instructionController = new InstructionController(instructionModel, this);
+        gui.createGameOverScreen(40,30);
+        gameOverView = new GameOverView(gameOverModel, gui.getScreen());
+        gameOverController = new GameOverController(gameOverModel, this);
         run(time);
     }
 
     @Override
     public void run(long time) throws IOException {
         while (true){
-            instructionView.draw();
+            gameOverView.draw();
             KeyStroke key = gui.getScreen().readInput();
-            instructionController.processKey(key);
+            gameOverController.processKey(key);
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
                 gui.getScreen().close();
             }
             if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
-    }
-
+}

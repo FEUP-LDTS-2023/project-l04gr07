@@ -35,12 +35,16 @@ public class GameController implements Control {
         this.gameState = gameState;
         this.field = gameState.getModel().getField();
         this.playerState = field.getPlayerState();
+
         this.playerController = new PlayerController(field, this);
         this.time=time;
     }
 
     public GameState getGameState() {
         return gameState;
+
+       // this.playerController = new PlayerController(field, gameState.getModel(), gameState);
+
     }
 
     public void setTime(long time){

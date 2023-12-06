@@ -6,7 +6,9 @@ import l04gr07.control.Control;
 import l04gr07.control.GameController;
 import l04gr07.control.PlayerController;
 import l04gr07.gui.LanternGUI;
+import l04gr07.model.Game.Difficulty.DifficultyStrategy;
 import l04gr07.model.Game.Difficulty.EasyDifficulty;
+import l04gr07.model.Game.Difficulty.HardDifficulty;
 import l04gr07.model.Game.GameModel;
 import l04gr07.view.GameView.GameView;
 import l04gr07.view.Viewer;
@@ -26,8 +28,17 @@ public class GameState extends State {
     private LanternGUI gui;
 
     private Boolean running = false;
+    public GameState(){}
+
+    public GameState(DifficultyStrategy difficulty) throws IOException {
+        super();
+        //gameView = new GameView(gameModel, gui.getScreen());
+        //gameControl = new GameController(this);
+        gameModel = new GameModel(difficulty);
+    }
+
     @Override
-    public State nextState(){return new EndScreenState();}
+    public State nextState(){return new GameOverState();}
     @Override
     public Viewer getViewer() {
         return gameView;
@@ -46,12 +57,13 @@ public class GameState extends State {
     public boolean isRunning(){return running;}
     @Override
     public void stopRunning(){running = false;}
+    public LanternGUI getGUI(){return gui;}
 
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
-        gameModel = new GameModel(new EasyDifficulty());
+        //gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());

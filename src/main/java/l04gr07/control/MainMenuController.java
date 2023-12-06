@@ -2,6 +2,7 @@ package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import l04gr07.model.Menu.MainMenuModel;
+import l04gr07.states.DifficultyState;
 import l04gr07.states.GameState;
 import l04gr07.states.InstructionState;
 import l04gr07.states.MainMenuState;
@@ -33,7 +34,7 @@ public class MainMenuController extends Controller implements Control{
                 if (mainMenuModel.isSelected(2)) {exit(0);break;}
                 if (mainMenuModel.isSelected(1)) {setControllerState(new InstructionState());}
                 if (mainMenuModel.isSelected(0)){
-                    System.out.println("START");mainMenuState.getGUI().close(); mainMenuState.stopRunning();setControllerState(new GameState());}
+                    mainMenuState.getGUI().close();mainMenuState.stopRunning();setControllerState(new DifficultyState());}
 
             }
             case Character -> {

@@ -3,13 +3,13 @@ package l04gr07.states;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
-import l04gr07.control.InstructionController;
+import l04gr07.control.DifficultyController;
 import l04gr07.control.MainMenuController;
 import l04gr07.gui.LanternGUI;
-import l04gr07.model.Menu.InstructionsModel;
+import l04gr07.model.Menu.DifficultyModel;
 import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.model.Model;
-import l04gr07.view.GameView.InstructionView;
+import l04gr07.view.GameView.DifficultyView;
 import l04gr07.view.GameView.MainMenuView;
 import l04gr07.view.Viewer;
 
@@ -17,57 +17,59 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class InstructionState extends State{
-    private InstructionView instructionView;
-    private InstructionsModel instructionModel;
-    private InstructionController instructionController;
+public class DifficultyState extends State{
+    private DifficultyView difficultyView;
+    private DifficultyModel difficultyModel;
+    private DifficultyController difficultyControl;
 
     private LanternGUI gui;
-    private Boolean running=false;
-    @Override
-    public Viewer getViewer() {
-        return null;
-    }
+    private Boolean running = false;
 
     @Override
+    public Viewer getViewer() {
+        return difficultyView;
+    }
+    @Override
     public Control getControl() {
-        return null;
+        return difficultyControl;
     }
 
     @Override
     public Model getModel() {
-        return null;
+        return difficultyModel;
     }
+
     @Override
     public boolean isRunning(){return running;}
     @Override
     public void stopRunning(){running = false;}
 
     @Override
-    public State nextState(){return new MainMenuState();}
+    public State nextState(){return new GameState();}
+
+    public LanternGUI getGUI(){return gui;}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
-        instructionModel = new InstructionsModel();
+        difficultyModel = new DifficultyModel();
         gui = new LanternGUI();
-        gui.createInstructionsScreen(70,65);
-        instructionView = new InstructionView(instructionModel, gui.getScreen());
-        instructionController = new InstructionController(instructionModel, this);
+        gui.createDifficultyScreen(40,30);
+        difficultyView = new DifficultyView(difficultyModel, gui.getScreen());
+        difficultyControl = new DifficultyController(difficultyModel,this);
         run(time);
     }
 
     @Override
-    public void run(long time) throws IOException {
+    public void run(long time) throws IOException, URISyntaxException, FontFormatException {
         while (true){
-            instructionView.draw();
+            difficultyView.draw();
             KeyStroke key = gui.getScreen().readInput();
-            instructionController.processKey(key);
+            difficultyControl.processKey(key);
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
                 gui.getScreen().close();
             }
             if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
-    }
-
+}

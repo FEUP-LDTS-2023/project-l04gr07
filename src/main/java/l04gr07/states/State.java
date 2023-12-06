@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public abstract class State {
+    public State() {
+
+    }
+
     public abstract Viewer getViewer();
 
     public abstract Control getControl();

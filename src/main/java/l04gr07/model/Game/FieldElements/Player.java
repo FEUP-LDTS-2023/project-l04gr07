@@ -23,9 +23,4 @@ public class Player extends Element {
     public String getLastDirection(){return lastDirection;}
     public void setLastDirection(String lastDirection){this.lastDirection = lastDirection;}
 
-
-//for testing//
-    public void draw(TextGraphics graphicsMock) {
-
-    }
 }
