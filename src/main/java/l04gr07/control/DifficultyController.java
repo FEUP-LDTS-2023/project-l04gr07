@@ -1,6 +1,9 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import l04gr07.model.Game.Difficulty.EasyDifficulty;
+import l04gr07.model.Game.Difficulty.HardDifficulty;
+import l04gr07.model.Game.Difficulty.MediumDifficulty;
 import l04gr07.model.Menu.DifficultyModel;
 import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.states.DifficultyState;
@@ -34,11 +37,11 @@ public class DifficultyController extends Controller implements Control{
                 System.out.println("ENTER");
                 if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new MainMenuState());}
                 if (difficultyModel.isSelected(2)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState());}
+                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new HardDifficulty()));}
                 if (difficultyModel.isSelected(1)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState());}
+                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new MediumDifficulty()));}
                 if (difficultyModel.isSelected(0)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState());}
+                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new EasyDifficulty()));}
 
 
             }

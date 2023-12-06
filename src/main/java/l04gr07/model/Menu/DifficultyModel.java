@@ -10,7 +10,7 @@ public class DifficultyModel implements Model {
     private Boolean running;
     private int currentOption=0;
     public DifficultyModel(){
-        this.options= Arrays.asList("Easy", "Medium", "Difficulty", "Go back");
+        this.options= Arrays.asList("Easy", "Medium", "Hard", "Go back");
     }
     public void nextOption() {currentOption++;if (currentOption >= getNumberOptions()) currentOption = 0;}
     public void previousOption() {currentOption--;if (currentOption < 0) currentOption = getNumberOptions()-1;}
