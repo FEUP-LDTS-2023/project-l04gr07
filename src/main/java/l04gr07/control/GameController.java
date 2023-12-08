@@ -50,6 +50,12 @@ public class GameController implements Control {
         //System.out.println("TIME UPDATED");
         this.time = time;}
 
+
+            if (time - lastMovement > field.getSpeed()) {
+                for (Enemy enemy : field.getEnemies())
+                    moveEnemy(enemy, enemy.getPosition().getRandomPosition());
+                lastMovement = time;
+
     public void randomIceShot(IceShot iceShot){
         String direction = iceShot.getDirection();
       //  System.out.println("Random iceshot");
@@ -60,6 +66,7 @@ public class GameController implements Control {
             lastMovementIce = time;
         }
     }
+
 
     public void moveIceShot(IceShot iceShot,String direction){
         Position nextPosition = iceShot.getPosition();

@@ -24,21 +24,24 @@ public class Field {
     private List<Fruit> fruits =new ArrayList<>();
     private List<Enemy> enemies=new ArrayList<>();
     private IceCube iceCube;
+    private long speed;
     private IceShot iceshot= new IceShot(-1,-1, "NO");
 
     public Field(int width, int height) {
         this.height = height;
         this.width = width;
     }
-    public Field(int width, int height,PlayerState playerState) throws IOException, URISyntaxException, FontFormatException {
+    public Field(int width, int height,PlayerState playerState, long speed) throws IOException, URISyntaxException, FontFormatException {
         this.height = height;
         this.width = width;
+        this.speed=speed;
         this.playerState = playerState;
         playerState.initializing();
         this.players = playerState.getModel();
     }
 
     public IceCube getIceCube(){return iceCube;}
+    public long getSpeed(){return speed;}
     public void setIceCube(IceCube iceCube){this.iceCube = iceCube;}
     public void setPlayers(List<Player> players){
         System.out.println("SET PLAYERS");

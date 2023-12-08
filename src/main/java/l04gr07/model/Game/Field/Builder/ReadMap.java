@@ -23,9 +23,10 @@ import java.util.List;
 public class ReadMap {
     Field field;
     String filename;
-
-    public ReadMap(String filename) {
+    long speed;
+    public ReadMap(String filename, long speed) {
         this.filename = filename;
+        this.speed=speed;
     }
 
     public Field processMap() {
@@ -84,7 +85,7 @@ public class ReadMap {
 
     public Field drawMap(char[][] map) throws IOException, URISyntaxException, FontFormatException {
         //Field field = new Field(55, 23);
-        Field field = new Field(55, 23,new NormalPlayerState());
+        Field field = new Field(55, 23,new NormalPlayerState(), speed);
         List<Wall> walls = field.getWalls();
         List<Fruit> fruits = field.getFruits();
         List<Enemy> enemies=field.getEnemies();
