@@ -54,7 +54,7 @@ public class GameController implements Control {
         String direction = iceShot.getDirection();
       //  System.out.println("Random iceshot");
         time=System.currentTimeMillis();
-        if (time - lastMovementIce > 500) {
+        if (time - lastMovementIce > 200) {
            // for (IceShot iceShot : field.getIceShot())
                 moveIceShot(iceShot, direction);
             lastMovementIce = time;
@@ -78,8 +78,14 @@ public class GameController implements Control {
                 break;}
             case "NO":{break;}
             }
-        if (field.isEmpty(nextPosition)){
+        if (field.isEmpty(nextPosition)&&field.isMonster(nextPosition) == null){
             iceShot.setposition(nextPosition);
+        }
+        if(field.isMonster(nextPosition)!=null) {
+            System.out.println(field.getEnemies().size());
+            System.out.println("Monster");
+            field.getEnemies().remove(field.isMonster(nextPosition));
+            System.out.println(field.getEnemies().size());
         }
         if(!field.isEmpty(nextPosition)){
             iceShot.setposition(new Position(-1,-1));}

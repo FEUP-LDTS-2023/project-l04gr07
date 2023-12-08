@@ -264,7 +264,9 @@ public class PlayerController extends Controller implements Control{
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         switch (key.getKeyType()) {
             case Enter:{
-                if (!isHugeIceCream){iceWall(field.getPlayer2());break;}}
+                if (!isHugeIceCream){iceWall(field.getPlayer2());break;}
+                else{iceWall(field.getPlayer1());}
+            break;}
 
             case ArrowUp: {
                 if (!isHugeIceCream){
@@ -274,7 +276,7 @@ public class PlayerController extends Controller implements Control{
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()-1,"UP");
                    // field.getIceShot().add(iceshot);
                     field.setIceshot(iceshot);
-                    System.out.println("upi");
+                    //System.out.println("upi");
                    //gameController.randomIceShot("UP");
                 }
                 break;}

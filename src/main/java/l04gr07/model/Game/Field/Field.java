@@ -109,11 +109,21 @@ public class Field {
         return false;
     }
 
+/*
     public boolean isMonster(Position position) {
         for (Enemy monster : enemies)
             if (monster.getPosition().equals(position))
                 return true;
         return false;
+    }
+
+ */
+
+    public Enemy isMonster(Position position) {
+        for (Enemy monster : enemies)
+            if (monster.getPosition().equals(position))
+                return monster;
+        return null;
     }
 
 }

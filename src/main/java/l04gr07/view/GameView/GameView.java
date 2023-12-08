@@ -50,11 +50,8 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
         for(PlayerViewer player : playerViewer){player.draw();}
         //player2Viewer.draw();
         //player1Viewer.draw();
-        if(drawIceCube){iceCubeViewer.draw();
-            System.out.println("DRAWN ICECUBE");
-        }
+        if(drawIceCube){iceCubeViewer.draw();}
         if(gameModel.getField().getPlayers().size()!=playerViewer.size()) {
-            System.out.println("GAMEVIEW CREATION HUGEICECREAM");
             playerViewer = new ArrayList<>();
             for (Player player : gameModel.getField().getPlayers()) {
                 playerViewer.add(new HugeIceCreamView(player, graphics));
@@ -66,12 +63,14 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
                 fruitViewers.add(new FruitView(fruit, graphics));
             }
         }
-     /*   if(gameModel.getField().getIceShot().size()!=iceShotViewers.size()){
-            iceShotViewers=new ArrayList<>();
-            for(IceShot iceShot : gameModel.getField().getIceShot()) {
-                iceShotViewers.add(new IceShotView(iceShot, graphics));
+        if(gameModel.getField().getEnemies().size()!=enemyViewers.size()){
+            enemyViewers =new ArrayList<>();
+            for(Enemy enemy : gameModel.getField().getEnemies()) {
+                enemyViewers.add(new EnemyView(enemy, graphics));
             }
-        }*/
+        }
+
+
         iceShotViewer = new IceShotView(gameModel.getField().getIceShot(), graphics);
             iceShotViewer.draw();
         if(gameModel.getField().getWalls().size()!=wallViewers.size()){
@@ -81,12 +80,13 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
             }
         }
 
-        for(WallView wallView : wallViewers)
+        for(WallView wallView : wallViewers) {
             wallView.draw();
+        }
         for(FruitView fruitView : fruitViewers) {
             fruitView.draw();
         }
-        for(EnemyView enemyView: enemyViewers ){
+        for(EnemyView enemyView: enemyViewers) {
             enemyView.draw();
         }
         screen.refresh();
