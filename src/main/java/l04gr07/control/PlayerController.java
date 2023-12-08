@@ -3,6 +3,7 @@ package l04gr07.control;
 import com.googlecode.lanterna.input.KeyStroke;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
+import l04gr07.model.Game.FieldElements.IceShot;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Game.GameModel;
@@ -25,14 +26,29 @@ public class PlayerController extends Controller implements Control{
     private final GameModel gameModel;
     private GameState gameState;
     private Field field;
-
+    private long lastMovement=0;
     private Boolean isHugeIceCream = false;
 
+    private GameController gameController;
+    public PlayerController(Field field, GameController gameController){
+        this.field = field;
+        this.gameController=gameController;
+        this.gameModel = this.gameController.getGameState().getModel();
+
+/*
     public PlayerController(Field field, GameModel gameModel, GameState gameState){
         this.field = field;
         this.gameModel=gameModel;
         this.gameState=gameState;
+        */
+
     }
+   /* public void MoveUp(){
+        for (IceShot iceShot: field.getIceShot()) {
+            System.out.println("oi");
+            gameController.randomIceShot(currentTimeMillis());
+            }
+    }*/
 
 
     public boolean canPlayerMove(Position position) throws IOException, URISyntaxException, FontFormatException {
@@ -248,28 +264,58 @@ public class PlayerController extends Controller implements Control{
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         switch (key.getKeyType()) {
             case Enter:{
-                if (!isHugeIceCream){iceWall(field.getPlayer2());break;}}
+                if (!isHugeIceCream){iceWall(field.getPlayer2());break;}
+                else{iceWall(field.getPlayer1());}
+            break;}
 
             case ArrowUp: {
                 if (!isHugeIceCream){
                     field.getPlayer2().setLastDirection("UP");
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveUp());}break;}
-                //else : shoot up
+                    movePlayer(field.getPlayer2(), field.getPlayer2().moveUp());}
+                else {
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()-1,"UP");
+                   // field.getIceShot().add(iceshot);
+                    field.setIceshot(iceshot);
+                    //System.out.println("upi");
+                   //gameController.randomIceShot("UP");
+                }
+                break;}
             case ArrowDown: {
                 if (!isHugeIceCream){
                     field.getPlayer2().setLastDirection("DOWN");
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveDown());}break;}
-                //else : shoot down
+                    movePlayer(field.getPlayer2(), field.getPlayer2().moveDown());}
+                else {
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()+1,"DOWN");
+                   // field.getIceShot().add(iceshot);
+                    field.setIceshot(iceshot);
+                    //iceshot.MoveDown();
+                }
+                break;}
+            //else : shoot down
             case ArrowLeft: {
                 if (!isHugeIceCream){
                     field.getPlayer2().setLastDirection("LEFT");
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveLeft());}break;}
-                //else : shoot left
+                    movePlayer(field.getPlayer2(), field.getPlayer2().moveLeft());}
+                else {
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()-1, field.getPlayer1().getPosition().gety(),"LEFT");
+                    //field.getIceShot().add(iceshot);
+                    field.setIceshot(iceshot);
+                    //iceshot.MoveLeft();
+                }
+                break;}
+            //else : shoot left
             case ArrowRight: {
                 if (!isHugeIceCream){
                     field.getPlayer2().setLastDirection("RIGHT");
-                movePlayer(field.getPlayer2(), field.getPlayer2().moveRight());}break;}
-                //else : shoot right
+                    movePlayer(field.getPlayer2(), field.getPlayer2().moveRight());}
+                else {
+                    IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()+1, field.getPlayer1().getPosition().gety(),"RIGHT");
+                  //  field.getIceShot().add(iceshot);
+                    field.setIceshot(iceshot);
+                   // iceshot.MoveRight();
+                }
+                break;}
+            //else : shoot right
 
             case Character: {
                 char character = key.getCharacter();

@@ -25,6 +25,7 @@ public class Field {
     private List<Enemy> enemies=new ArrayList<>();
     private IceCube iceCube;
     private long speed;
+    private IceShot iceshot= new IceShot(-1,-1, "NO");
 
     public Field(int width, int height) {
         this.height = height;
@@ -53,6 +54,14 @@ public class Field {
     public List<Enemy> getEnemies(){return enemies;}
 
     public TextGraphics getGraphics(){return graphics;}
+    public IceShot getIceShot() {
+        //  System.out.println("iceshot");
+        return iceshot;
+    }
+
+    public void setIceshot(IceShot iceshot) {
+        this.iceshot = iceshot;
+    }
 
     public void setPosition(Position position) {
         this.position=position;
@@ -103,11 +112,21 @@ public class Field {
         return false;
     }
 
+/*
     public boolean isMonster(Position position) {
         for (Enemy monster : enemies)
             if (monster.getPosition().equals(position))
                 return true;
         return false;
+    }
+
+ */
+
+    public Enemy isMonster(Position position) {
+        for (Enemy monster : enemies)
+            if (monster.getPosition().equals(position))
+                return monster;
+        return null;
     }
 
 }
