@@ -8,6 +8,7 @@ import l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerState;
 
 import l04gr07.model.Game.FieldElements.Wall;
 import l04gr07.model.Game.FieldElements.Fruit;
+import l04gr07.model.Position;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -24,9 +25,13 @@ public class ReadMap {
     Field field;
     String filename;
     long speed;
-    public ReadMap(String filename, long speed) {
+    Position player1Pos;
+    Position player2Pos;
+    public ReadMap(String filename, long speed,Position player1Pos,Position player2Pos) {
         this.filename = filename;
         this.speed=speed;
+        this.player1Pos = player1Pos;
+        this.player2Pos = player2Pos;
     }
 
     public Field processMap() {
@@ -85,7 +90,7 @@ public class ReadMap {
 
     public Field drawMap(char[][] map) throws IOException, URISyntaxException, FontFormatException {
         //Field field = new Field(55, 23);
-        Field field = new Field(55, 23,new NormalPlayerState(), speed);
+        Field field = new Field(55, 23,new NormalPlayerState(player1Pos,player2Pos), speed);
         List<Wall> walls = field.getWalls();
         List<Fruit> fruits = field.getFruits();
         List<Enemy> enemies=field.getEnemies();

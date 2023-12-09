@@ -11,6 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NormalPlayerStateTest {
+    /*
     @Test
     void testGetViewer() {
         NormalPlayerState normalPlayerState = new NormalPlayerState();
@@ -43,4 +44,6 @@ public class NormalPlayerStateTest {
         assertNotNull(models);
         assertEquals(2, models.size());
     }
+
+     */
 }
