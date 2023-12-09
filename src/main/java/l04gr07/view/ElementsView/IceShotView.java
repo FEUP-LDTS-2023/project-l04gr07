@@ -13,6 +13,7 @@ public class IceShotView extends ElementsViewer{
         this.iceShot = iceShot;
     }
 
+
     @Override
     public void draw() {
         //   System.out.println("drew iceshot");

@@ -28,7 +28,7 @@ public class LanternGUI {
 
     public void createGameScreen(int width, int height) {
         try {
-            AWTTerminalFontConfiguration cfg = loadFont("teste8.ttf");
+            AWTTerminalFontConfiguration cfg = loadFont("teste1.ttf");
             Terminal terminal = createTerminal(width, height, cfg);
             screen = new TerminalScreen(terminal);
             screen.setCursorPosition(null);

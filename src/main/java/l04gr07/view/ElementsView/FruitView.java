@@ -11,6 +11,7 @@ public class FruitView extends ElementsViewer{
         super(graphics);
         this.fruit = fruit;
     }
+    public Fruit getFruit() {return fruit;}
 
     public void draw() {
         graphics.setForegroundColor(TextColor.Factory.fromString("#800080"));
