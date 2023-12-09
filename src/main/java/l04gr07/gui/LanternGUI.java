@@ -51,6 +51,11 @@ public class LanternGUI {
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
+    public void createWinScreen(int width, int height) throws URISyntaxException, IOException, FontFormatException {
+        AWTTerminalFontConfiguration fontConfig = loadFont();
+        Terminal terminal = createTerminal(width, height, fontConfig);
+        this.screen = createScreen(terminal);
+    }
     public void createDifficultyScreen(int width, int height) throws URISyntaxException, IOException, FontFormatException {
         AWTTerminalFontConfiguration fontConfig = loadFont();
         Terminal terminal = createTerminal(width, height, fontConfig);
