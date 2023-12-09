@@ -3,6 +3,7 @@ package l04gr07.model.Game.Difficulty;
 import l04gr07.model.Game.Field.Builder.ReadMap;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.IceCube;
+import l04gr07.model.Position;
 
 public class EasyDifficulty implements DifficultyStrategy{
     public Field createField(){
