@@ -65,7 +65,7 @@ public class GameState extends State {
         running = true;
         //gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
-        gui.createGameScreen(55,23);
+        gui.createGameScreen(55,22);
         gameView = new GameView(gameModel, gui.getScreen());
         gameControl = new GameController(this,gameModel, time);
         run(time);

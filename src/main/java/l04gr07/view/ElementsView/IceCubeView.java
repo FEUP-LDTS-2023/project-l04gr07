@@ -14,7 +14,7 @@ public class IceCubeView extends ElementsViewer{
 
     @Override
     public void draw() {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#33abf9"));
         graphics.setBackgroundColor(TextColor.Factory.fromString("#a6bfe1"));
         graphics.putString(new TerminalPosition(iceCube.getPosition().getx(), iceCube.getPosition().gety()), "I");
     }

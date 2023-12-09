@@ -13,7 +13,7 @@ public class FruitView extends ElementsViewer{
     }
 
     public void draw() {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#800080"));
         graphics.setBackgroundColor(TextColor.Factory.fromString("#a6bfe1"));
         graphics.putString(new TerminalPosition(fruit.getPosition().getx(), fruit.getPosition().gety()), "@");
     }

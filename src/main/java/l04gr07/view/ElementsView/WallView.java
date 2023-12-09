@@ -16,8 +16,8 @@ public class WallView extends ElementsViewer{
 
     @Override
     public void draw() {
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#2f578c"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#2f578c"));
-        graphics.putString(new TerminalPosition(wall.getPosition().getx(), wall.getPosition().gety()), "M");
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#a6bfe1"));
+        graphics.putString(new TerminalPosition(wall.getPosition().getx(), wall.getPosition().gety()), "W");
     }
 }
