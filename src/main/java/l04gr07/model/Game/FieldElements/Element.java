@@ -1,6 +1,5 @@
 package l04gr07.model.Game.FieldElements;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Position;
 
 public abstract class Element {
@@ -15,6 +14,4 @@ public abstract class Element {
     public void setposition(Position position){
         this.position=position;
     }
-
-    //public abstract void draw(TextGraphics graphics);
 }

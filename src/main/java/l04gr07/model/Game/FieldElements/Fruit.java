@@ -1,10 +1,5 @@
 package l04gr07.model.Game.FieldElements;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import l04gr07.control.IceCubeObserver;
-import l04gr07.model.Game.FieldElements.Element;
 import l04gr07.model.Position;
 
 public class Fruit extends Element  {
@@ -14,12 +9,4 @@ public class Fruit extends Element  {
     public Position getPosition() {
         return position;
     }
-
-
-    /*
-    public void draw(TextGraphics graphics){
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#a6bfe1"));
-        graphics.putString(new TerminalPosition(position.getx(), position.gety()), "@");
-    }*/
 }
