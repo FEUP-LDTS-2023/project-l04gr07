@@ -128,8 +128,7 @@ public class PlayerController extends Controller implements Control{
                 if(field.isEmpty(wallPos) && !field.isPlayer(wallPos)){
                     int x = wallPos.getx();
                     int y = wallPos.gety();
-                    while(field.isEmpty(wallPos) && y >= 0){
-                       // System.out.println("CREATED WALLS");
+                    while(field.isEmpty(wallPos) &&!field.isPlayer(wallPos)&& y >= 0){
                         Wall wall = new Wall(x ,y);
                         y--;
                         wallPos = new Position(x,y);
@@ -139,12 +138,11 @@ public class PlayerController extends Controller implements Control{
                 break;
             }
             case "DOWN" : {
-                System.out.println("CREATED WALLS");
                 Position wallPos = new Position(playerPos.getx(),playerPos.gety()+1);
                 if(field.isEmpty(wallPos) && !field.isPlayer(wallPos)){
                     int x = wallPos.getx();
                     int y = wallPos.gety();
-                    while(field.isEmpty(wallPos) && y <= field.getHeight()){
+                    while(field.isEmpty(wallPos)&&!field.isPlayer(wallPos) && y <= field.getHeight()){
                         Wall wall = new Wall(x ,y);
                         y++;
                         wallPos = new Position(x,y);
@@ -158,8 +156,7 @@ public class PlayerController extends Controller implements Control{
                 if(field.isEmpty(wallPos)&& !field.isPlayer(wallPos)){
                     int x = wallPos.getx();
                     int y = wallPos.gety();
-                    while(field.isEmpty(wallPos) && x >= 0){
-                        System.out.println("CREATED WALLS");
+                    while(field.isEmpty(wallPos)&&!field.isPlayer(wallPos) && x >= 0){
                         Wall wall = new Wall(x ,y);
                         x--;
                         wallPos = new Position(x,y);
@@ -173,8 +170,7 @@ public class PlayerController extends Controller implements Control{
                 if(field.isEmpty(wallPos)&& !field.isPlayer(wallPos)){
                     int x = wallPos.getx();
                     int y = wallPos.gety();
-                    while(field.isEmpty(wallPos) && x <= field.getWidth()){
-                        System.out.println("CREATED WALLS");
+                    while(field.isEmpty(wallPos)&&!field.isPlayer(wallPos) && x <= field.getWidth()){
                         Wall wall = new Wall(x ,y);
                         x++;
                         wallPos = new Position(x,y);
