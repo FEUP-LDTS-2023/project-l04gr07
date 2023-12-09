@@ -8,8 +8,8 @@ import l04gr07.model.Position;
 import l04gr07.view.ElementsView.IceCubeView;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class IceCubeViewTest {
     @Test
@@ -19,8 +19,9 @@ public class IceCubeViewTest {
         when(iMock.getPosition()).thenReturn(new Position(12, 3));
         IceCubeView iView = new IceCubeView(iMock, graphicsMock);
         iView.draw();
-        verify(graphicsMock, times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFF33"));
+        verify(graphicsMock, times(1)).setForegroundColor(TextColor.Factory.fromString("#33abf9"));
         verify(graphicsMock, times(1)).setBackgroundColor(TextColor.Factory.fromString("#a6bfe1"));
         verify(graphicsMock, times(1)).putString(new TerminalPosition(12, 3), "I");
+        assertEquals(iView.getIceCube().getPosition().getx(), 12);
     }
 }
