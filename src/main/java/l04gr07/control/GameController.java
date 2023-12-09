@@ -13,6 +13,8 @@ import l04gr07.model.Game.GameModel;
 import l04gr07.model.Position;
 import l04gr07.states.GameOverState;
 import l04gr07.states.GameState;
+import l04gr07.states.MainMenuState;
+import l04gr07.states.WinState;
 
 import java.awt.*;
 import java.io.IOException;
@@ -63,7 +65,7 @@ public class GameController extends Controller implements Control {
 
  */
 
-    public void randomIceShot(IceShot iceShot){
+    public void randomIceShot(IceShot iceShot) throws IOException, URISyntaxException, FontFormatException {
         String direction = iceShot.getDirection();
       //  System.out.println("Random iceshot");
         time=System.currentTimeMillis();
@@ -75,7 +77,7 @@ public class GameController extends Controller implements Control {
     }
 
 
-    public void moveIceShot(IceShot iceShot,String direction){
+    public void moveIceShot(IceShot iceShot,String direction) throws IOException, URISyntaxException, FontFormatException {
         Position nextPosition = iceShot.getPosition();
         switch(direction){
             case "UP": {
@@ -99,6 +101,9 @@ public class GameController extends Controller implements Control {
             System.out.println(field.getEnemies().size());
             System.out.println("Monster");
             field.getEnemies().remove(field.isMonster(nextPosition));
+            if(field.getEnemies().size()==0){
+                gameState.getGUI().close();gameState.stopRunning();setControllerState(new WinState());
+            }
             System.out.println(field.getEnemies().size());
         }
         if(!field.isEmpty(nextPosition)){
@@ -158,7 +163,7 @@ public class GameController extends Controller implements Control {
         if(!iceCube && field.getIceCube()!=null && !isHugeIceCream) retrieveFruits();
         if(iceCube && !isHugeIceCream){retrieveIceCube();}
     }
-    public void IceShot(){
+    public void IceShot() throws IOException, URISyntaxException, FontFormatException {
         if(field.getIceShot().getDirection()=="NO"){iceShot= new IceShot(-1,-1,"NO");}
         randomIceShot(field.getIceShot());
     }
