@@ -12,7 +12,7 @@ public class EnemyView extends ElementsViewer{
         super(graphics);
         this.enemy=enemy;
     }
-
+    public Enemy getEnemy(){return enemy;}
     @Override
     public void draw() {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));

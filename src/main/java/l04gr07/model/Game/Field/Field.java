@@ -76,6 +76,8 @@ public class Field {
     }
 
      */
+
+
     public Player getPlayer1() {
         return players.get(0);
     }
@@ -112,7 +114,25 @@ public class Field {
         return false;
     }
 
-/*
+    public boolean isFruit(Position position) {
+        for (Fruit fruit:fruits)
+            if (fruit.getPosition().equals(position))
+                return true;
+        return false;
+    }
+    public boolean isIceCube(Position position) {
+            if (iceCube.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
+    public Enemy isMonster(Position position) {
+        for (Enemy monster : enemies)
+            if (monster.getPosition().equals(position))
+                return monster;
+        return null;
+    }
+    /*
     public boolean isMonster(Position position) {
         for (Enemy monster : enemies)
             if (monster.getPosition().equals(position))
@@ -121,13 +141,6 @@ public class Field {
     }
 
  */
-
-    public Enemy isMonster(Position position) {
-        for (Enemy monster : enemies)
-            if (monster.getPosition().equals(position))
-                return monster;
-        return null;
-    }
 
 }
 

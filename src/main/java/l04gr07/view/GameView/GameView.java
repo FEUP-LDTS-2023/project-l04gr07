@@ -50,7 +50,7 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
         for(PlayerViewer player : playerViewer){player.draw();}
         //player2Viewer.draw();
         //player1Viewer.draw();
-        if(drawIceCube){iceCubeViewer.draw();}
+        if(drawIceCube){if( gameModel.getField().isEmpty(iceCubeViewer.getIceCube().getPosition())){iceCubeViewer.draw();}}
         if(gameModel.getField().getPlayers().size()!=playerViewer.size()) {
             playerViewer = new ArrayList<>();
             for (Player player : gameModel.getField().getPlayers()) {
@@ -73,6 +73,9 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
 
         iceShotViewer = new IceShotView(gameModel.getField().getIceShot(), graphics);
             iceShotViewer.draw();
+
+
+
         if(gameModel.getField().getWalls().size()!=wallViewers.size()){
             wallViewers =new ArrayList<>();
             for(Wall wall : gameModel.getField().getWalls()) {
@@ -80,14 +83,27 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
             }
         }
 
-        for(WallView wallView : wallViewers) {
-            wallView.draw();
+        for(WallView wallView : wallViewers){
+            if(gameModel.getField().isFruit(wallView.getWall().getPosition())){
+                wallView.drawFruit();}
+            else if (drawIceCube &&gameModel.getField().isIceCube(wallView.getWall().getPosition()))
+                wallView.drawIceCube();
+            else if (gameModel.getField().isMonster(wallView.getWall().getPosition())!=null) {
+                    wallView.drawEnemy();}
+
+            else wallView.draw();
         }
+
+
         for(FruitView fruitView : fruitViewers) {
-            fruitView.draw();
+            if (gameModel.getField().isEmpty(fruitView.getFruit().getPosition())) {
+                fruitView.draw();
+            }
         }
         for(EnemyView enemyView: enemyViewers) {
-            enemyView.draw();
+            if (gameModel.getField().isEmpty(enemyView.getEnemy().getPosition())) {
+                enemyView.draw();
+            }
         }
         screen.refresh();
 

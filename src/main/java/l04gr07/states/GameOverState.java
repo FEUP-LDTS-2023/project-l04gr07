@@ -66,7 +66,7 @@ public class GameOverState extends State{
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
                 gui.getScreen().close();
             }
-            if (key.getKeyType() == KeyType.EOF){break;}
+            //if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
 }

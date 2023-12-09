@@ -28,41 +28,43 @@ public class LanternGUI {
 
     public void createGameScreen(int width, int height) {
         try {
-
-            TerminalSize terminalSize = new TerminalSize(width, height);
-            DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-            Terminal terminal = terminalFactory.createTerminal();
+            AWTTerminalFontConfiguration cfg = loadFont("teste1.ttf");
+            Terminal terminal = createTerminal(width, height, cfg);
             screen = new TerminalScreen(terminal);
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
         }
     }
     public void createMenuScreen(int width, int height) throws URISyntaxException, IOException, FontFormatException {
-        AWTTerminalFontConfiguration fontConfig = loadFont();
+        AWTTerminalFontConfiguration fontConfig = loadFont("square.ttf");
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
 
     public void createInstructionsScreen(int width, int height) throws URISyntaxException, IOException, FontFormatException {
-        AWTTerminalFontConfiguration fontConfig = loadFont();
+        AWTTerminalFontConfiguration fontConfig = loadFont("square.ttf");
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
     public void createWinScreen(int width, int height) throws URISyntaxException, IOException, FontFormatException {
-        AWTTerminalFontConfiguration fontConfig = loadFont();
+        AWTTerminalFontConfiguration fontConfig = loadFont("square.ttf");
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
     public void createDifficultyScreen(int width, int height) throws URISyntaxException, IOException, FontFormatException {
-        AWTTerminalFontConfiguration fontConfig = loadFont();
+        AWTTerminalFontConfiguration fontConfig = loadFont("square.ttf");
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
     public void createGameOverScreen(int width, int height) throws URISyntaxException, IOException, FontFormatException {
-        AWTTerminalFontConfiguration fontConfig = loadFont();
+        AWTTerminalFontConfiguration fontConfig = loadFont("square.ttf");
         Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
@@ -82,15 +84,15 @@ public class LanternGUI {
         Terminal terminal = terminalFactory.createTerminal();
         return terminal;
     }
-    private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("square.ttf");
+    private AWTTerminalFontConfiguration loadFont(String textFont) throws URISyntaxException, FontFormatException, IOException {
+        URL resource = getClass().getClassLoader().getResource(textFont);
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 30);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
