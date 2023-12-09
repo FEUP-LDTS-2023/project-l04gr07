@@ -17,6 +17,17 @@ public class NormalPlayerState extends PlayerState{
     private List<Player> playerModels =new ArrayList<>();
 
     private List<PlayerController> playerControllers  =new ArrayList<>();
+
+    private Position player1Pos;
+    private Position player2Pos;
+
+    public NormalPlayerState(Position player1Pos, Position player2Pos) {
+        super();
+        this.player1Pos =  player1Pos;
+        this.player2Pos =  player2Pos;
+
+    }
+
     @Override
     public List<PlayerViewer> getViewer() {
         return playerViewers;
@@ -34,11 +45,12 @@ public class NormalPlayerState extends PlayerState{
     }
 
 
+
     @Override
     public void initializing() throws IOException, URISyntaxException, FontFormatException {
         System.out.println("NormalIceCream state");
-        Player player1 = new Player(10, 10);
-        Player player2 = new Player(15, 15);
+        Player player1 = new Player(player1Pos.getx(),player1Pos.gety());
+        Player player2 = new Player(player2Pos.getx(),player2Pos.gety());
         playerModels.add(player1);
         playerModels.add(player2);
     }
