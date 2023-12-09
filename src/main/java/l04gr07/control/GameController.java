@@ -6,9 +6,12 @@ import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
 import l04gr07.model.Game.FieldElements.IceShot;
+import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.PlayerState.HugeIceCreamState;
 import l04gr07.model.Game.FieldElements.PlayerState.PlayerState;
+import l04gr07.model.Game.GameModel;
 import l04gr07.model.Position;
+import l04gr07.states.GameOverState;
 import l04gr07.states.GameState;
 
 import java.awt.*;
@@ -16,7 +19,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 
-public class GameController implements Control {
+public class GameController extends Controller implements Control {
     private Screen screen = null;
     //private Field field = new Field(25, 25);
     private Field field;
@@ -29,10 +32,12 @@ public class GameController implements Control {
     private PlayerState playerState;
     protected Boolean isHugeIceCream = false;
     protected Boolean iceCube = false;
+    private final GameModel gameModel;
 
 
-    public GameController(GameState gameState, long time) {
+    public GameController(GameState gameState, GameModel gameModel, long time) {
         this.gameState = gameState;
+        this.gameModel=gameModel;
         this.field = gameState.getModel().getField();
         this.playerState = field.getPlayerState();
 
@@ -99,7 +104,7 @@ public class GameController implements Control {
         if(!field.isEmpty(nextPosition)){
             iceShot.setposition(new Position(-1,-1));}
     }
-    public void randomEnemy(long time){
+    public void randomEnemy(long time) throws IOException, URISyntaxException, FontFormatException {
         time=System.currentTimeMillis();
 
         if (time - lastMovement > field.getSpeed()) {
@@ -109,9 +114,14 @@ public class GameController implements Control {
         }
     }
 
-    public void moveEnemy(Enemy enemy, Position position){
+    public void moveEnemy(Enemy enemy, Position position) throws IOException, URISyntaxException, FontFormatException {
         if (field.isEmpty(position)){
             enemy.setposition(position);
+            for(Player player: field.getPlayers()){
+                if(player.getPosition().equals(position)){
+                    gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
+                }
+            }
         }
     }
 

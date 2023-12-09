@@ -67,7 +67,7 @@ public class GameState extends State {
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());
-        gameControl = new GameController(this,time);
+        gameControl = new GameController(this,gameModel, time);
         run(time);
     }
     private static final int FPS = 60;
