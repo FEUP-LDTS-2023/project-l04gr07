@@ -19,21 +19,28 @@ public class InstructionView extends MenuViewer {
     @Override
     public void draw() throws IOException {
 
-        drawText(new Position(15, 3), "Instructions", "#00CED1");
-        drawText(new Position(1, 6), "Goal:", "#FFD700");
-        drawText(new Position(7,6),"Collect all fruits, catch ice cube and", "#FFFFFF");
-        drawText(new Position(7,7),"kill all monsters without being catch.","#FFFFFF");
-        drawText(new Position(1,10),"Controls:","#FFD700");
-        drawText(new Position(2,12),"Arrows -> move player1","#FFFFFF");
-        drawText(new Position(2,13),"'WASD' -> move player2","#FFFFFF");
-        drawText(new Position(2,14),"'WASD' -> move merge players","#FFFFFF");
-        drawText(new Position(2,16),"'Enter' -> break walls by player1","#FFFFFF");
-        drawText(new Position(2,17),"'E' -> break walls by player2","#FFFFFF");
-        drawText(new Position(2,18),"'E' -> break walls by merge players","#FFFFFF");
-        drawText(new Position(2,20),"Space bar -> throw iceshot by merge players","#FFFFFF");
+        drawText(new Position(15, 1), "Instructions", "#00CED1");
+        drawText(new Position(0, 3), "Goal:", "#FFD700");
+        drawText(new Position(1,4),"Collect all fruits and catch the ice cube", "#FFFFFF");
+        drawText(new Position(1,5),"to enter in Huge IceCream mode. Now, work","#FFFFFF");
+        drawText(new Position(1,6),"together to kill all monsters without","#FFFFFF");
+        drawText(new Position(1,7),"being caught first","#FFFFFF");
+        drawText(new Position(0,10),"Controls:","#FFD700");
+        drawText(new Position(2,11),"Arrows -> move player1","#FFFFFF");
+        drawText(new Position(2,12),"'WASD' -> move player2","#FFFFFF");
+        drawText(new Position(2,13),"'WASD' -> move player in Huge Icecream","#FFFFFF");
+        drawText(new Position(1,14),"mode","#FFFFFF");
+        drawText(new Position(2,15),"'Enter' -> break/create walls by player1","#FFFFFF");
+        //drawText(new Position(1,16),"to the last selected direction","#FFFFFF");
+        drawText(new Position(2,16),"'E' -> break/create walls by player2", "#FFFFFF");
+        //drawText(new Position(1,18),"to the last selected direction","#FFFFFF");
+        drawText(new Position(2,17),"'E' -> break/create walls by player in","#FFFFFF");
+        drawText(new Position(1,18),"Huge IceCream mode","#FFFFFF");
+        drawText(new Position(2,19),"Arrows -> throw iceshot by player in","#FFFFFF");
+        drawText(new Position(1,20),"Huge Icecream mode","#FFFFFF");
 
 
-        drawText(new Position(10,25),"( Press 'q' to EXIT )","#FFFFFF");
+        drawText(new Position(10,22),"( Press 'q' to EXIT )","#FFFFFF");
         screen.refresh();
     }
 }
