@@ -13,7 +13,6 @@ public class WallView extends ElementsViewer{
         super(graphics);
         this.wall = wall;
     }
-    /////////////////////
     public Wall getWall() {return wall;}
 
     public void drawFruit(){
