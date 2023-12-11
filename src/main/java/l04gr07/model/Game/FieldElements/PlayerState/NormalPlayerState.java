@@ -3,7 +3,6 @@ package l04gr07.model.Game.FieldElements.PlayerState;
 import l04gr07.control.PlayerController;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Position;
-import l04gr07.states.State;
 import l04gr07.view.ElementsView.PlayerViewer;
 
 import java.awt.*;
@@ -53,20 +52,5 @@ public class NormalPlayerState extends PlayerState{
         Player player2 = new Player(player2Pos.getx(),player2Pos.gety());
         playerModels.add(player1);
         playerModels.add(player2);
-    }
-
-    @Override
-    public void run() throws IOException, URISyntaxException, FontFormatException {
-
-    }
-
-    @Override
-    public void stopRunning() {
-
-    }
-
-    @Override
-    public PlayerState nextState() {
-        return null;
     }
 }

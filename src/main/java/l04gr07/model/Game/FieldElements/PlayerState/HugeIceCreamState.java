@@ -1,13 +1,9 @@
 package l04gr07.model.Game.FieldElements.PlayerState;
 
-import l04gr07.control.Control;
 import l04gr07.control.PlayerController;
 import l04gr07.model.Game.FieldElements.Player;
-import l04gr07.model.Model;
 import l04gr07.model.Position;
-import l04gr07.states.State;
 import l04gr07.view.ElementsView.PlayerViewer;
-import l04gr07.view.Viewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -47,20 +43,5 @@ public class HugeIceCreamState extends PlayerState{
         Player player = new Player(position.getx(), position.gety());
         playerModel.add(player);
 
-    }
-
-    @Override
-    public void run() throws IOException, URISyntaxException, FontFormatException {
-
-    }
-
-    @Override
-    public void stopRunning() {
-
-    }
-
-    @Override
-    public PlayerState nextState() {
-        return null;
     }
 }
