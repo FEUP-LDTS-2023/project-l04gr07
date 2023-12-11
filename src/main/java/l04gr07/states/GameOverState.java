@@ -22,7 +22,7 @@ public class GameOverState extends State{
     private GameOverModel gameOverModel;
     private GameOverController gameOverController;
 
-    private LanternGUI gui;
+    private static LanternGUI gui;
     private Boolean running=false;
     @Override
     public Viewer getViewer() {
@@ -38,6 +38,7 @@ public class GameOverState extends State{
     public Model getModel() {
         return null;
     }
+    public static LanternGUI getGUI(){return gui;}
     @Override
     public boolean isRunning(){return running;}
     @Override
