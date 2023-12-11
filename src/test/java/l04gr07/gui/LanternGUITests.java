@@ -33,7 +33,13 @@ public class LanternGUITests {
         lGUI.createMenuScreen(width, height);
         assertNotNull(lGUI.getScreen());
     }
-
+    @Test
+    void testWinScreen() throws IOException, URISyntaxException, FontFormatException {
+        int width= 80;
+        int height= 24;
+        lGUI.createWinScreen(width, height);
+        assertNotNull(lGUI.getScreen());
+    }
     @Test
     void tesInstructionsScreen() throws IOException, URISyntaxException, FontFormatException {
         int w = 80;
