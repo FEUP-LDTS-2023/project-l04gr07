@@ -1,13 +1,18 @@
 plugins {
     id 'java'
+    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'application'
 }
 
 group = 'l04gr07'
 version = '1.0-SNAPSHOT'
 
+application {mainClass.set("l04gr07.Application")}
 repositories {
     mavenCentral()
 }
+
+pitest {junit5PluginVersion = '1.0.0'}
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
