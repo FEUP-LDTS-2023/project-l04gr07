@@ -17,7 +17,6 @@ public class HugeIceCreamView extends ElementsViewer implements PlayerViewer {
 
     @Override
     public void draw() {
-        //   System.out.println("DRAW HUGEICECREAM");
         graphics.setForegroundColor(TextColor.Factory.fromString("#e2619f"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(player.getPosition().getx(), player.getPosition().gety()), "8");}
