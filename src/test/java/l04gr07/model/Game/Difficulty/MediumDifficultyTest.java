@@ -1,4 +1,4 @@
-package l04gr07.model.Difficulty;
+package l04gr07.model.Game.Difficulty;
 
 import l04gr07.model.Game.Difficulty.MediumDifficulty;
 import l04gr07.model.Game.Field.Field;
