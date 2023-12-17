@@ -13,17 +13,10 @@ public class Position {
         return x;
     }
 
-    public void setx(int x) {
-        this.x = x;
-    }
-
     public int gety() {
         return y;
     }
 
-    public void sety(int y) {
-        this.y = y;
-    }
     public Position getLeft() {
         return new Position(x - 1, y);
     }

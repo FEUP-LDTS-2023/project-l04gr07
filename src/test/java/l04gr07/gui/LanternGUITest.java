@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class LanternGUITests {
+public class LanternGUITest {
     private LanternGUI lGUI;
 
     @BeforeEach
