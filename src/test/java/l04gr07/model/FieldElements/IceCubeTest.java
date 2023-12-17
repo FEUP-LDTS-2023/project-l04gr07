@@ -1,4 +1,4 @@
-package l04gr07.model;
+package l04gr07.model.FieldElements;
 
 import l04gr07.model.Game.FieldElements.IceCube;
 import org.junit.jupiter.api.Test;
