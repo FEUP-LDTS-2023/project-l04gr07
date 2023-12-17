@@ -38,4 +38,8 @@ public class Controller {
     public void setViewer(Viewer mockViewer) {
         this.viewer=mockViewer;
     }
+
+    public Viewer getViewer() {
+        return viewer;
+    }
 }
