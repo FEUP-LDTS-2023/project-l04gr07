@@ -11,8 +11,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+
 public class EnemyViewTest {
     @Test
+
     void drawEnemy() {
         TextGraphics graphicsMock = mock(TextGraphics.class);
         Enemy eMock= mock(Enemy.class);

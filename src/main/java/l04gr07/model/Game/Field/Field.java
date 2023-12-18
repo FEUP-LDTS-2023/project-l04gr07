@@ -42,8 +42,6 @@ public class Field {
     public long getSpeed(){return speed;}
     public void setIceCube(IceCube iceCube){this.iceCube = iceCube;}
     public void setPlayers(List<Player> players){
-        System.out.println("SET PLAYERS");
-        System.out.println(players.size());
         this.players = players;}
     public List<Wall> getWalls(){return walls;}
     public void setWalls(List<Wall> walls){this.walls = walls;}
@@ -51,7 +49,6 @@ public class Field {
     public List<Fruit> getFruits(){return fruits;}
     public List<Enemy> getEnemies(){return enemies;}
     public IceShot getIceShot() {
-        //  System.out.println("iceshot");
         return iceshot;
     }
 

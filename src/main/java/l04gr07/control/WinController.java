@@ -26,12 +26,10 @@ public class WinController extends Controller implements Control{
     }
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("PROCESSING KEYS");
         switch(key.getKeyType()){
             case ArrowUp -> winModel.previousOption();
             case ArrowDown -> winModel.nextOption();
             case Enter -> {
-                System.out.println("ENTER");
                 if (winModel.isSelected(1)) {exit(0);break;}
                 if (winModel.isSelected(0)){
                     winState.getGUI().close();winState.stopRunning();setControllerState(new MainMenuState());}

@@ -38,6 +38,7 @@ public class InstructionState extends State{
     public Model getModel() {
         return null;
     }
+    public LanternGUI getGUI(){return gui;}
     @Override
     public boolean isRunning(){return running;}
     @Override
@@ -63,11 +64,8 @@ public class InstructionState extends State{
             instructionView.draw();
             KeyStroke key = gui.getScreen().readInput();
             instructionController.processKey(key);
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
-                gui.getScreen().close();
-            }
             if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
-    }
+}
 
