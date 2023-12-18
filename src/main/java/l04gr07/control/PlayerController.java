@@ -28,6 +28,7 @@ public class PlayerController extends Controller implements Control{
     private Field field;
     private long lastMovement=0;
     private Boolean isHugeIceCream = false;
+    private AudioPlayer audio;
 
     private GameController gameController;
     public PlayerController(Field field, GameController gameController){
@@ -242,6 +243,8 @@ public class PlayerController extends Controller implements Control{
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         switch (key.getKeyType()) {
             case Enter:{
+                this.audio= new AudioPlayer("./src/main/resources/IceCreateBreak.wav");
+                audio.play();
                 if (!isHugeIceCream){iceWall(field.getPlayer2());break;}
                 else{iceWall(field.getPlayer1());}
             break;}
@@ -251,6 +254,8 @@ public class PlayerController extends Controller implements Control{
                     field.getPlayer2().setLastDirection("UP");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveUp());}
                 else {
+                    this.audio = new AudioPlayer("./src/main/resources/IceShot.wav");
+                    audio.play();
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()-1,"UP");
                     field.setIceshot(iceshot);
                 }
@@ -260,6 +265,8 @@ public class PlayerController extends Controller implements Control{
                     field.getPlayer2().setLastDirection("DOWN");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveDown());}
                 else {
+                    this.audio = new AudioPlayer("./src/main/resources/IceShot.wav");
+                    audio.play();
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()+1,"DOWN");
                     field.setIceshot(iceshot);
                 }
@@ -269,6 +276,8 @@ public class PlayerController extends Controller implements Control{
                     field.getPlayer2().setLastDirection("LEFT");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveLeft());}
                 else {
+                    this.audio = new AudioPlayer("./src/main/resources/IceShot.wav");
+                    audio.play();
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()-1, field.getPlayer1().getPosition().gety(),"LEFT");
                     field.setIceshot(iceshot);
                 }
@@ -278,6 +287,8 @@ public class PlayerController extends Controller implements Control{
                     field.getPlayer2().setLastDirection("RIGHT");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveRight());}
                 else {
+                    this.audio = new AudioPlayer("./src/main/resources/IceShot.wav");
+                    audio.play();
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()+1, field.getPlayer1().getPosition().gety(),"RIGHT");
                     field.setIceshot(iceshot);
                 }
@@ -288,6 +299,8 @@ public class PlayerController extends Controller implements Control{
                 switch (character) {
                     case 'E':
                     case 'e': {
+                        this.audio= new AudioPlayer("./src/main/resources/IceCreateBreak.wav");
+                        audio.play();
                         iceWall(field.getPlayer1());break;}
                     case 'W':
                     case 'w': {
