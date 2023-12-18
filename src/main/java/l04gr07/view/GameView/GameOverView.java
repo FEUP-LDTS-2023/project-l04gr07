@@ -2,10 +2,7 @@ package l04gr07.view.GameView;
 
 import com.googlecode.lanterna.screen.Screen;
 import l04gr07.model.Menu.GameOverModel;
-import l04gr07.model.Menu.InstructionsModel;
-import l04gr07.model.Model;
 import l04gr07.model.Position;
-import l04gr07.view.Viewer;
 
 import java.io.IOException;
 

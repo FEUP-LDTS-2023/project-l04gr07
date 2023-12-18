@@ -3,9 +3,7 @@ package l04gr07.control;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Menu.GameOverModel;
-import l04gr07.model.Menu.InstructionsModel;
 import l04gr07.states.GameOverState;
-import l04gr07.states.InstructionState;
 
 import java.io.IOException;
 
