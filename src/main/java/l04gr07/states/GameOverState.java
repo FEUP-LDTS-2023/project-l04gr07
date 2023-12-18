@@ -18,22 +18,21 @@ public class GameOverState extends State{
     private GameOverView gameOverView;
     private GameOverModel gameOverModel;
     private GameOverController gameOverController;
-
     private static LanternGUI gui;
     private Boolean running=false;
     @Override
     public Viewer getViewer() {
-        return null;
+        return gameOverView;
     }
 
     @Override
     public Control getControl() {
-        return null;
+        return gameOverController;
     }
 
     @Override
     public Model getModel() {
-        return null;
+        return gameOverModel;
     }
     public static LanternGUI getGUI(){return gui;}
     @Override
@@ -42,7 +41,7 @@ public class GameOverState extends State{
     public void stopRunning(){running = false;}
 
     @Override
-    public State nextState(){return new EndScreenState();}
+    public State nextState(){return null;}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
