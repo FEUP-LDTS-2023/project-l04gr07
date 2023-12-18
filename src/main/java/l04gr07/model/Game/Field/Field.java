@@ -18,8 +18,6 @@ public class Field {
     private TextGraphics graphics;
     private PlayerState playerState;
     private List<Player> players;
-    //private Player1 player1 = new Player1(10, 10);
-    //private Player2 player2 = new Player2(15, 15);
     private List<Wall> walls =new ArrayList<>();
     private List<Fruit> fruits =new ArrayList<>();
     private List<Enemy> enemies=new ArrayList<>();
@@ -66,17 +64,6 @@ public class Field {
     public void setPosition(Position position) {
         this.position=position;
     }
-
-    /*
-    public Player_ getPlayer1() {
-        return player1;
-    }
-    public Player_ getPlayer2() {
-        return player2;
-    }
-
-     */
-
 
     public Player getPlayer1() {
         return players.get(0);
@@ -132,15 +119,4 @@ public class Field {
                 return monster;
         return null;
     }
-    /*
-    public boolean isMonster(Position position) {
-        for (Enemy monster : enemies)
-            if (monster.getPosition().equals(position))
-                return true;
-        return false;
-    }
-
- */
-
 }
-
