@@ -35,4 +35,7 @@ public class DifficultyModel implements Model {
         running = b;
     }
 
+    public boolean getRunning() {
+        return running;
+    }
 }
