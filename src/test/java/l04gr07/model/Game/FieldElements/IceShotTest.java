@@ -1,4 +1,4 @@
-package l04gr07.model.FieldElements;
+package l04gr07.model.Game.FieldElements;
 
 import l04gr07.model.Game.FieldElements.IceShot;
 import l04gr07.model.Position;

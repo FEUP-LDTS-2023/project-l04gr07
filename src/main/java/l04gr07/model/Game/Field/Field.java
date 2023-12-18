@@ -18,7 +18,6 @@ public class Field {
     private TextGraphics graphics;
     private PlayerState playerState;
     private List<Player> players;
-
     private List<Wall> walls =new ArrayList<>();
     private List<Fruit> fruits =new ArrayList<>();
     private List<Enemy> enemies=new ArrayList<>();
@@ -49,8 +48,6 @@ public class Field {
 
     public List<Fruit> getFruits(){return fruits;}
     public List<Enemy> getEnemies(){return enemies;}
-
-    public TextGraphics getGraphics(){return graphics;}
     public IceShot getIceShot() {
         return iceshot;
     }
@@ -58,12 +55,6 @@ public class Field {
     public void setIceshot(IceShot iceshot) {
         this.iceshot = iceshot;
     }
-
-    public void setPosition(Position position) {
-        this.position=position;
-    }
-
-
 
     public Player getPlayer1() {
         return players.get(0);
@@ -120,6 +111,11 @@ public class Field {
         return null;
     }
 
+    public void setFruit(List<Fruit> fruit) {
+        this.fruits=fruit;
+    }
 
+    public void setEnemy(List<Enemy> enemies) {
+        this.enemies=enemies;
+    }
 }
-
