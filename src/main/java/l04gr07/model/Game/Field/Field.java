@@ -50,8 +50,6 @@ public class Field {
 
     public List<Fruit> getFruits(){return fruits;}
     public List<Enemy> getEnemies(){return enemies;}
-
-    public TextGraphics getGraphics(){return graphics;}
     public IceShot getIceShot() {
         //  System.out.println("iceshot");
         return iceshot;
@@ -59,10 +57,6 @@ public class Field {
 
     public void setIceshot(IceShot iceshot) {
         this.iceshot = iceshot;
-    }
-
-    public void setPosition(Position position) {
-        this.position=position;
     }
 
     public Player getPlayer1() {
@@ -118,5 +112,13 @@ public class Field {
             if (monster.getPosition().equals(position))
                 return monster;
         return null;
+    }
+
+    public void setFruit(List<Fruit> fruit) {
+        this.fruits=fruit;
+    }
+
+    public void setEnemy(List<Enemy> enemies) {
+        this.enemies=enemies;
     }
 }
