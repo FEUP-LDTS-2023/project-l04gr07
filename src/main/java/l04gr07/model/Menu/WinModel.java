@@ -29,9 +29,11 @@ public class WinModel implements Model {
         return currentOption;
     }
 
-
-
     public void setRunning(boolean b) {
         running = b;
+    }
+
+    public boolean GetRunning() {
+        return running;
     }
 }
