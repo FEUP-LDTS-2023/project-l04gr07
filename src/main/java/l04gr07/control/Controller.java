@@ -16,11 +16,15 @@ public class Controller {
     private State controllerState;
     private Viewer viewer;
 
+    private AudioPlayer audio;
+
     public void run() throws IOException, URISyntaxException, FontFormatException {
         long startTime = System.currentTimeMillis();
 
         if (controllerState == null) {
             controllerState = new MainMenuState();
+            this.audio = new AudioPlayer("./src/main/resources/background.wav");
+            audio.play();
             controllerState.initializing(startTime);
 
         }
@@ -34,4 +38,12 @@ public class Controller {
         this.run();}
 
     public State getControllerState() {return controllerState;}
+
+    public void setViewer(Viewer mockViewer) {
+        this.viewer=mockViewer;
+    }
+
+    public Viewer getViewer() {
+        return viewer;
+    }
 }
