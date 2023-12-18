@@ -34,4 +34,12 @@ public class Controller {
         this.run();}
 
     public State getControllerState() {return controllerState;}
+
+    public void setViewer(Viewer mockViewer) {
+        this.viewer=mockViewer;
+    }
+
+    public Viewer getViewer() {
+        return viewer;
+    }
 }

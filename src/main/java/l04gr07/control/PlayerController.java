@@ -35,9 +35,7 @@ public class PlayerController extends Controller implements Control{
         this.gameController = gameController;
         this.gameState = this.gameController.getGameState();
         this.gameModel = this.gameController.getGameState().getModel();
-
     }
-
 
     public boolean canPlayerMove(Position position) throws IOException, URISyntaxException, FontFormatException {
         if ((position.getx() < 0) || (position.getx() > field.getWidth() - 1)) return false;
@@ -56,7 +54,7 @@ public class PlayerController extends Controller implements Control{
     }
 
 
-    private void movePlayer(Player player, Position position) throws IOException, URISyntaxException, FontFormatException {
+    public void movePlayer(Player player, Position position) throws IOException, URISyntaxException, FontFormatException {
         if (canPlayerMove(position)) {
             player.setPosition(position);
         }
@@ -100,13 +98,11 @@ public class PlayerController extends Controller implements Control{
                     }
                     break;
                 }
-
-
             }
         }
     }
 
-    private Boolean createWalls(Player player){
+    public Boolean createWalls(Player player){
         String direction = player.getLastDirection();
         Position playerPos = player.getPosition();
         switch(direction){
@@ -171,9 +167,7 @@ public class PlayerController extends Controller implements Control{
     }
 
 
-
-
-    private void breakWalls(Wall wall, String direction){
+    public void breakWalls(Wall wall, String direction){
         Position wallPos = wall.getPosition();
         List<Wall> wallsThatDontBreak = new ArrayList<>();
 
@@ -259,7 +253,6 @@ public class PlayerController extends Controller implements Control{
                 else {
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()-1,"UP");
                     field.setIceshot(iceshot);
-
                 }
                 break;}
             case ArrowDown: {
@@ -271,7 +264,6 @@ public class PlayerController extends Controller implements Control{
                     field.setIceshot(iceshot);
                 }
                 break;}
-
             case ArrowLeft: {
                 if (!isHugeIceCream){
                     field.getPlayer2().setLastDirection("LEFT");
@@ -329,4 +321,7 @@ public class PlayerController extends Controller implements Control{
     }
 
 
+    public boolean getHugeIceCream() {
+        return isHugeIceCream;
+    }
 }
