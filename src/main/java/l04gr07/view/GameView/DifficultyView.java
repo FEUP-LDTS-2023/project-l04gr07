@@ -8,6 +8,7 @@ import l04gr07.model.Position;
 import java.io.IOException;
 
 public class DifficultyView extends MenuViewer{
+
     private final DifficultyModel difficultyModel;
 
     public DifficultyView(DifficultyModel difficultyModel, Screen screen) throws IOException {

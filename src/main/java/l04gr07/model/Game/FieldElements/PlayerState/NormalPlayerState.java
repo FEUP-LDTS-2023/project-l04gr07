@@ -39,7 +39,6 @@ public class NormalPlayerState extends PlayerState{
 
     @Override
     public List<Player> getModel() {
-        System.out.println("Got Normal State players");
         return playerModels;
     }
 
@@ -47,7 +46,6 @@ public class NormalPlayerState extends PlayerState{
 
     @Override
     public void initializing() throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("NormalIceCream state");
         Player player1 = new Player(player1Pos.getx(),player1Pos.gety());
         Player player2 = new Player(player2Pos.getx(),player2Pos.gety());
         playerModels.add(player1);

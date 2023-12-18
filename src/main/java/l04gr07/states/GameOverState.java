@@ -4,13 +4,10 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
 import l04gr07.control.GameOverController;
-import l04gr07.control.InstructionController;
 import l04gr07.gui.LanternGUI;
 import l04gr07.model.Menu.GameOverModel;
-import l04gr07.model.Menu.InstructionsModel;
 import l04gr07.model.Model;
 import l04gr07.view.GameView.GameOverView;
-import l04gr07.view.GameView.InstructionView;
 import l04gr07.view.Viewer;
 
 import java.awt.*;
@@ -21,22 +18,21 @@ public class GameOverState extends State{
     private GameOverView gameOverView;
     private GameOverModel gameOverModel;
     private GameOverController gameOverController;
-
     private static LanternGUI gui;
     private Boolean running=false;
     @Override
     public Viewer getViewer() {
-        return null;
+        return gameOverView;
     }
 
     @Override
     public Control getControl() {
-        return null;
+        return gameOverController;
     }
 
     @Override
     public Model getModel() {
-        return null;
+        return gameOverModel;
     }
     public static LanternGUI getGUI(){return gui;}
     @Override
@@ -45,7 +41,7 @@ public class GameOverState extends State{
     public void stopRunning(){running = false;}
 
     @Override
-    public State nextState(){return new EndScreenState();}
+    public State nextState(){return null;}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
@@ -67,7 +63,6 @@ public class GameOverState extends State{
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
                 gui.getScreen().close();
             }
-            //if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
 }

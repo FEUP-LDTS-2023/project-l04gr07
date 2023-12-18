@@ -1,4 +1,4 @@
-package l04gr07.model;
+package l04gr07.model.Game.FieldElements;
 
 import l04gr07.model.Game.FieldElements.Player;
 import org.junit.jupiter.api.Test;

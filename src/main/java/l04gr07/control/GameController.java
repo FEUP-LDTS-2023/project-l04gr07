@@ -23,7 +23,6 @@ import java.net.URISyntaxException;
 
 public class GameController extends Controller implements Control {
     private Screen screen = null;
-    //private Field field = new Field(25, 25);
     private Field field;
     private PlayerController playerController;
     private GameState gameState;
@@ -49,28 +48,19 @@ public class GameController extends Controller implements Control {
 
     public GameState getGameState() {
         return gameState;
-       // this.playerController = new PlayerController(field, gameState.getModel(), gameState);
+
 
     }
 
     public void setTime(long time){
-        //System.out.println("TIME UPDATED");
         this.time = time;}
 
-/*
-            if (time - lastMovement > field.getSpeed()) {
-                for (Enemy enemy : field.getEnemies())
-                    moveEnemy(enemy, enemy.getPosition().getRandomPosition());
-                lastMovement = time;
 
- */
 
     public void randomIceShot(IceShot iceShot) throws IOException, URISyntaxException, FontFormatException {
         String direction = iceShot.getDirection();
-      //  System.out.println("Random iceshot");
         time=System.currentTimeMillis();
         if (time - lastMovementIce > 200) {
-           // for (IceShot iceShot : field.getIceShot())
                 moveIceShot(iceShot, direction);
             lastMovementIce = time;
         }
@@ -98,13 +88,10 @@ public class GameController extends Controller implements Control {
             iceShot.setposition(nextPosition);
         }
         if(field.isMonster(nextPosition)!=null) {
-            System.out.println(field.getEnemies().size());
-            System.out.println("Monster");
             field.getEnemies().remove(field.isMonster(nextPosition));
             if(field.getEnemies().size()==0){
                 gameState.getGUI().close();gameState.stopRunning();setControllerState(new WinState());
             }
-            System.out.println(field.getEnemies().size());
         }
         if(!field.isEmpty(nextPosition)){
             iceShot.setposition(new Position(-1,-1));}
@@ -159,7 +146,6 @@ public class GameController extends Controller implements Control {
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         playerController.processKey(key);
-
         if(!iceCube && field.getIceCube()!=null && !isHugeIceCream) retrieveFruits();
         if(iceCube && !isHugeIceCream){retrieveIceCube();}
     }

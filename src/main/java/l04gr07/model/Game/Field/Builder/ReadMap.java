@@ -89,7 +89,6 @@ public class ReadMap {
     }
 
     public Field drawMap(char[][] map) throws IOException, URISyntaxException, FontFormatException {
-        //Field field = new Field(55, 23);
         Field field = new Field(55, 23,new NormalPlayerState(player1Pos,player2Pos), speed);
         List<Wall> walls = field.getWalls();
         List<Fruit> fruits = field.getFruits();

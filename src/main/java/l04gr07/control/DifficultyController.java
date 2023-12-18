@@ -29,12 +29,10 @@ public class DifficultyController extends Controller implements Control{
     }
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("PROCESSING KEYS");
         switch(key.getKeyType()){
             case ArrowUp -> difficultyModel.previousOption();
             case ArrowDown -> difficultyModel.nextOption();
             case Enter -> {
-                System.out.println("ENTER");
                 if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new MainMenuState());}
                 if (difficultyModel.isSelected(2)) {
                     difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new HardDifficulty()));}

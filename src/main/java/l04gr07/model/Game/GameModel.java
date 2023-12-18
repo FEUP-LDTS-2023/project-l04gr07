@@ -12,10 +12,6 @@ import java.util.List;
 public class GameModel implements Model {
     private Field field;
 
-   /* public GameModel(String file)  throws IOException {
-        ReadMap readMap = new ReadMap("easyMap.txt");
-        field = readMap.processMap();
-    }*/
    public GameModel(DifficultyStrategy difficultyStrategy)  throws IOException {
        field = difficultyStrategy.createField();
    }
