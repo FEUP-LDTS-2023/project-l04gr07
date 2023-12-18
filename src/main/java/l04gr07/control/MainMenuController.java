@@ -25,12 +25,10 @@ public class MainMenuController extends Controller implements Control{
     }
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("PROCESSING KEYS");
         switch(key.getKeyType()){
             case ArrowUp -> mainMenuModel.previousOption();
             case ArrowDown -> mainMenuModel.nextOption();
             case Enter -> {
-                System.out.println("ENTER");
                 if (mainMenuModel.isSelected(2)) {exit(0);break;}
                 if (mainMenuModel.isSelected(1)) {setControllerState(new InstructionState());}
                 if (mainMenuModel.isSelected(0)){
@@ -42,6 +40,5 @@ public class MainMenuController extends Controller implements Control{
                     exit(0);
             }
         }
-        System.out.println(mainMenuModel.getCurrentOption());
     }
 }

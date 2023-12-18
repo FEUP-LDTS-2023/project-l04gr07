@@ -18,8 +18,7 @@ public class Field {
     private TextGraphics graphics;
     private PlayerState playerState;
     private List<Player> players;
-    //private Player1 player1 = new Player1(10, 10);
-    //private Player2 player2 = new Player2(15, 15);
+
     private List<Wall> walls =new ArrayList<>();
     private List<Fruit> fruits =new ArrayList<>();
     private List<Enemy> enemies=new ArrayList<>();
@@ -44,8 +43,6 @@ public class Field {
     public long getSpeed(){return speed;}
     public void setIceCube(IceCube iceCube){this.iceCube = iceCube;}
     public void setPlayers(List<Player> players){
-        System.out.println("SET PLAYERS");
-        System.out.println(players.size());
         this.players = players;}
     public List<Wall> getWalls(){return walls;}
     public void setWalls(List<Wall> walls){this.walls = walls;}
@@ -55,7 +52,6 @@ public class Field {
 
     public TextGraphics getGraphics(){return graphics;}
     public IceShot getIceShot() {
-        //  System.out.println("iceshot");
         return iceshot;
     }
 
@@ -67,15 +63,6 @@ public class Field {
         this.position=position;
     }
 
-    /*
-    public Player_ getPlayer1() {
-        return player1;
-    }
-    public Player_ getPlayer2() {
-        return player2;
-    }
-
-     */
 
 
     public Player getPlayer1() {
@@ -132,15 +119,7 @@ public class Field {
                 return monster;
         return null;
     }
-    /*
-    public boolean isMonster(Position position) {
-        for (Enemy monster : enemies)
-            if (monster.getPosition().equals(position))
-                return true;
-        return false;
-    }
 
- */
 
 }
 

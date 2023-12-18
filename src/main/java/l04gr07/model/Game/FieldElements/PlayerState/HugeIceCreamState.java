@@ -31,15 +31,12 @@ public class HugeIceCreamState extends PlayerState{
 
     @Override
     public List<Player> getModel() {
-        System.out.println("Got HugeIceCream State players");
         return playerModel;
     }
 
 
     @Override
     public void initializing() throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("HugeIceCream state");
-
         Player player = new Player(position.getx(), position.gety());
         playerModel.add(player);
 

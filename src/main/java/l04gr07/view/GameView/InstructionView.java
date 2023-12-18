@@ -31,9 +31,7 @@ public class InstructionView extends MenuViewer {
         drawText(new Position(2,13),"'WASD' -> move player in Huge Icecream","#FFFFFF");
         drawText(new Position(1,14),"mode","#FFFFFF");
         drawText(new Position(2,15),"'Enter' -> break/create walls by player1","#FFFFFF");
-        //drawText(new Position(1,16),"to the last selected direction","#FFFFFF");
         drawText(new Position(2,16),"'E' -> break/create walls by player2", "#FFFFFF");
-        //drawText(new Position(1,18),"to the last selected direction","#FFFFFF");
         drawText(new Position(2,17),"'E' -> break/create walls by player in","#FFFFFF");
         drawText(new Position(1,18),"Huge IceCream mode","#FFFFFF");
         drawText(new Position(2,19),"Arrows -> throw iceshot by player in","#FFFFFF");

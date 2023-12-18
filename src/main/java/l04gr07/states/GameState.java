@@ -32,8 +32,6 @@ public class GameState extends State {
 
     public GameState(DifficultyStrategy difficulty) throws IOException {
         super();
-        //gameView = new GameView(gameModel, gui.getScreen());
-        //gameControl = new GameController(this);
         gameModel = new GameModel(difficulty);
     }
 
@@ -63,7 +61,6 @@ public class GameState extends State {
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
-        //gameModel = new GameModel(new EasyDifficulty());
         gui = new LanternGUI();
         gui.createGameScreen(55,22);
         gameView = new GameView(gameModel, gui.getScreen());
