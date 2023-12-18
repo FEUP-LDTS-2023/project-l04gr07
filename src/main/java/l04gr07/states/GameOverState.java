@@ -4,13 +4,10 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
 import l04gr07.control.GameOverController;
-import l04gr07.control.InstructionController;
 import l04gr07.gui.LanternGUI;
 import l04gr07.model.Menu.GameOverModel;
-import l04gr07.model.Menu.InstructionsModel;
 import l04gr07.model.Model;
 import l04gr07.view.GameView.GameOverView;
-import l04gr07.view.GameView.InstructionView;
 import l04gr07.view.Viewer;
 
 import java.awt.*;
