@@ -35,6 +35,8 @@ public class GameController extends Controller implements Control {
     protected Boolean iceCube = false;
     private final GameModel gameModel;
 
+    private AudioPlayer audio;
+
 
     public GameController(GameState gameState, GameModel gameModel, long time) {
         this.gameState = gameState;
@@ -88,6 +90,8 @@ public class GameController extends Controller implements Control {
             iceShot.setposition(nextPosition);
         }
         if(field.isMonster(nextPosition)!=null) {
+            this.audio = new AudioPlayer("./src/main/resources/KillMonster.wav");
+            audio.play();
             field.getEnemies().remove(field.isMonster(nextPosition));
             if(field.getEnemies().size()==0){
                 gameState.getGUI().close();gameState.stopRunning();setControllerState(new WinState());
@@ -121,12 +125,16 @@ public class GameController extends Controller implements Control {
         if(field.getFruits().size() == 0){iceCube = true;notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
             if ((field.getPlayer1().getPosition().equals(fruit.getposition())) || (field.getPlayer2().getPosition().equals(fruit.getposition()))) {
+                this.audio= new AudioPlayer("./src/main/resources/CollectedFruit.wav");
+                audio.play();
                 field.getFruits().remove(fruit);
                 break;
             }
     }
     public void retrieveIceCube() throws IOException, URISyntaxException, FontFormatException {
             if ((field.getPlayer1().getPosition().equals(field.getIceCube().getposition())) || (field.getPlayer2().getPosition().equals(field.getIceCube().getposition()))) {
+                this.audio = new AudioPlayer("./src/main/resources/getIceCube.wav");
+                audio.play();
                 Position position;
                 if(field.getPlayer1().getPosition().equals(field.getIceCube().getposition())){position = field.getPlayer1().getPosition();}
                 else{position = field.getPlayer2().getPosition();}

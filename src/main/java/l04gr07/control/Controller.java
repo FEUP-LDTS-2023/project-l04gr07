@@ -16,15 +16,15 @@ public class Controller {
     private State controllerState;
     private Viewer viewer;
 
-    private AudioPlayer player;
+    private AudioPlayer audio;
 
     public void run() throws IOException, URISyntaxException, FontFormatException {
         long startTime = System.currentTimeMillis();
 
         if (controllerState == null) {
             controllerState = new MainMenuState();
-            this.player = new AudioPlayer("./src/main/resources/background.wav");
-            player.play();
+            this.audio = new AudioPlayer("./src/main/resources/background.wav");
+            audio.play();
             controllerState.initializing(startTime);
 
         }
