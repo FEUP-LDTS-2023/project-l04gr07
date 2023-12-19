@@ -62,7 +62,7 @@ public class GameState extends State {
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
         running = true;
         gui = new LanternGUI();
-        gui.createGameScreen(55,22);
+        gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());
         gameControl = new GameController(this,gameModel, time);
         run(time);
