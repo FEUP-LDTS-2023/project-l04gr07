@@ -18,7 +18,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class DifficultyController extends Controller implements Control{
-    private long lastMovement=0;
     private final DifficultyModel difficultyModel;
     private DifficultyState difficultyState;
 
@@ -34,16 +33,12 @@ public class DifficultyController extends Controller implements Control{
             case ArrowDown -> difficultyModel.nextOption();
             case Enter -> {
                 if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new MainMenuState());}
-                if (difficultyModel.isSelected(2)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new HardDifficulty()));}
-                if (difficultyModel.isSelected(1)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new MediumDifficulty()));}
-                if (difficultyModel.isSelected(0)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new EasyDifficulty()));}
+                if (difficultyModel.isSelected(2)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new HardDifficulty()));}
+                if (difficultyModel.isSelected(1)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new MediumDifficulty()));}
+                if (difficultyModel.isSelected(0)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new EasyDifficulty()));}
             }
             case Character -> {
-                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
-                    exit(0);
+                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q') exit(0);
             }
         }
     }
