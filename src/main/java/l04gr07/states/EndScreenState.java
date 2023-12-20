@@ -27,6 +27,8 @@ public class EndScreenState extends State{
     @Override
     public boolean isRunning(){return running;}
     @Override
+    public void startRunning(){running = true;}
+    @Override
     public void stopRunning(){running = false;}
 
     @Override

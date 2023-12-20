@@ -26,6 +26,7 @@ public abstract class State {
 
     public abstract boolean isRunning();
     public abstract void stopRunning();
+    public abstract void startRunning();
 
     public abstract State nextState();
 
