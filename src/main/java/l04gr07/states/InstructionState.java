@@ -26,17 +26,17 @@ public class InstructionState extends State{
 
     @Override
     public Viewer getViewer() {
-        return null;
+        return instructionView;
     }
 
     @Override
     public Control getControl() {
-        return null;
+        return instructionController;
     }
 
     @Override
     public Model getModel() {
-        return null;
+        return instructionModel;
     }
     public LanternGUI getGUI(){return gui;}
 
