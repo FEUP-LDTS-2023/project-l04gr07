@@ -27,7 +27,7 @@ public class GameState extends State {
     private PlayerController playerControl;
     private LanternGUI gui;
 
-    private Boolean running = false;
+
     public GameState(){}
 
     public GameState(DifficultyStrategy difficulty) throws IOException {
@@ -35,8 +35,7 @@ public class GameState extends State {
         gameModel = new GameModel(difficulty);
     }
 
-    @Override
-    public State nextState(){return new GameOverState();}
+
     @Override
     public Viewer getViewer() {
         return gameView;
@@ -51,19 +50,11 @@ public class GameState extends State {
     public GameModel getModel() {
         return gameModel;
     }
-    @Override
-    public boolean isRunning(){return running;}
-    @Override
-    public void startRunning(){running = true;}
-
-    @Override
-    public void stopRunning(){running = false;}
     public LanternGUI getGUI(){return gui;}
 
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
-        running = true;
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());

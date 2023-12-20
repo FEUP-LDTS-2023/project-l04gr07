@@ -33,13 +33,13 @@ public class DifficultyController extends Controller implements Control{
             case ArrowUp -> difficultyModel.previousOption();
             case ArrowDown -> difficultyModel.nextOption();
             case Enter -> {
-                if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new MainMenuState());}
+                if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); setControllerState(new MainMenuState());}
                 if (difficultyModel.isSelected(2)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new HardDifficulty()));}
+                    difficultyState.getGUI().close();setControllerState(new GameState(new HardDifficulty()));}
                 if (difficultyModel.isSelected(1)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new MediumDifficulty()));}
+                    difficultyState.getGUI().close(); setControllerState(new GameState(new MediumDifficulty()));}
                 if (difficultyModel.isSelected(0)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new EasyDifficulty()));}
+                    difficultyState.getGUI().close(); setControllerState(new GameState(new EasyDifficulty()));}
             }
             case Character -> {
                 if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')

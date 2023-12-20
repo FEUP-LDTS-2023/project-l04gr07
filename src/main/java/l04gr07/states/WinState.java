@@ -23,7 +23,7 @@ public class WinState extends State{
     private WinController winControl;
 
     private LanternGUI gui;
-    private Boolean running = false;
+
 
     @Override
     public Viewer getViewer() {
@@ -39,22 +39,10 @@ public class WinState extends State{
         return winModel;
     }
 
-    @Override
-    public boolean isRunning(){return running;}
-    @Override
-    public void startRunning(){running = true;}
-
-    @Override
-    public void stopRunning(){running = false;}
-
-    @Override
-    public State nextState(){return new GameState();}
-
     public LanternGUI getGUI(){return gui;}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
-        running = true;
         winModel = new WinModel();
         gui = new LanternGUI();
         gui.createWinScreen(40,30);

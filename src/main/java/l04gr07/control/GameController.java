@@ -92,7 +92,7 @@ public class GameController extends Controller implements Control {
             AudioController.getInstance().playAudio("./src/main/resources/KillMonster.wav");
             field.getEnemies().remove(field.isMonster(nextPosition));
             if(field.getEnemies().size()==0){
-                gameState.getGUI().close();gameState.stopRunning();setControllerState(new WinState());
+                gameState.getGUI().close(); setControllerState(new WinState());
             }
         }
         if(!field.isEmpty(nextPosition)){
@@ -113,7 +113,7 @@ public class GameController extends Controller implements Control {
             enemy.setposition(position);
             for(Player player: field.getPlayers()){
                 if(player.getPosition().equals(position)){
-                    gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
+                    gameState.getGUI().close(); setControllerState(new GameOverState());
                 }
             }
         }

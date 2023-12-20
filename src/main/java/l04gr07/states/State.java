@@ -24,11 +24,6 @@ public abstract class State {
     public abstract void initializing(long time) throws IOException, URISyntaxException, FontFormatException;
     public abstract void run(long time) throws IOException, URISyntaxException, FontFormatException;
 
-    public abstract boolean isRunning();
-    public abstract void stopRunning();
-    public abstract void startRunning();
-
-    public abstract State nextState();
 
 
 }

@@ -48,7 +48,7 @@ public class PlayerController extends Controller implements Control{
         }
         for(Enemy enemy: field.getEnemies()){
             if(enemy.getPosition().equals(position)){
-                gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
+                gameState.getGUI().close(); setControllerState(new GameOverState());
             }
         }
         return true;
@@ -61,7 +61,7 @@ public class PlayerController extends Controller implements Control{
         }
         for(Enemy enemy: field.getEnemies()){
             if(enemy.getPosition().equals(position)){
-                gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
+                gameState.getGUI().close(); setControllerState(new GameOverState());
             }
         }
     }
