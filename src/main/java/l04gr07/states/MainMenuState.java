@@ -38,8 +38,12 @@ public class MainMenuState extends State{
 
     @Override
     public boolean isRunning(){return running;}
+
     @Override
     public void stopRunning(){running = false;}
+
+    @Override
+    public void startRunning(){running = true;}
 
     @Override
     public State nextState(){return new GameState();}
@@ -54,7 +58,6 @@ public class MainMenuState extends State{
         gui.createMenuScreen(40,30);
         mainMenuView = new MainMenuView(mainMenuModel, gui.getScreen());
         mainMenuControl = new MainMenuController(mainMenuModel,this);
-        run(time);
     }
 
     @Override

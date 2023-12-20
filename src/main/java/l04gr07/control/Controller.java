@@ -16,25 +16,31 @@ public class Controller {
     private State controllerState;
     private Viewer viewer;
 
+    private long time;
 
 
     public void run() throws IOException, URISyntaxException, FontFormatException {
         long startTime = System.currentTimeMillis();
-
+        time = startTime;
         if (controllerState == null) {
             controllerState = new MainMenuState();
             AudioController.getInstance().playAudio("./src/main/resources/background.wav");
             controllerState.initializing(startTime);
 
         }
-        controllerState.initializing(startTime);
+        while(controllerState!= null ){
+            while(controllerState.isRunning())
+                controllerState.run(startTime);
+        }
 
 }
 
 
     public void setControllerState(State  controllerState) throws IOException, URISyntaxException, FontFormatException {
         this.controllerState = controllerState;
-        this.run();}
+        this.controllerState.initializing(time);
+        run();
+    }
 
     public State getControllerState() {return controllerState;}
 

@@ -42,6 +42,9 @@ public class WinState extends State{
     @Override
     public boolean isRunning(){return running;}
     @Override
+    public void startRunning(){running = true;}
+
+    @Override
     public void stopRunning(){running = false;}
 
     @Override
@@ -57,7 +60,6 @@ public class WinState extends State{
         gui.createWinScreen(40,30);
         winView = new WinView(winModel, gui.getScreen());
         winControl = new WinController(winModel,this);
-        run(time);
     }
 
     @Override

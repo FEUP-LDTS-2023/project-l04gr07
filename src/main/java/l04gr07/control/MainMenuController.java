@@ -32,7 +32,7 @@ public class MainMenuController extends Controller implements Control{
                 if (mainMenuModel.isSelected(2)) {exit(0);break;}
                 if (mainMenuModel.isSelected(1)) {setControllerState(new InstructionState());}
                 if (mainMenuModel.isSelected(0)){
-                    mainMenuState.getGUI().close();mainMenuState.stopRunning();setControllerState(new DifficultyState());}
+                    mainMenuState.getGUI().close();setControllerState(new DifficultyState());}
 
             }
             case Character -> {

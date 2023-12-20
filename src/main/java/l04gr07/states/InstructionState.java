@@ -42,6 +42,9 @@ public class InstructionState extends State{
     @Override
     public boolean isRunning(){return running;}
     @Override
+    public void startRunning(){running = true;}
+
+    @Override
     public void stopRunning(){running = false;}
 
     @Override
@@ -55,11 +58,10 @@ public class InstructionState extends State{
         gui.createInstructionsScreen(70,65);
         instructionView = new InstructionView(instructionModel, gui.getScreen());
         instructionController = new InstructionController(instructionModel, this);
-        run(time);
     }
 
     @Override
-    public void run(long time) throws IOException {
+    public void run(long time) throws IOException, URISyntaxException, FontFormatException {
         while (true){
             instructionView.draw();
             KeyStroke key = gui.getScreen().readInput();

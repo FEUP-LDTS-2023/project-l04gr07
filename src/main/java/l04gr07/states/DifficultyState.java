@@ -42,6 +42,9 @@ public class DifficultyState extends State{
     @Override
     public boolean isRunning(){return running;}
     @Override
+    public void startRunning(){running = true;}
+
+    @Override
     public void stopRunning(){running = false;}
 
     @Override
@@ -57,7 +60,6 @@ public class DifficultyState extends State{
         gui.createDifficultyScreen(40,30);
         difficultyView = new DifficultyView(difficultyModel, gui.getScreen());
         difficultyControl = new DifficultyController(difficultyModel,this);
-        run(time);
     }
 
     @Override

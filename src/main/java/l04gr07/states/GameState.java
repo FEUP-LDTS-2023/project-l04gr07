@@ -54,6 +54,9 @@ public class GameState extends State {
     @Override
     public boolean isRunning(){return running;}
     @Override
+    public void startRunning(){running = true;}
+
+    @Override
     public void stopRunning(){running = false;}
     public LanternGUI getGUI(){return gui;}
 
@@ -65,14 +68,12 @@ public class GameState extends State {
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());
         gameControl = new GameController(this,gameModel, time);
-        run(time);
     }
     private static final int FPS = 60;
     private static final long frameTime = 1000 / FPS;
 
 
     public void run(long time) throws IOException, URISyntaxException, FontFormatException {
-        long startTime=System.currentTimeMillis();
         while (true){
             long currentTime=System.currentTimeMillis();
             gameControl.randomEnemy(time);

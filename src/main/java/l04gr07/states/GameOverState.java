@@ -38,6 +38,9 @@ public class GameOverState extends State{
     @Override
     public boolean isRunning(){return running;}
     @Override
+    public void startRunning(){running = true;}
+
+    @Override
     public void stopRunning(){running = false;}
 
     @Override
@@ -51,7 +54,6 @@ public class GameOverState extends State{
         gui.createGameOverScreen(40,30);
         gameOverView = new GameOverView(gameOverModel, gui.getScreen());
         gameOverController = new GameOverController(gameOverModel, this);
-        run(time);
     }
 
     @Override
