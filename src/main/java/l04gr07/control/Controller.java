@@ -29,8 +29,7 @@ public class Controller {
 
         }
         while(controllerState!= null ){
-            while(controllerState.isRunning())
-                controllerState.run(startTime);
+            controllerState.run(startTime);
         }
 
 }

@@ -20,7 +20,7 @@ public class MainMenuState extends State{
     private MainMenuController mainMenuControl;
 
     private LanternGUI gui;
-    private Boolean running = false;
+
 
     @Override
     public Viewer getViewer() {
@@ -36,23 +36,10 @@ public class MainMenuState extends State{
         return mainMenuModel;
     }
 
-    @Override
-    public boolean isRunning(){return running;}
-
-    @Override
-    public void stopRunning(){running = false;}
-
-    @Override
-    public void startRunning(){running = true;}
-
-    @Override
-    public State nextState(){return new GameState();}
-
     public LanternGUI getGUI(){return gui;}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
-        running = true;
         mainMenuModel = new MainMenuModel();
         gui = new LanternGUI();
         gui.createMenuScreen(40,30);

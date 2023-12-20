@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class EndScreenState extends State{
 
-    private Boolean running=false;
     @Override
     public Viewer getViewer() {
         return null;
@@ -24,15 +23,7 @@ public class EndScreenState extends State{
     public Model getModel() {
         return null;
     }
-    @Override
-    public boolean isRunning(){return running;}
-    @Override
-    public void startRunning(){running = true;}
-    @Override
-    public void stopRunning(){running = false;}
 
-    @Override
-    public State nextState(){return null;}
 
     @Override
     public void initializing(long time) throws IOException {

@@ -23,7 +23,7 @@ public class InstructionState extends State{
     private InstructionController instructionController;
 
     private LanternGUI gui;
-    private Boolean running=false;
+
     @Override
     public Viewer getViewer() {
         return null;
@@ -39,20 +39,10 @@ public class InstructionState extends State{
         return null;
     }
     public LanternGUI getGUI(){return gui;}
-    @Override
-    public boolean isRunning(){return running;}
-    @Override
-    public void startRunning(){running = true;}
 
-    @Override
-    public void stopRunning(){running = false;}
-
-    @Override
-    public State nextState(){return new MainMenuState();}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
-        running = true;
         instructionModel = new InstructionsModel();
         gui = new LanternGUI();
         gui.createInstructionsScreen(70,65);

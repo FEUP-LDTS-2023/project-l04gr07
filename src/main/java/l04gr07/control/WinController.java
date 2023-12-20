@@ -32,7 +32,7 @@ public class WinController extends Controller implements Control{
             case Enter -> {
                 if (winModel.isSelected(1)) {exit(0);break;}
                 if (winModel.isSelected(0)){
-                    winState.getGUI().close();winState.stopRunning();setControllerState(new MainMenuState());}
+                    winState.getGUI().close(); setControllerState(new MainMenuState());}
 
             }
             case Character -> {

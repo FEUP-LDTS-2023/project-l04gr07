@@ -39,17 +39,6 @@ public class DifficultyState extends State{
         return difficultyModel;
     }
 
-    @Override
-    public boolean isRunning(){return running;}
-    @Override
-    public void startRunning(){running = true;}
-
-    @Override
-    public void stopRunning(){running = false;}
-
-    @Override
-    public State nextState(){return new GameState();}
-
     public LanternGUI getGUI(){return gui;}
 
     @Override
