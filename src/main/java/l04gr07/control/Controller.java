@@ -15,7 +15,6 @@ import java.net.URISyntaxException;
 public class Controller {
     private State controllerState;
     private Viewer viewer;
-
     private long time;
 
 

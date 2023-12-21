@@ -43,7 +43,7 @@ public class GameOverState extends State{
         gui = new LanternGUI();
         gui.createGameOverScreen(40,30);
         gameOverView = new GameOverView(gameOverModel, gui.getScreen());
-        gameOverController = new GameOverController(gameOverModel, this);
+        gameOverController = new GameOverController();
     }
 
     @Override

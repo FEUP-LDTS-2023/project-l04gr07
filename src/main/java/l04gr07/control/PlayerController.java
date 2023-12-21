@@ -23,10 +23,8 @@ import java.util.List;
 import static java.lang.System.exit;
 
 public class PlayerController extends Controller implements Control{
-    private final GameModel gameModel;
     private GameState gameState;
     private Field field;
-    private long lastMovement=0;
     private Boolean isHugeIceCream = false;
 
 
@@ -35,7 +33,6 @@ public class PlayerController extends Controller implements Control{
         this.field = field;
         this.gameController = gameController;
         this.gameState = this.gameController.getGameState();
-        this.gameModel = this.gameController.getGameState().getModel();
     }
 
     public boolean canPlayerMove(Position position) throws IOException, URISyntaxException, FontFormatException {

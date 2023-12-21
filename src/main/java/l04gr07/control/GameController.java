@@ -22,26 +22,20 @@ import java.net.URISyntaxException;
 
 
 public class GameController extends Controller implements Control {
-    private Screen screen = null;
     private Field field;
     private PlayerController playerController;
     private GameState gameState;
-    private IceShot iceShot;
     private long time;
     private long lastMovement=0;
     private long lastMovementIce = 0;
-    private PlayerState playerState;
     protected Boolean isHugeIceCream = false;
     protected Boolean iceCube = false;
-    private final GameModel gameModel;
 
 
 
     public GameController(GameState gameState, GameModel gameModel, long time) {
         this.gameState = gameState;
-        this.gameModel=gameModel;
         this.field = gameState.getModel().getField();
-        this.playerState = field.getPlayerState();
 
         this.playerController = new PlayerController(field, this);
         this.time=time;
@@ -122,14 +116,14 @@ public class GameController extends Controller implements Control {
     public void retrieveFruits() {
         if(field.getFruits().size() == 0){iceCube = true;notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
-            if ((field.getPlayer1().getPosition().equals(fruit.getposition())) || (field.getPlayer2().getPosition().equals(fruit.getposition()))) {
+            if (field.getPlayer1().getPosition().equals(fruit.getposition()) || field.getPlayer2().getPosition().equals(fruit.getposition())) {
                 AudioController.getInstance().playAudio("./src/main/resources/CollectedFruit.wav");
                 field.getFruits().remove(fruit);
                 break;
             }
     }
     public void retrieveIceCube() throws IOException, URISyntaxException, FontFormatException {
-            if ((field.getPlayer1().getPosition().equals(field.getIceCube().getposition())) || (field.getPlayer2().getPosition().equals(field.getIceCube().getposition()))) {
+            if (field.getPlayer1().getPosition().equals(field.getIceCube().getposition()) || field.getPlayer2().getPosition().equals(field.getIceCube().getposition())) {
                 AudioController.getInstance().playAudio("./src/main/resources/getIceCube.wav");
                 Position position;
                 if(field.getPlayer1().getPosition().equals(field.getIceCube().getposition())){position = field.getPlayer1().getPosition();}
@@ -154,7 +148,6 @@ public class GameController extends Controller implements Control {
         if(iceCube && !isHugeIceCream){retrieveIceCube();}
     }
     public void IceShot() throws IOException, URISyntaxException, FontFormatException {
-        if(field.getIceShot().getDirection()=="NO"){iceShot= new IceShot(-1,-1,"NO");}
         randomIceShot(field.getIceShot());
     }
 }

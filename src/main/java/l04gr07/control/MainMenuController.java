@@ -14,7 +14,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class MainMenuController extends Controller implements Control{
-    private long lastMovement=0;
     private final MainMenuModel mainMenuModel;
     private MainMenuState mainMenuState;
 

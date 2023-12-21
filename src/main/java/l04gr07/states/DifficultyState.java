@@ -23,7 +23,6 @@ public class DifficultyState extends State{
     private DifficultyController difficultyControl;
 
     private LanternGUI gui;
-    private Boolean running = false;
 
     @Override
     public Viewer getViewer() {
@@ -43,7 +42,6 @@ public class DifficultyState extends State{
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
-        running = true;
         difficultyModel = new DifficultyModel();
         gui = new LanternGUI();
         gui.createDifficultyScreen(40,30);

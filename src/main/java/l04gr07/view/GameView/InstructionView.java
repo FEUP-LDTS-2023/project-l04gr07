@@ -10,12 +10,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class InstructionView extends MenuViewer {
-    private final InstructionsModel instructionsModel;
 
     private List<String> instructions;
     public InstructionView(InstructionsModel instructionsModel, Screen screen) throws IOException {
         super(instructionsModel, screen);
-        this.instructionsModel = instructionsModel;
         this.instructions = instructionsModel.getInstructions();
         this.draw();
     }

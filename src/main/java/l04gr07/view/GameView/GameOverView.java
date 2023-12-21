@@ -8,12 +8,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class GameOverView extends MenuViewer {
-    private final GameOverModel gameOverModel;
 
     private List<String> gameOverText;
     public GameOverView(GameOverModel gameOverModel, Screen screen) throws IOException {
         super(gameOverModel, screen);
-        this.gameOverModel = gameOverModel;
         this.gameOverText = gameOverModel.getGameOverText();
         this.draw();
     }

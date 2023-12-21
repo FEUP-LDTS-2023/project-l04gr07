@@ -11,10 +11,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class InstructionController extends Controller implements Control{
-    private final InstructionsModel instructionsModel;
     private InstructionState instructionState;
-    public InstructionController(InstructionsModel instructionsModel, InstructionState instructionState) {
-        this.instructionsModel = instructionsModel;
+    public InstructionController( InstructionState instructionState) {
         this.instructionState=instructionState;
     }
     @Override

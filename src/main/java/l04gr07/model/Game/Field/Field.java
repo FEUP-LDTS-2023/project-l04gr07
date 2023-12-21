@@ -14,8 +14,6 @@ import java.util.List;
 public class Field {
     private int height;
     private int width;
-    private Position position;
-    private TextGraphics graphics;
     private PlayerState playerState;
     private List<Player> players;
     private List<Wall> walls =new ArrayList<>();

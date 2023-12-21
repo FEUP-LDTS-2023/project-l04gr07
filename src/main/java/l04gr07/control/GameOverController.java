@@ -10,13 +10,6 @@ import java.io.IOException;
 import static java.lang.System.exit;
 
 public class GameOverController implements Control{
-    private final GameOverModel gameOverModel;
-    private GameOverState gameOverState;
-    public GameOverController(GameOverModel gameOverModel, GameOverState gameOverState) {
-        this.gameOverModel = gameOverModel;
-        this.gameOverState=gameOverState;
-
-    }
     @Override
     public void processKey(KeyStroke key) throws IOException {
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q' && key.getCharacter() == 'Q'){

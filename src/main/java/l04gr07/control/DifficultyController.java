@@ -18,7 +18,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class DifficultyController extends Controller implements Control{
-    private long lastMovement=0;
     private final DifficultyModel difficultyModel;
     private DifficultyState difficultyState;
 

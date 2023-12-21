@@ -22,9 +22,7 @@ import static java.lang.System.exit;
 public class GameState extends State {
     private GameView gameView;
     private GameModel gameModel;
-
     private GameController gameControl;
-    private PlayerController playerControl;
     private LanternGUI gui;
 
 

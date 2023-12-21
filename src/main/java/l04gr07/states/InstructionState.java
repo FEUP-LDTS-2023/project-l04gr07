@@ -47,7 +47,7 @@ public class InstructionState extends State{
         gui = new LanternGUI();
         gui.createInstructionsScreen(70,65);
         instructionView = new InstructionView(instructionModel, gui.getScreen());
-        instructionController = new InstructionController(instructionModel, this);
+        instructionController = new InstructionController( this);
     }
 
     @Override

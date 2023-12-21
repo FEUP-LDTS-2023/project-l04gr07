@@ -15,7 +15,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class WinController extends Controller implements Control{
-    private long lastMovement=0;
     private final WinModel winModel;
     private WinState winState;
 
