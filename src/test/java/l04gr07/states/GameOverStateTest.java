@@ -1,8 +1,11 @@
 package l04gr07.states;
 
 import l04gr07.control.DifficultyController;
+import l04gr07.control.GameOverController;
 import l04gr07.model.Menu.DifficultyModel;
+import l04gr07.model.Menu.GameOverModel;
 import l04gr07.view.GameView.DifficultyView;
+import l04gr07.view.GameView.GameOverView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,8 +31,8 @@ public class GameOverStateTest {
     @Test
     public void testInitializing() throws Exception{
         gameOverState.initializing(200);
-        assertTrue(gameOverState.getViewer() instanceof DifficultyView);
-        assertTrue(gameOverState.getControl() instanceof DifficultyController);
-        assertTrue(gameOverState.getModel() instanceof DifficultyModel);
+        assertTrue(gameOverState.getViewer() instanceof GameOverView);
+        assertTrue(gameOverState.getControl() instanceof GameOverController);
+        assertTrue(gameOverState.getModel() instanceof GameOverModel);
     }
 }
