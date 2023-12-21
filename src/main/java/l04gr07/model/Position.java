@@ -46,11 +46,10 @@ public class Position {
                 return getLeft();
         }
     }
-    public boolean equals(Object o) {
+
+    public boolean equal(Position o) {
         if (this == o) return true;
         if (o == null) return false;
-        if (getClass() != o.getClass()) return false;
-        Position p = (Position) o;
-        return x == p.getx() && y == p.gety();
+        return x == o.getx() && y == o.gety();
     }
 }

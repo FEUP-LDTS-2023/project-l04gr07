@@ -14,7 +14,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class MainMenuController extends Controller implements Control{
-    private long lastMovement=0;
     private final MainMenuModel mainMenuModel;
     private MainMenuState mainMenuState;
 
@@ -32,13 +31,14 @@ public class MainMenuController extends Controller implements Control{
                 if (mainMenuModel.isSelected(2)) {exit(0);break;}
                 if (mainMenuModel.isSelected(1)) {setControllerState(new InstructionState());}
                 if (mainMenuModel.isSelected(0)){
-                    mainMenuState.getGUI().close();mainMenuState.stopRunning();setControllerState(new DifficultyState());}
+                    mainMenuState.getGUI().close();setControllerState(new DifficultyState());}
 
             }
             case Character -> {
                 if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
                     exit(0);
             }
+            default -> {break;}
         }
     }
 }

@@ -19,7 +19,7 @@ public class GameOverState extends State{
     private GameOverModel gameOverModel;
     private GameOverController gameOverController;
     private static LanternGUI gui;
-    private Boolean running=false;
+
     @Override
     public Viewer getViewer() {
         return gameOverView;
@@ -35,23 +35,15 @@ public class GameOverState extends State{
         return gameOverModel;
     }
     public static LanternGUI getGUI(){return gui;}
-    @Override
-    public boolean isRunning(){return running;}
-    @Override
-    public void stopRunning(){running = false;}
 
-    @Override
-    public State nextState(){return null;}
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
-        running = true;
         gameOverModel = new GameOverModel();
         gui = new LanternGUI();
         gui.createGameOverScreen(40,30);
         gameOverView = new GameOverView(gameOverModel, gui.getScreen());
-        gameOverController = new GameOverController(gameOverModel, this);
-        run(time);
+        gameOverController = new GameOverController();
     }
 
     @Override

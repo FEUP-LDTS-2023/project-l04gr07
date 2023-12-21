@@ -1,6 +1,5 @@
 package l04gr07.model.Game.Field;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Game.FieldElements.*;
 import l04gr07.model.Game.FieldElements.PlayerState.PlayerState;
 import l04gr07.model.Position;
@@ -14,8 +13,6 @@ import java.util.List;
 public class Field {
     private int height;
     private int width;
-    private Position position;
-    private TextGraphics graphics;
     private PlayerState playerState;
     private List<Player> players;
     private List<Wall> walls =new ArrayList<>();
@@ -81,32 +78,32 @@ public class Field {
 
     public boolean isEmpty(Position position) {
         for (Wall wall : walls)
-            if (wall.getPosition().equals(position))
+            if (wall.getPosition().equal(position))
                 return false;
         return true;
     }
     public boolean isPlayer(Position position) {
         for (Player player : players)
-            if (player.getPosition().equals(position))
+            if (player.getPosition().equal(position))
                 return true;
         return false;
     }
 
     public boolean isFruit(Position position) {
         for (Fruit fruit:fruits)
-            if (fruit.getPosition().equals(position))
+            if (fruit.getPosition().equal(position))
                 return true;
         return false;
     }
     public boolean isIceCube(Position position) {
-            if (iceCube.getPosition().equals(position))
+            if (iceCube.getPosition().equal(position))
                 return true;
         return false;
     }
 
     public Enemy isMonster(Position position) {
         for (Enemy monster : enemies)
-            if (monster.getPosition().equals(position))
+            if (monster.getPosition().equal(position))
                 return monster;
         return null;
     }

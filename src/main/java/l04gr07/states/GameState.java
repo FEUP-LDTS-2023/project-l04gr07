@@ -22,12 +22,10 @@ import static java.lang.System.exit;
 public class GameState extends State {
     private GameView gameView;
     private GameModel gameModel;
-
     private GameController gameControl;
-    private PlayerController playerControl;
     private LanternGUI gui;
 
-    private Boolean running = false;
+
     public GameState(){}
 
     public GameState(DifficultyStrategy difficulty) throws IOException {
@@ -35,8 +33,7 @@ public class GameState extends State {
         gameModel = new GameModel(difficulty);
     }
 
-    @Override
-    public State nextState(){return new GameOverState();}
+
     @Override
     public Viewer getViewer() {
         return gameView;
@@ -51,28 +48,22 @@ public class GameState extends State {
     public GameModel getModel() {
         return gameModel;
     }
-    @Override
-    public boolean isRunning(){return running;}
-    @Override
-    public void stopRunning(){running = false;}
     public LanternGUI getGUI(){return gui;}
 
 
     @Override
     public void initializing(long time) throws IOException, URISyntaxException, FontFormatException {
-        running = true;
         gui = new LanternGUI();
         gui.createGameScreen(55,23);
         gameView = new GameView(gameModel, gui.getScreen());
         gameControl = new GameController(this,gameModel, time);
-        run(time);
     }
     private static final int FPS = 60;
     private static final long frameTime = 1000 / FPS;
 
 
+    @Override
     public void run(long time) throws IOException, URISyntaxException, FontFormatException {
-        long startTime=System.currentTimeMillis();
         while (true){
             long currentTime=System.currentTimeMillis();
             gameControl.randomEnemy(time);
@@ -94,7 +85,7 @@ public class GameState extends State {
                     Thread.sleep(sleepTime);
                 }
             } catch (InterruptedException e) {
-
+                throw new RuntimeException(e);
             }
         }
     }

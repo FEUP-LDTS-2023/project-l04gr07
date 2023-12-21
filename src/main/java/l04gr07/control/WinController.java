@@ -15,7 +15,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class WinController extends Controller implements Control{
-    private long lastMovement=0;
     private final WinModel winModel;
     private WinState winState;
 
@@ -32,13 +31,14 @@ public class WinController extends Controller implements Control{
             case Enter -> {
                 if (winModel.isSelected(1)) {exit(0);break;}
                 if (winModel.isSelected(0)){
-                    winState.getGUI().close();winState.stopRunning();setControllerState(new MainMenuState());}
+                    winState.getGUI().close(); setControllerState(new MainMenuState());}
 
             }
             case Character -> {
                 if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
                     exit(0);
             }
+            default -> {break;}
         }
     }
 }
