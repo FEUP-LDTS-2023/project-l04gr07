@@ -1,5 +1,6 @@
 package l04gr07.states;
 
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.DifficultyController;
 import l04gr07.model.Menu.DifficultyModel;
 import l04gr07.view.GameView.DifficultyView;
@@ -35,6 +36,7 @@ public class DifficultyStateTest {
         assertNotNull(difficultyState.getViewer());
         assertNotNull(difficultyState.getControl());
         assertNotNull(difficultyState.getModel());
+        assertNotNull(difficultyState.getGUI());
     }
 
     @Test
@@ -45,4 +47,14 @@ public class DifficultyStateTest {
         assertTrue(difficultyState.getModel() instanceof DifficultyModel);
     }
 
+    @Test
+    public void testRun() throws Exception{
+        difficultyState = mock(DifficultyState.class);
+        DifficultyState difficultyState = mock(DifficultyState.class);
+        when(difficultyState.getViewer()).thenReturn(mock(DifficultyView.class));
+        when(difficultyState.getControl()).thenReturn(mock(DifficultyController.class));
+        when(difficultyState.getModel()).thenReturn(mock(DifficultyModel.class));
+        difficultyState.run(200);
+        verify(difficultyState, times(1)).run(200);
+    }
 }

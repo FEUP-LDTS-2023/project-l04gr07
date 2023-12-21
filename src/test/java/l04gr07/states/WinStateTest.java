@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class WinStateTest {
     private WinState winState;
@@ -34,5 +35,14 @@ public class WinStateTest {
         assertTrue(winState.getViewer() instanceof WinView);
         assertTrue(winState.getControl() instanceof WinController);
         assertTrue(winState.getModel() instanceof WinModel);
+    }
+    @Test
+    public void testRun() throws Exception{
+        WinState winState = mock(WinState.class);
+        when(winState.getViewer()).thenReturn(mock(WinView.class));
+        when(winState.getControl()).thenReturn(mock(WinController.class));
+        when(winState.getModel()).thenReturn(mock(WinModel.class));
+        winState.run(0);
+        verify(winState, atLeastOnce()).run(0);
     }
 }

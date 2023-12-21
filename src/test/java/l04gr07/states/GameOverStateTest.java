@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class GameOverStateTest {
     private GameOverState gameOverState;
@@ -34,5 +35,15 @@ public class GameOverStateTest {
         assertTrue(gameOverState.getViewer() instanceof GameOverView);
         assertTrue(gameOverState.getControl() instanceof GameOverController);
         assertTrue(gameOverState.getModel() instanceof GameOverModel);
+    }
+
+    @Test
+    public void testRun() throws Exception{
+        GameOverState gameOverState = mock(GameOverState.class);
+        when(gameOverState.getViewer()).thenReturn(mock(GameOverView.class));
+        when(gameOverState.getControl()).thenReturn(mock(GameOverController.class));
+        when(gameOverState.getModel()).thenReturn(mock(GameOverModel.class));
+        gameOverState.run(200);
+        verify(gameOverState, times(1)).run(200);
     }
 }

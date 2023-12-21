@@ -61,5 +61,4 @@ public class DifficultyState extends State{
             if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
-
 }

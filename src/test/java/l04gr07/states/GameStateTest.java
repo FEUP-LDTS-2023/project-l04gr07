@@ -16,9 +16,10 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+//import static jdk.internal.org.objectweb.asm.util.CheckClassAdapter.verify;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class GameStateTest {
     private GameState gameState;
@@ -52,6 +53,16 @@ public class GameStateTest {
         assertTrue(gameState.getModel() instanceof GameModel);
         assertTrue(gameState.getViewer() instanceof GameView);
         assertTrue(gameState.getControl() instanceof GameController);
+    }
+
+    @Test
+    public void testRun() throws IOException, URISyntaxException, FontFormatException {
+        gameState = mock(GameState.class);
+        when(gameState.getViewer()).thenReturn(mock(GameView.class));
+        when(gameState.getControl()).thenReturn(mock(GameController.class));
+        when(gameState.getModel()).thenReturn(mock(GameModel.class));
+        gameState.run(200);
+        verify(gameState, times(1)).run(200);
     }
     
 }

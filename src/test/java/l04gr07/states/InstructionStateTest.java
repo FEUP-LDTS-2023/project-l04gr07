@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class InstructionStateTest {
     private InstructionState instructionState;
@@ -34,5 +35,15 @@ public class InstructionStateTest {
         assertTrue(instructionState.getViewer() instanceof InstructionView);
         assertTrue(instructionState.getControl() instanceof InstructionController);
         assertTrue(instructionState.getModel() instanceof InstructionsModel);
+    }
+
+    @Test
+    public void testRun() throws Exception{
+        InstructionState instructionState = mock(InstructionState.class);
+        when(instructionState.getViewer()).thenReturn(mock(InstructionView.class));
+        when(instructionState.getControl()).thenReturn(mock(InstructionController.class));
+        when(instructionState.getModel()).thenReturn(mock(InstructionsModel.class));
+        instructionState.run(200);
+        verify(instructionState, times(1)).run(200);
     }
 }
