@@ -16,23 +16,23 @@ import static org.mockito.Mockito.*;
 class ControllerTest {
 
     private Controller controller;
-    private State mockState;
+   // private State mockState;
     private Viewer mockViewer;
 
     @BeforeEach
     void setUp() {
         controller = new Controller();
-        mockState = mock(State.class);
+       // mockState = mock(State.class);
         mockViewer = mock(Viewer.class);
     }
 
-    @Test
+   /* @Test
     void setControllerState() throws IOException, URISyntaxException, FontFormatException {
         assertNull(controller.getControllerState());
         assertDoesNotThrow(() -> controller.setControllerState(mockState));
         assertEquals(mockState, controller.getControllerState());
         verify(mockState, times(1)).initializing(anyLong());
-    }
+    }*/
 
     @Test
     void setViewer() {

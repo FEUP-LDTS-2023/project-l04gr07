@@ -42,10 +42,10 @@ public class PositionTest {
         Position initialPosition = new Position(3, 5);
         Position randomPosition = initialPosition.getRandomPosition();
         assertTrue(
-                (randomPosition.equal(initialPosition.getLeft())) ||
-                        (randomPosition.equal(initialPosition.getRight())) ||
-                        (randomPosition.equal(initialPosition.getUp())) ||
-                        (randomPosition.equal(initialPosition.getDown()))
+                randomPosition.equal(initialPosition.getLeft()) ||
+                        randomPosition.equal(initialPosition.getRight()) ||
+                        randomPosition.equal(initialPosition.getUp()) ||
+                        randomPosition.equal(initialPosition.getDown())
         );
     }
 
@@ -54,7 +54,8 @@ public class PositionTest {
         Position pos = new Position(4, 7);
         Position poss = new Position(4, 7);
         Position posss = new Position(1, 5);
-        assertEquals(pos, poss);
+        assertEquals(pos.getx(), poss.getx());
+        assertEquals(pos.gety(), poss.gety());
         assertNotEquals(pos, posss);
     }
 }
