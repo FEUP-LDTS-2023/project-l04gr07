@@ -19,36 +19,22 @@ import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-
 
 public class GameStateTest {
     private GameState gameState;
     private GameModel gameModel;
     private GameView gameView;
     private GameController gameController;
-    private LanternGUI guiMock;
-    private KeyboardSimulator keyboardSimulator;
+    private LanternGUI gui;
 
     @BeforeEach
     public void setUp() throws IOException, URISyntaxException, FontFormatException {
         gameModel = mock(GameModel.class);
         gameView = mock(GameView.class);
         gameController = mock(GameController.class);
-        guiMock = mock(LanternGUI.class);
+        gui = mock(LanternGUI.class);
 
         gameState = new GameState(new EasyDifficulty());
-
-        when(guiMock.getScreen().pollInput()).thenAnswer(invocation -> {
-            return keyboardSimulator.getNextKey();
-        });
     }
 
     @Test
@@ -67,4 +53,5 @@ public class GameStateTest {
         assertTrue(gameState.getViewer() instanceof GameView);
         assertTrue(gameState.getControl() instanceof GameController);
     }
+    
 }
