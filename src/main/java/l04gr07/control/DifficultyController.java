@@ -44,6 +44,7 @@ public class DifficultyController extends Controller implements Control{
                 if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
                     exit(0);
             }
+            default -> {break;}
         }
     }
 }
