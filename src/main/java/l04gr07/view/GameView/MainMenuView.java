@@ -16,7 +16,6 @@ public class MainMenuView extends MenuViewer {
     public MainMenuView(MainMenuModel mainMenuModel, Screen screen) throws IOException {
         super(mainMenuModel, screen);
         this.mainMenuModel=mainMenuModel;
-        this.draw();
     }
 
     @Override

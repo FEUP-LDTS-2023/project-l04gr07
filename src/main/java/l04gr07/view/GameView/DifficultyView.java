@@ -14,7 +14,6 @@ public class DifficultyView extends MenuViewer{
     public DifficultyView(DifficultyModel difficultyModel, Screen screen) throws IOException {
         super(difficultyModel, screen);
         this.difficultyModel=difficultyModel;
-        this.draw();
     }
 
     @Override

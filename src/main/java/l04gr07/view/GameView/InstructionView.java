@@ -15,7 +15,6 @@ public class InstructionView extends MenuViewer {
     public InstructionView(InstructionsModel instructionsModel, Screen screen) throws IOException {
         super(instructionsModel, screen);
         this.instructions = instructionsModel.getInstructions();
-        this.draw();
     }
 
     @Override

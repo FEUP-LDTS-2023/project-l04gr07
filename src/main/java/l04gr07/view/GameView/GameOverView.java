@@ -13,7 +13,6 @@ public class GameOverView extends MenuViewer {
     public GameOverView(GameOverModel gameOverModel, Screen screen) throws IOException {
         super(gameOverModel, screen);
         this.gameOverText = gameOverModel.getGameOverText();
-        this.draw();
     }
 
     @Override

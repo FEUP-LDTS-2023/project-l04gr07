@@ -14,7 +14,6 @@ public class WinView extends MenuViewer {
     public WinView(WinModel winModel, Screen screen) throws IOException {
         super(winModel, screen);
         this.winModel=winModel;
-        this.draw();
     }
 
     @Override

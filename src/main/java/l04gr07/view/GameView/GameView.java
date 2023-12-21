@@ -37,7 +37,6 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
         super(gameModel, screen);
         this.gameModel=gameModel;
         this.create();
-        this.draw();
     }
 
 
