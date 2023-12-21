@@ -47,6 +47,6 @@ public class DifficultyControllerTest {
         when(mockKeyStroke.getCharacter()).thenReturn('a');
         DifficultyController difficultyController = new DifficultyController(mockDifficultyModel, mockDifficultyState);
         difficultyController.processKey(mockKeyStroke);
-       // verify(mockDifficultyState, never()).stopRunning();
+        verify(mockDifficultyState, never()).stopRunning();
      }
 }

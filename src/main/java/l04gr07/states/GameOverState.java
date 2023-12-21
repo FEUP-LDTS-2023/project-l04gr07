@@ -57,4 +57,8 @@ public class GameOverState extends State{
             }
         }
     }
+
+    public void stopRunning() throws IOException {
+        gui.getScreen().close();
+    }
 }

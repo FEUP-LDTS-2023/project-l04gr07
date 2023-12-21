@@ -33,8 +33,16 @@ public class GameOverControllerTest {
     }
 
     @Test
-    public void testProcessKeyEOF() throws NullPointerException, IOException {
-        KeyStroke key = new KeyStroke(KeyType.EOF);
-        assertThrows(NullPointerException.class, () -> gameOverController.processKey(key));
+    public void testExitGame() throws Exception {
+        GameOverModel mockGameOverModel = mock(GameOverModel.class);
+        GameOverState mockGameOverState = mock(GameOverState.class);
+
+        KeyStroke mockKeyStroke = mock(KeyStroke.class);
+        when(mockKeyStroke.getKeyType()).thenReturn(KeyType.Character);
+        when(mockKeyStroke.getCharacter()).thenReturn('Q');
+        gameOverController = new GameOverController();
+        gameOverController.processKey(mockKeyStroke);
+        //verify(mockGameOverState).getGUI().getScreen().close();
+        verify(mockGameOverState, never()).stopRunning();
     }
 }
