@@ -6,13 +6,9 @@ import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.IceShot;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
-import l04gr07.model.Game.GameModel;
-import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.model.Position;
 import l04gr07.states.GameOverState;
 import l04gr07.states.GameState;
-import l04gr07.states.InstructionState;
-import l04gr07.states.MainMenuState;
 
 import java.awt.*;
 import java.io.IOException;
@@ -39,12 +35,12 @@ public class PlayerController extends Controller implements Control{
         if ((position.getx() < 0) || (position.getx() > field.getWidth() - 1)) return false;
         if ((position.gety() > field.getHeight() - 1) || (position.gety() < 0)) return false;
         for (Wall wall : field.getWalls()) {
-            if (wall.getPosition().equals(position)) {
+            if (wall.getPosition().equal(position)) {
                 return false;
             }
         }
         for(Enemy enemy: field.getEnemies()){
-            if(enemy.getPosition().equals(position)){
+            if(enemy.getPosition().equal(position)){
                 gameState.getGUI().close(); setControllerState(new GameOverState());
             }
         }
@@ -57,7 +53,7 @@ public class PlayerController extends Controller implements Control{
             player.setPosition(position);
         }
         for(Enemy enemy: field.getEnemies()){
-            if(enemy.getPosition().equals(position)){
+            if(enemy.getPosition().equal(position)){
                 gameState.getGUI().close(); setControllerState(new GameOverState());
             }
         }
@@ -315,6 +311,7 @@ public class PlayerController extends Controller implements Control{
                 }
                 break;
             }
+            default: {break;}
 
         }
 

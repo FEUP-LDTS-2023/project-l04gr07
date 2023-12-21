@@ -62,6 +62,7 @@ public class GameState extends State {
     private static final long frameTime = 1000 / FPS;
 
 
+    @Override
     public void run(long time) throws IOException, URISyntaxException, FontFormatException {
         while (true){
             long currentTime=System.currentTimeMillis();
@@ -84,7 +85,7 @@ public class GameState extends State {
                     Thread.sleep(sleepTime);
                 }
             } catch (InterruptedException e) {
-
+                throw new RuntimeException(e);
             }
         }
     }

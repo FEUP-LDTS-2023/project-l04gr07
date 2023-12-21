@@ -42,10 +42,10 @@ public class PositionTest {
         Position initialPosition = new Position(3, 5);
         Position randomPosition = initialPosition.getRandomPosition();
         assertTrue(
-                (randomPosition.equals(initialPosition.getLeft())) ||
-                        (randomPosition.equals(initialPosition.getRight())) ||
-                        (randomPosition.equals(initialPosition.getUp())) ||
-                        (randomPosition.equals(initialPosition.getDown()))
+                (randomPosition.equal(initialPosition.getLeft())) ||
+                        (randomPosition.equal(initialPosition.getRight())) ||
+                        (randomPosition.equal(initialPosition.getUp())) ||
+                        (randomPosition.equal(initialPosition.getDown()))
         );
     }
 
