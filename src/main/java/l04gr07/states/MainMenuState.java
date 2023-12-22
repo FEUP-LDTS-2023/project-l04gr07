@@ -26,7 +26,7 @@ public class MainMenuState extends State{
     public Viewer getViewer() {
         return mainMenuView;
     }
-    @Override
+   // @Override
     public Control getControl() {
         return mainMenuControl;
     }

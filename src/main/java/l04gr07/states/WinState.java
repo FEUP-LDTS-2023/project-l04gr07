@@ -26,7 +26,7 @@ public class WinState extends State{
     public Viewer getViewer() {
         return winView;
     }
-    @Override
+//    @Override
     public Control getControl() {
         return winControl;
     }

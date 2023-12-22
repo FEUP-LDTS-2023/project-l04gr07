@@ -17,7 +17,7 @@ public abstract class State {
 
     public abstract Viewer getViewer();
 
-    public abstract Control getControl();
+  //  public abstract Control getControl();
 
     public abstract Model getModel();
 

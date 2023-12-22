@@ -28,7 +28,7 @@ public class DifficultyState extends State{
     public Viewer getViewer() {
         return difficultyView;
     }
-    @Override
+    //@Override
     public Control getControl() {
         return difficultyControl;
     }
