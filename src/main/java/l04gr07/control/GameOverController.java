@@ -12,10 +12,8 @@ import static java.lang.System.exit;
 public class GameOverController implements Control{
     @Override
     public void processKey(KeyStroke key) throws IOException {
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q' && key.getCharacter() == 'Q'){
-            GameOverState.getGUI().getScreen().close();
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
+            GameOverState.getGUI().getScreen().close();exit(0);
         }
-        if (key.getKeyType() == KeyType.EOF){exit(0);}
-
     }
 }

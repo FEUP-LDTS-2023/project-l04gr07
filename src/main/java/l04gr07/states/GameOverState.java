@@ -52,9 +52,6 @@ public class GameOverState extends State{
             gameOverView.draw();
             KeyStroke key = gui.getScreen().readInput();
             gameOverController.processKey(key);
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
-                gui.getScreen().close();
-            }
         }
     }
 }

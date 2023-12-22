@@ -55,10 +55,6 @@ public class DifficultyState extends State{
             difficultyView.draw();
             KeyStroke key = gui.getScreen().readInput();
             difficultyControl.processKey(key);
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
-                gui.getScreen().close();
-            }
-            if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
 }
