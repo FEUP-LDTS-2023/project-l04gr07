@@ -59,4 +59,8 @@ public class MainMenuState extends State{
             if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
+
+    public void stopRunning() throws IOException {
+        gui.getScreen().close();
+    }
 }
