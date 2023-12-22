@@ -19,11 +19,11 @@ public class GameOverStateTest {
     @BeforeEach
     public void setUp() throws Exception{
         gameOverState = new GameOverState();
+        gameOverState.initializing(200);
     }
 
     @Test
     public void testGetters() throws Exception{
-        gameOverState.initializing(200);
         assertNotNull(gameOverState.getViewer());
         assertNotNull(gameOverState.getControl());
         assertNotNull(gameOverState.getModel());
@@ -31,7 +31,6 @@ public class GameOverStateTest {
 
     @Test
     public void testInitializing() throws Exception{
-        gameOverState.initializing(200);
         assertTrue(gameOverState.getViewer() instanceof GameOverView);
         assertTrue(gameOverState.getControl() instanceof GameOverController);
         assertTrue(gameOverState.getModel() instanceof GameOverModel);
