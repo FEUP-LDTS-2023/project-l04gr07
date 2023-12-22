@@ -41,8 +41,7 @@ public class DifficultyController extends Controller implements Control{
                     difficultyState.getGUI().close(); setControllerState(new GameState(new EasyDifficulty()));}
             }
             case Character -> {
-                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
-                    exit(0);
+                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q') exit(0);
             }
             default -> {break;}
         }

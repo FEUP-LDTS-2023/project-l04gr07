@@ -28,7 +28,7 @@ public class DifficultyState extends State{
     public Viewer getViewer() {
         return difficultyView;
     }
-    @Override
+    //@Override
     public Control getControl() {
         return difficultyControl;
     }
@@ -60,5 +60,9 @@ public class DifficultyState extends State{
             }
             if (key.getKeyType() == KeyType.EOF){break;}
         }
+    }
+
+    public void stopRunning() throws IOException {
+        gui.getScreen().close();
     }
 }

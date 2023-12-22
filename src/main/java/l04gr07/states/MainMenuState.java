@@ -26,7 +26,7 @@ public class MainMenuState extends State{
     public Viewer getViewer() {
         return mainMenuView;
     }
-    @Override
+   // @Override
     public Control getControl() {
         return mainMenuControl;
     }
@@ -58,5 +58,9 @@ public class MainMenuState extends State{
             }
             if (key.getKeyType() == KeyType.EOF){break;}
         }
+    }
+
+    public void stopRunning() throws IOException {
+        gui.getScreen().close();
     }
 }
