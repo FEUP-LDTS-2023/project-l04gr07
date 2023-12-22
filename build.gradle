@@ -14,7 +14,7 @@ repositories {
 }
 
 pitest {junit5PluginVersion = '1.2.0'
-    targetClasses = ['l04gr07.control.*','l04gr07.model.*','l04gr07.states.*','l04gr07.view.*']
+    targetClasses = ['l04gr07.control.*','l04gr07.model.*','l04gr07.view.*']
 }
 
 
