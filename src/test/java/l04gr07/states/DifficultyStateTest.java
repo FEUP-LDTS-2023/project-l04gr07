@@ -28,11 +28,11 @@ public class DifficultyStateTest {
     @BeforeEach
     public void setUp() throws Exception{
         difficultyState = new DifficultyState();
+        difficultyState.initializing(200);
     }
 
     @Test
     public void testGetters() throws Exception{
-        difficultyState.initializing(200);
         assertNotNull(difficultyState.getViewer());
         assertNotNull(difficultyState.getControl());
         assertNotNull(difficultyState.getModel());
@@ -41,7 +41,6 @@ public class DifficultyStateTest {
 
     @Test
     public void testInitializing() throws Exception{
-        difficultyState.initializing(200);
         assertTrue(difficultyState.getViewer() instanceof DifficultyView);
         assertTrue(difficultyState.getControl() instanceof DifficultyController);
         assertTrue(difficultyState.getModel() instanceof DifficultyModel);
