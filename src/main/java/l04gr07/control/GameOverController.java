@@ -10,23 +10,17 @@ import java.io.IOException;
 
 import static java.lang.System.exit;
 
-public class GameOverController implements Control{
+public class GameOverController implements Control {
     private GameOverState gameOverState;
-    public GameOverController(GameOverState gameOverState){
+
+    public GameOverController(GameOverState gameOverState) {
         this.gameOverState = gameOverState;
     }
+
     @Override
     public void processKey(KeyStroke key) throws IOException {
-        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
-            gameOverState.getGUI().close();exit(0);
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')) {
+            gameOverState.getGUI().close(); exit(0);
         }
-    }
-
-    public void setGameOverState(GameOverState gameOverState) {
-        this.gameOverState = gameOverState;
-    }
-
-    public GameOverState getGameOverState() {
-        return gameOverState;
     }
 }

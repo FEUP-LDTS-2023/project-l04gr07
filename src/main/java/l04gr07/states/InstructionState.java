@@ -26,7 +26,7 @@ public class InstructionState extends State{
         return instructionView;
     }
 
-   // @Override
+    @Override
     public Control getControl() {
         return instructionController;
     }
@@ -55,9 +55,8 @@ public class InstructionState extends State{
             instructionController.processKey(key);
         }
     }
-
-    public void stopRunning() throws IOException {
-        gui.getScreen().close();
+    public void setGUI(LanternGUI gui) {
+        this.gui=gui;
     }
 }
 
