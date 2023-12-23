@@ -26,7 +26,7 @@ public class WinState extends State{
     public Viewer getViewer() {
         return winView;
     }
-//    @Override
+    @Override
     public Control getControl() {
         return winControl;
     }
@@ -55,7 +55,6 @@ public class WinState extends State{
             winControl.processKey(key);
         }
     }
-
     public void stopRunning() throws IOException {
         gui.getScreen().close();
     }

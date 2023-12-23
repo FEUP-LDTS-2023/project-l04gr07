@@ -36,7 +36,7 @@ public class GameState extends State {
         return gameView;
     }
 
-    //@Override
+    @Override
     public Control getControl() {
         return gameControl ;
     }

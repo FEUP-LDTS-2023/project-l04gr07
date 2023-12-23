@@ -17,20 +17,15 @@ import static org.mockito.Mockito.*;
 
 public class GameOverControllerTest {
     GameOverState state=new GameOverState();
-    LanternGUI gui=new LanternGUI();
+    LanternGUI gui=mock(LanternGUI.class);
+
     @Test
     public void testProcessKeyCharacter() throws IOException, URISyntaxException, FontFormatException {
-        gui.createGameOverScreen(10,12);
         state.setGUI(gui);
-        assertNotNull(state.getGUI().getScreen());
-        state.setGUI(gui);
-        KeyStroke key;
-        key=KeyStroke.fromString("a");
-        assertNotNull(state.getGUI().getScreen());
-        assertNotNull(state.getGUI().getScreen());
+        verify(gui, never()).close();
+        KeyStroke key=KeyStroke.fromString("a");
         GameOverController controller = new GameOverController(state);
-        controller.setGameOverState(state);
         controller.processKey(key);
-        assertNotNull(controller.getGameOverState().getGUI());
+        verify(state.getGUI(), never()).close();
     }
 }
