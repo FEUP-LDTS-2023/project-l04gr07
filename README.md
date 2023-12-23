@@ -19,7 +19,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/MainMenu.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Main Menu </i></b>
+  <b><i>Fig 1. Main Menu </i></b>
 </p>
 
 <br>
@@ -29,7 +29,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/InstructionsMenu.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Instructions Menu </i></b>
+  <b><i>Fig 2. Instructions Menu </i></b>
 </p>
 
 <br>
@@ -39,7 +39,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/DifficultyMenu.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Difficulty Menu </i></b>
+  <b><i>Fig 3. Difficulty Menu </i></b>
 </p>
 
 <br>
@@ -49,7 +49,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/GameOver.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. GameOver Menu </i></b>
+  <b><i>Fig 4. GameOver Menu </i></b>
 </p>
 
 <br>
@@ -65,13 +65,75 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
 <br>
 <br />
 
+## Game
+
+<p align="center" justify="center">
+  <img src="docs/Game/EasyMap.png"/>
+</p>
+<p align="center">  
+  <b><i>Fig 6. Easy Map </i></b>
+</p>
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/Game/MediumMap.png"/>
+</p>
+<p align="center">  
+  <b><i>Fig 7. Medium Map </i></b>
+</p>
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/Game/HardMap.png"/>
+</p>
+<p align="center">  
+  <b><i>Fig 8. Hard Map </i></b>
+</p>
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/Game/FruitBehindWall.png"/>
+</p>
+<p align="center">  
+  <b><i>Fig 9. Fruit Behind Wall </i></b>
+</p>
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/Game/IceCubeBehindWall.png"/>
+</p>
+<p align="center">  
+  <b><i>Fig 10. IceCube Behind Wall </i></b>
+</p>
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/Game/ThrowIceShot.png"/>
+</p>
+<p align="center">  
+  <b><i>Fig 11. Throw IceShot </i></b>
+</p>
+
+<br>
+<br />
+
 ## Mockups
 
 <p align="center" justify="center">
   <img src="docs/Mockups/Normal_gameplay.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. 2 Players State </i></b>
+  <b><i>Fig 12. Players State </i></b>
 </p>
 
 <br>
@@ -81,7 +143,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/AllFruitsPickedUp_GetIceCube.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. All fruits collected Sate </i></b>
+  <b><i>Fig 13. All fruits collected Sate </i></b>
 </p>
 
 <br>
@@ -91,7 +153,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/HugeIceCream_gameplay.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Huge Ice Cream State </i></b>
+  <b><i>Fig 14. Huge Ice Cream State </i></b>
 </p>
 
 <br>
