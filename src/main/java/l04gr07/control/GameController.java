@@ -2,6 +2,7 @@ package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import l04gr07.control.Audio.AudioController;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
@@ -54,6 +55,13 @@ public class GameController extends Controller implements Control {
 
     public long getLastMovementIce() {
         return lastMovementIce;
+    }
+
+    public long getLastMovement() {
+        return lastMovement;
+    }
+    public boolean getIceCube() {
+        return iceCube;
     }
 
     public void randomIceShot(IceShot iceShot) throws IOException, URISyntaxException, FontFormatException {
@@ -118,7 +126,8 @@ public class GameController extends Controller implements Control {
     }
 
     public void retrieveFruits() {
-        if(field.getFruits().isEmpty()){iceCube = true;notifyIceCubeObserver();}
+        if(field.getFruits().isEmpty()){
+            iceCube = true;notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
             if (field.getPlayer1().getPosition().equal(fruit.getposition()) || field.getPlayer2().getPosition().equal(fruit.getposition())) {
                 AudioController.getInstance().playAudio("./src/main/resources/CollectedFruit.wav");
@@ -157,4 +166,5 @@ public class GameController extends Controller implements Control {
     public void IceShot() throws IOException, URISyntaxException, FontFormatException {
         randomIceShot(field.getIceShot());
     }
+
 }

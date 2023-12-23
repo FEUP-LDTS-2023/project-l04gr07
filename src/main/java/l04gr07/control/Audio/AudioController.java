@@ -1,4 +1,4 @@
-package l04gr07.control;
+package l04gr07.control.Audio;
 
 public class AudioController {
     private static AudioController instance;

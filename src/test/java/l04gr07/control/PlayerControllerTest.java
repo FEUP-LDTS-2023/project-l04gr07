@@ -1,5 +1,8 @@
 package l04gr07.control;
 
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
+import l04gr07.gui.LanternGUI;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Player;
@@ -10,16 +13,18 @@ import l04gr07.states.GameState;
 import l04gr07.view.Viewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class PlayerControllerTest {
@@ -36,7 +41,8 @@ public class PlayerControllerTest {
     private GameModel mockGameModel;
     @Mock
     private PlayerController playerControllerr;
-
+    @Mock
+    private Player mockPlayer ;
     @Mock
     private Viewer mockViewer;
     private PlayerController playerController;
@@ -93,5 +99,187 @@ public class PlayerControllerTest {
         verify(mockPlayer).setPosition(newPosition);
         verify(playerControllerr, never()).createWalls(any(Player.class));
         verify(playerControllerr, never()).breakWalls(any(Wall.class), anyString());
+    }
+
+
+
+    @Test
+    void testCreateWallsUp() {
+        when(mockPlayer.getLastDirection()).thenReturn("UP");
+        when(mockPlayer.getPosition()).thenReturn(new Position(5, 5));
+        when(mockField.isEmpty(any(Position.class))).thenReturn(true);
+        when(mockField.isPlayer(any(Position.class))).thenReturn(false);
+        boolean result = playerController.createWalls(mockPlayer);
+        assertTrue(result);
+        verify(mockField, times(5)).getWalls();
+    }
+    @Test
+    void testCreateWallsDown() {
+        when(mockPlayer.getLastDirection()).thenReturn("DOWN");
+        when(mockPlayer.getPosition()).thenReturn(new Position(5, 0));
+        when(mockField.getHeight()).thenReturn(5);
+        when(mockField.isEmpty(any(Position.class))).thenReturn(true);
+        when(mockField.isPlayer(any(Position.class))).thenReturn(false);
+
+        boolean result = playerController.createWalls(mockPlayer);
+
+        assertTrue(result);
+        verify(mockField, times(mockField.getHeight())).getWalls();
+    }
+
+
+    @Test
+    void testCreateWallsLeft() {
+        when(mockPlayer.getLastDirection()).thenReturn("LEFT");
+        when(mockPlayer.getPosition()).thenReturn(new Position(5, 5));
+        when(mockField.isEmpty(any(Position.class))).thenReturn(true);
+        when(mockField.isPlayer(any(Position.class))).thenReturn(false);
+        boolean result = playerController.createWalls(mockPlayer);
+        assertTrue(result);
+        verify(mockField, times(5)).getWalls();
+    }
+    @Test
+    void testCreateWallsRight() {
+        when(mockPlayer.getLastDirection()).thenReturn("RIGHT");
+        when(mockPlayer.getPosition()).thenReturn(new Position(0, 5));
+        when(mockField.getWidth()).thenReturn(5);
+        when(mockField.isEmpty(any(Position.class))).thenReturn(true);
+        when(mockField.isPlayer(any(Position.class))).thenReturn(false);
+
+        boolean result = playerController.createWalls(mockPlayer);
+
+        assertTrue(result);
+        verify(mockField, times(mockField.getWidth())).getWalls();
+    }
+
+    @Test
+    void testCreateWallsInvalidDirection() {
+        Field mockField = mock(Field.class);
+        Player mockPlayer = mock(Player.class);
+        GameController mockGameController = mock(GameController.class);
+        when(mockPlayer.getLastDirection()).thenReturn("INVALID_DIRECTION");
+        PlayerController playerController = new PlayerController(mockField,mockGameController);
+        boolean result = playerController.createWalls(mockPlayer);
+        assertFalse(result);
+        verify(mockField, never()).getWalls();
+    }
+
+    @Test
+    void testBreakWallsUp() {
+        Field mockfield = mock(Field.class);
+        Player mockPlayer = mock(Player.class);
+        Wall mockWall = mock(Wall.class);
+        when(mockWall.getPosition()).thenReturn(new Position(1, 1));
+        Wall wall1 = new Wall(1,2);
+        Wall wall2 = new Wall(1,3);
+        Wall wall3 = new Wall(1,4);
+        Wall wall4 = new Wall(1,5);
+
+        ArrayList<Wall> walls = new ArrayList<>();
+        walls.add(wall1);
+        walls.add(wall2);
+        walls.add(wall3);
+        walls.add(wall4);
+
+        when(mockfield.getWalls()).thenReturn(walls);
+
+        playerController.breakWalls(mockWall, "UP");
+
+        verify(mockfield, times(0)).getWalls();
+    }
+
+    @Test
+    void testBreakWallsLeft() {
+        Field mockfield = mock(Field.class);
+        Player mockPlayer = mock(Player.class);
+        Wall mockWall = mock(Wall.class);
+        when(mockWall.getPosition()).thenReturn(new Position(1, 1));
+        Wall wall1 = new Wall(2,1);
+        Wall wall2 = new Wall(3,1);
+        Wall wall3 = new Wall(4,1);
+        Wall wall4 = new Wall(5,1);
+
+        ArrayList<Wall> walls = new ArrayList<>();
+        walls.add(wall1);
+        walls.add(wall2);
+        walls.add(wall3);
+        walls.add(wall4);
+
+        when(mockfield.getWalls()).thenReturn(walls);
+
+        playerController.breakWalls(mockWall, "LEFT");
+
+        verify(mockfield, times(0)).getWalls();
+    }
+
+    @Test
+    void testBreakWallsRight() {
+        Field mockfield = mock(Field.class);
+        Player mockPlayer = mock(Player.class);
+        Wall mockWall = mock(Wall.class);
+        when(mockWall.getPosition()).thenReturn(new Position(1, 1));
+        Wall wall1 = new Wall(0,1);
+        Wall wall2 = new Wall(0,1);
+        Wall wall3 = new Wall(0,1);
+        Wall wall4 = new Wall(0,1);
+
+        ArrayList<Wall> walls = new ArrayList<>();
+        walls.add(wall1);
+        walls.add(wall2);
+        walls.add(wall3);
+        walls.add(wall4);
+
+        when(mockfield.getWalls()).thenReturn(walls);
+
+        playerController.breakWalls(mockWall, "RIGHT");
+
+        verify(mockfield, times(0)).getWalls();
+    }
+
+    @Test
+    void testBreakWallsDown() {
+        Field mockfield = mock(Field.class);
+        Player mockPlayer = mock(Player.class);
+        Wall mockWall = mock(Wall.class);
+        when(mockWall.getPosition()).thenReturn(new Position(1, 1));
+        Wall wall1 = new Wall(1,0);
+        Wall wall2 = new Wall(1,0);
+        Wall wall3 = new Wall(1,0);
+        Wall wall4 = new Wall(1,0);
+
+        ArrayList<Wall> walls = new ArrayList<>();
+        walls.add(wall1);
+        walls.add(wall2);
+        walls.add(wall3);
+        walls.add(wall4);
+
+        when(mockfield.getWalls()).thenReturn(walls);
+
+        playerController.breakWalls(mockWall, "DOWN");
+
+        verify(mockfield, times(0)).getWalls();
+    }
+    @Test
+    void testBreakWallsInvalidDirection() {
+        Field mockfield = mock(Field.class);
+        Player mockPlayer = mock(Player.class);
+        Wall mockWall = mock(Wall.class);
+        when(mockWall.getPosition()).thenReturn(new Position(1, 1));
+        Wall wall1 = new Wall(2,1);
+        Wall wall2 = new Wall(3,1);
+        Wall wall3 = new Wall(4,1);
+        Wall wall4 = new Wall(5,1);
+
+        ArrayList<Wall> walls = new ArrayList<>();
+        walls.add(wall1);
+        walls.add(wall2);
+        walls.add(wall3);
+        walls.add(wall4);
+
+        when(mockfield.getWalls()).thenReturn(walls);
+
+        playerController.breakWalls(mockWall, "INVALID_DIRECTION");
+
+        verify(mockfield, never()).getWalls();
     }
 }

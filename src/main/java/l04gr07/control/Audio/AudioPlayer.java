@@ -1,4 +1,4 @@
-package l04gr07.control;
+package l04gr07.control.Audio;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -26,19 +26,4 @@ public class AudioPlayer {
         fc.setValue(-5.0f);
         clip.start();
     }
-
-    public void stop() {
-        clip.stop();
-    }
-
-    public void volUp() {
-        if (fc.getValue() < 4.206) fc.setValue(fc.getValue() + 2.0f);
-    }
-
-    public void volDown() {
-        if (fc.getValue() > -78.0) fc.setValue(fc.getValue() -2.0f);
-    }
-
-
-
 }
