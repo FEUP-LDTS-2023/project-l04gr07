@@ -1,11 +1,9 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Menu.MainMenuModel;
-import l04gr07.states.DifficultyState;
-import l04gr07.states.GameState;
-import l04gr07.states.InstructionState;
-import l04gr07.states.MainMenuState;
+import l04gr07.states.*;
 
 import java.awt.*;
 import java.io.IOException;
@@ -14,7 +12,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class MainMenuController extends Controller implements Control{
-    private long lastMovement=0;
     private final MainMenuModel mainMenuModel;
     private MainMenuState mainMenuState;
 
@@ -25,23 +22,22 @@ public class MainMenuController extends Controller implements Control{
     }
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("PROCESSING KEYS");
         switch(key.getKeyType()){
             case ArrowUp -> mainMenuModel.previousOption();
             case ArrowDown -> mainMenuModel.nextOption();
             case Enter -> {
-                System.out.println("ENTER");
                 if (mainMenuModel.isSelected(2)) {exit(0);break;}
                 if (mainMenuModel.isSelected(1)) {setControllerState(new InstructionState());}
                 if (mainMenuModel.isSelected(0)){
-                    mainMenuState.getGUI().close();mainMenuState.stopRunning();setControllerState(new DifficultyState());}
+                    mainMenuState.getGUI().close();setControllerState(new DifficultyState());}
 
             }
             case Character -> {
-                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
-                    exit(0);
+                if (key.getCharacter() == 'q' || key.getCharacter() == 'Q'){
+                   mainMenuState.getGUI().close();exit(0);
+                }
             }
+            default -> {break;}
         }
-        System.out.println(mainMenuModel.getCurrentOption());
     }
 }

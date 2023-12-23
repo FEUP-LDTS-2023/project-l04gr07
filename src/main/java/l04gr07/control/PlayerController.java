@@ -6,13 +6,9 @@ import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.IceShot;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.Wall;
-import l04gr07.model.Game.GameModel;
-import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.model.Position;
 import l04gr07.states.GameOverState;
 import l04gr07.states.GameState;
-import l04gr07.states.InstructionState;
-import l04gr07.states.MainMenuState;
 
 import java.awt.*;
 import java.io.IOException;
@@ -23,59 +19,42 @@ import java.util.List;
 import static java.lang.System.exit;
 
 public class PlayerController extends Controller implements Control{
-    private final GameModel gameModel;
     private GameState gameState;
     private Field field;
-    private long lastMovement=0;
     private Boolean isHugeIceCream = false;
+
 
     private GameController gameController;
     public PlayerController(Field field, GameController gameController){
         this.field = field;
         this.gameController = gameController;
         this.gameState = this.gameController.getGameState();
-        this.gameModel = this.gameController.getGameState().getModel();
-
-/*
-    public PlayerController(Field field, GameModel gameModel, GameState gameState){
-        this.field = field;
-        this.gameModel=gameModel;
-        this.gameState=gameState;
-        */
-
     }
-   /* public void MoveUp(){
-        for (IceShot iceShot: field.getIceShot()) {
-            System.out.println("oi");
-            gameController.randomIceShot(currentTimeMillis());
-            }
-    }*/
-
 
     public boolean canPlayerMove(Position position) throws IOException, URISyntaxException, FontFormatException {
         if ((position.getx() < 0) || (position.getx() > field.getWidth() - 1)) return false;
         if ((position.gety() > field.getHeight() - 1) || (position.gety() < 0)) return false;
         for (Wall wall : field.getWalls()) {
-            if (wall.getPosition().equals(position)) {
+            if (wall.getPosition().equal(position)) {
                 return false;
             }
         }
         for(Enemy enemy: field.getEnemies()){
-            if(enemy.getPosition().equals(position)){
-                gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
+            if(enemy.getPosition().equal(position)){
+                gameState.getGUI().close(); setControllerState(new GameOverState());
             }
         }
         return true;
     }
 
 
-    private void movePlayer(Player player, Position position) throws IOException, URISyntaxException, FontFormatException {
+    public void movePlayer(Player player, Position position) throws IOException, URISyntaxException, FontFormatException {
         if (canPlayerMove(position)) {
             player.setPosition(position);
         }
         for(Enemy enemy: field.getEnemies()){
-            if(enemy.getPosition().equals(position)){
-                gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
+            if(enemy.getPosition().equal(position)){
+                gameState.getGUI().close(); setControllerState(new GameOverState());
             }
         }
     }
@@ -113,13 +92,11 @@ public class PlayerController extends Controller implements Control{
                     }
                     break;
                 }
-
-
             }
         }
     }
 
-    private Boolean createWalls(Player player){
+    public Boolean createWalls(Player player){
         String direction = player.getLastDirection();
         Position playerPos = player.getPosition();
         switch(direction){
@@ -184,9 +161,7 @@ public class PlayerController extends Controller implements Control{
     }
 
 
-
-
-    private void breakWalls(Wall wall, String direction){
+    public void breakWalls(Wall wall, String direction){
         Position wallPos = wall.getPosition();
         List<Wall> wallsThatDontBreak = new ArrayList<>();
 
@@ -261,6 +236,7 @@ public class PlayerController extends Controller implements Control{
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         switch (key.getKeyType()) {
             case Enter:{
+                AudioController.getInstance().playAudio("./src/main/resources/IceCreateBreak.wav");
                 if (!isHugeIceCream){iceWall(field.getPlayer2());break;}
                 else{iceWall(field.getPlayer1());}
             break;}
@@ -270,11 +246,9 @@ public class PlayerController extends Controller implements Control{
                     field.getPlayer2().setLastDirection("UP");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveUp());}
                 else {
+                    AudioController.getInstance().playAudio("./src/main/resources/IceShot.wav");
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()-1,"UP");
-                   // field.getIceShot().add(iceshot);
                     field.setIceshot(iceshot);
-                    //System.out.println("upi");
-                   //gameController.randomIceShot("UP");
                 }
                 break;}
             case ArrowDown: {
@@ -282,43 +256,38 @@ public class PlayerController extends Controller implements Control{
                     field.getPlayer2().setLastDirection("DOWN");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveDown());}
                 else {
+                    AudioController.getInstance().playAudio("./src/main/resources/IceShot.wav");
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx(), field.getPlayer1().getPosition().gety()+1,"DOWN");
-                   // field.getIceShot().add(iceshot);
                     field.setIceshot(iceshot);
-                    //iceshot.MoveDown();
                 }
                 break;}
-            //else : shoot down
             case ArrowLeft: {
                 if (!isHugeIceCream){
                     field.getPlayer2().setLastDirection("LEFT");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveLeft());}
                 else {
+                    AudioController.getInstance().playAudio("./src/main/resources/IceShot.wav");
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()-1, field.getPlayer1().getPosition().gety(),"LEFT");
-                    //field.getIceShot().add(iceshot);
                     field.setIceshot(iceshot);
-                    //iceshot.MoveLeft();
                 }
                 break;}
-            //else : shoot left
             case ArrowRight: {
                 if (!isHugeIceCream){
                     field.getPlayer2().setLastDirection("RIGHT");
                     movePlayer(field.getPlayer2(), field.getPlayer2().moveRight());}
                 else {
+                    AudioController.getInstance().playAudio("./src/main/resources/IceShot.wav");
                     IceShot iceshot = new IceShot(field.getPlayer1().getPosition().getx()+1, field.getPlayer1().getPosition().gety(),"RIGHT");
-                  //  field.getIceShot().add(iceshot);
                     field.setIceshot(iceshot);
-                   // iceshot.MoveRight();
                 }
                 break;}
-            //else : shoot right
 
             case Character: {
                 char character = key.getCharacter();
                 switch (character) {
                     case 'E':
                     case 'e': {
+                        AudioController.getInstance().playAudio("./src/main/resources/IceCreateBreak.wav");
                         iceWall(field.getPlayer1());break;}
                     case 'W':
                     case 'w': {
@@ -338,10 +307,12 @@ public class PlayerController extends Controller implements Control{
                         movePlayer(field.getPlayer1(), field.getPlayer1().moveRight());break;}
                     case 'Q':
                     case 'q': {
-                        exit(0);break;}
+                            gameState.getGUI().close();exit(0);
+                    }
                 }
                 break;
             }
+            default: {break;}
 
         }
 
@@ -352,4 +323,7 @@ public class PlayerController extends Controller implements Control{
     }
 
 
+    public boolean getHugeIceCream() {
+        return isHugeIceCream;
+    }
 }

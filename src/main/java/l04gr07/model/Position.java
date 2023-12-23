@@ -13,17 +13,10 @@ public class Position {
         return x;
     }
 
-    public void setx(int x) {
-        this.x = x;
-    }
-
     public int gety() {
         return y;
     }
 
-    public void sety(int y) {
-        this.y = y;
-    }
     public Position getLeft() {
         return new Position(x - 1, y);
     }
@@ -53,11 +46,10 @@ public class Position {
                 return getLeft();
         }
     }
-    public boolean equals(Object o) {
+
+    public boolean equal(Position o) {
         if (this == o) return true;
         if (o == null) return false;
-        if (getClass() != o.getClass()) return false;
-        Position p = (Position) o;
-        return x == p.getx() && y == p.gety();
+        return x == o.getx() && y == o.gety();
     }
 }

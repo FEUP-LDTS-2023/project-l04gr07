@@ -1,21 +1,24 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Menu.InstructionsModel;
-import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.states.InstructionState;
 import l04gr07.states.MainMenuState;
 
-public class InstructionController implements Control{
-    private final InstructionsModel instructionsModel;
-    private InstructionState instructionState;
-    public InstructionController(InstructionsModel instructionsModel, InstructionState instructionState) {
-        this.instructionsModel = instructionsModel;
-        this.instructionState=instructionState;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
+public class InstructionController extends Controller implements Control{
+    private InstructionState instructionState;
+    public InstructionController( InstructionState instructionState) {
+        this.instructionState=instructionState;
     }
     @Override
-    public void processKey(KeyStroke key) {
-
+    public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
+            instructionState.getGUI().getScreen().close();setControllerState(new MainMenuState());
+        }
     }
 }

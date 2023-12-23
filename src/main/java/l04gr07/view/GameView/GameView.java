@@ -48,8 +48,6 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
         graphics.setForegroundColor(TextColor.Factory.fromString("#a6bfe1"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(55, 23), ' ');
         for(PlayerViewer player : playerViewer){player.draw();}
-        //player2Viewer.draw();
-        //player1Viewer.draw();
         if(drawIceCube){if( gameModel.getField().isEmpty(iceCubeViewer.getIceCube().getPosition())){iceCubeViewer.draw();}}
         if(gameModel.getField().getPlayers().size()!=playerViewer.size()) {
             playerViewer = new ArrayList<>();
@@ -112,14 +110,12 @@ public class GameView extends Viewer<GameModel> implements IceCubeObserver {
 
     private void create(){
         if (gameModel.getField().getPlayers().size()==2) {
-            //System.out.println("GAMEVIEW CREATION not HUGEICECREAM");
             player1Viewer = new Player1View(gameModel.getField().getPlayer1(), graphics);
             player2Viewer = new Player2View(gameModel.getField().getPlayer2(), graphics);
             playerViewer.add(player1Viewer);
             playerViewer.add(player2Viewer);
         }
         else{
-            //System.out.println("GAMEVIEW CREATION HUGEICECREAM");
             playerViewer.clear();
             playerViewer.add(new HugeIceCreamView(gameModel.getField().getPlayers().get(0), graphics));
         }

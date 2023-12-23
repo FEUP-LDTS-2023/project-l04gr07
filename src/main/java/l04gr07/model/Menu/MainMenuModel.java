@@ -35,4 +35,7 @@ public class MainMenuModel implements Model {
         running = b;
     }
 
+    public boolean GetRunning() {
+        return running;
+    }
 }

@@ -1,7 +1,8 @@
 plugins {
     id 'java'
-    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'info.solidsoft.pitest' version '1.15.0'
     id 'application'
+   //id 'org.kordamp.gradle.errorprone' version '0.53.0'
 }
 
 group = 'l04gr07'
@@ -12,7 +13,10 @@ repositories {
     mavenCentral()
 }
 
-pitest {junit5PluginVersion = '1.0.0'}
+pitest {junit5PluginVersion = '1.2.0'
+    targetClasses = ['l04gr07.control.*','l04gr07.model.*','l04gr07.view.*']
+}
+
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')

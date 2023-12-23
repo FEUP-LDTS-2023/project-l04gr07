@@ -13,6 +13,7 @@ public class FruitView extends ElementsViewer{
     }
     public Fruit getFruit() {return fruit;}
 
+    @Override
     public void draw() {
         graphics.setForegroundColor(TextColor.Factory.fromString("#800080"));
         graphics.setBackgroundColor(TextColor.Factory.fromString("#a6bfe1"));

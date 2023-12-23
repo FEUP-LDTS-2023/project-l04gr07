@@ -1,6 +1,7 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Game.Difficulty.EasyDifficulty;
 import l04gr07.model.Game.Difficulty.HardDifficulty;
 import l04gr07.model.Game.Difficulty.MediumDifficulty;
@@ -18,7 +19,6 @@ import java.net.URISyntaxException;
 import static java.lang.System.exit;
 
 public class DifficultyController extends Controller implements Control{
-    private long lastMovement=0;
     private final DifficultyModel difficultyModel;
     private DifficultyState difficultyState;
 
@@ -29,24 +29,24 @@ public class DifficultyController extends Controller implements Control{
     }
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
-        System.out.println("PROCESSING KEYS");
         switch(key.getKeyType()){
             case ArrowUp -> difficultyModel.previousOption();
             case ArrowDown -> difficultyModel.nextOption();
             case Enter -> {
-                System.out.println("ENTER");
-                if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new MainMenuState());}
+                if (difficultyModel.isSelected(3)) {difficultyState.getGUI().close(); setControllerState(new MainMenuState());}
                 if (difficultyModel.isSelected(2)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new HardDifficulty()));}
+                    difficultyState.getGUI().close();setControllerState(new GameState(new HardDifficulty()));}
                 if (difficultyModel.isSelected(1)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new MediumDifficulty()));}
+                    difficultyState.getGUI().close(); setControllerState(new GameState(new MediumDifficulty()));}
                 if (difficultyModel.isSelected(0)) {
-                    difficultyState.getGUI().close(); difficultyState.stopRunning();setControllerState(new GameState(new EasyDifficulty()));}
+                    difficultyState.getGUI().close(); setControllerState(new GameState(new EasyDifficulty()));}
             }
             case Character -> {
-                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
-                    exit(0);
+                if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
+                    difficultyState.getGUI().close();exit(0);
+                }
             }
+            default -> {break;}
         }
     }
 }

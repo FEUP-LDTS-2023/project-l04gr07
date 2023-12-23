@@ -39,10 +39,10 @@ As classes podem ser encontradas nos ficheiros seguintes:
 - [PlayerState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/model/Game/FieldElements/PlayerState/PlayerState.java)
 
 <p align="center" justify="center">
-  <img src="StatePattern.png"/>
+  <img src="FinalDeliveryUMLs/PlayerStatesUML.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. State Pattern Pattern UML Diagram</i></b>
+  <b><i>Fig 1.  State Pattern UML Diagram</i></b>
 </p>
 
 #### Consequences:
@@ -60,13 +60,22 @@ Tendo em consideração este problema, achamos que seria mais adequado aplicar n
 #### Implementation:
 As classes podem ser encontradas nos ficheiros seguintes:
 
--[State] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/State.java)
--[GameState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/GameState.java)
--[InstructionState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/InstructionState.java)
--[MainMenuState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/MainMenuState.java)
--[WinState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/WinState.java)
--[DifficultyState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/DifficultyState.java)
--[GameOverState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/GameOverState.java)
+- [State] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/State.java)
+- [GameState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/GameState.java)
+- [InstructionState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/InstructionState.java)
+- [MainMenuState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/MainMenuState.java)
+- [WinState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/WinState.java)
+- [DifficultyState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/DifficultyState.java)
+- [GameOverState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/GameOverState.java)
+
+<p align="center" justify="center">
+  <img src="FinalDeliveryUMLs/statesUML.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 2. State Pattern  UML Diagram</i></b>
+</p>
+
+
 
 ### Ice Cube só aparece no Field quando todas as Frutas são coletadas
 #### Problem in Context:
@@ -84,14 +93,14 @@ As classes podem ser encontradas nos ficheiros seguintes:
   <img src="NotifyIceCube.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 2. Notify Ice Cube</i></b>
+  <b><i>Fig 3. Notify Ice Cube</i></b>
 </p>
 
 <p align="center" justify="center">
-  <img src="SpawnIceCube.png"/>
+  <img src="FinalDeliveryUMLs/SpawnIceCube.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 3. Spawn Ice Cube</i></b>
+  <b><i>Fig 4. Spawn Ice Cube</i></b>
 </p>
 
 #### Consequences:
@@ -109,10 +118,20 @@ Decidimos então que a aplicação do Strategy pattern seria a solução mais ad
 
 #### Implementation:
 As classes podem ser encontradas nos ficheiros seguintes:
--[DifficultyStrategy] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/DifficultyStrategy.java)
--[EasyDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/EasyDifficulty.java)
--[MediumDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/MediumDifficulty.java)
--[HardDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/HardDifficulty.java)
+
+- [DifficultyStrategy] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/DifficultyStrategy.java)
+- [EasyDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/EasyDifficulty.java)
+- [MediumDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/MediumDifficulty.java)
+- [HardDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/HardDifficulty.java)
+
+
+
+<p align="center" justify="center">
+  <img src="FinalDeliveryUMLs/DifficultyUML.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 5. Strategy Pattern  UML Diagram</i></b>
+</p>
 
 
 ### Diferentes sons são reproduzidos com base nas ações dos jogadores
@@ -147,10 +166,10 @@ As implementação pode ser encontradas nos ficheiros dos diretórios seguintes:
 - [control] (https://github.com/FEUP-LDTS-2023/project-l04gr07/tree/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/control)
 
 <p align="center" justify="center">
-  <img src="mvc.png"/>
+  <img src="FinalDeliveryUMLs/mvc.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 4. Model, Controller and Viewer pattern design</i></b>
+  <b><i>Fig 6. Model, Controller and Viewer pattern design</i></b>
 </p>
 
 #### Consequences:
@@ -160,7 +179,7 @@ A figura que representa o diagrama UML está presente no ficheiro e na figura se
 https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/de1047b29a661b3ef1659d33c4613df84d97ed51/docs/UML.png
 
 <p align="center" justify="center">
-  <img src="UML.png"/>
+  <img src="IntermediateDeliveryUML.png"/>
 </p>
 
 ## Known Code Smells
@@ -185,7 +204,7 @@ FruitView, IceCubeView e IceShotView são classes que não fazem muito e irão i
 
 https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/docs/TestCoverage.png
 <p align="center" justify="center">
-  <img src="TestCoverage.png"/>
+  <img src="TestCoverageIntermediateDelivery.png"/>
 </p>
 
 ### Link to mutation testing report

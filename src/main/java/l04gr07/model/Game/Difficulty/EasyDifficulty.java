@@ -6,6 +6,8 @@ import l04gr07.model.Game.FieldElements.IceCube;
 import l04gr07.model.Position;
 
 public class EasyDifficulty implements DifficultyStrategy{
+
+    @Override
     public Field createField(){
         Position player1Pos = new Position(30,8);
         Position player2Pos = new Position(30,15);

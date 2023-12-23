@@ -1,6 +1,5 @@
 package l04gr07.model.Game.Field;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import l04gr07.model.Game.FieldElements.*;
 import l04gr07.model.Game.FieldElements.PlayerState.PlayerState;
 import l04gr07.model.Position;
@@ -14,12 +13,8 @@ import java.util.List;
 public class Field {
     private int height;
     private int width;
-    private Position position;
-    private TextGraphics graphics;
     private PlayerState playerState;
     private List<Player> players;
-    //private Player1 player1 = new Player1(10, 10);
-    //private Player2 player2 = new Player2(15, 15);
     private List<Wall> walls =new ArrayList<>();
     private List<Fruit> fruits =new ArrayList<>();
     private List<Enemy> enemies=new ArrayList<>();
@@ -44,39 +39,19 @@ public class Field {
     public long getSpeed(){return speed;}
     public void setIceCube(IceCube iceCube){this.iceCube = iceCube;}
     public void setPlayers(List<Player> players){
-        System.out.println("SET PLAYERS");
-        System.out.println(players.size());
         this.players = players;}
     public List<Wall> getWalls(){return walls;}
     public void setWalls(List<Wall> walls){this.walls = walls;}
 
     public List<Fruit> getFruits(){return fruits;}
     public List<Enemy> getEnemies(){return enemies;}
-
-    public TextGraphics getGraphics(){return graphics;}
     public IceShot getIceShot() {
-        //  System.out.println("iceshot");
         return iceshot;
     }
 
     public void setIceshot(IceShot iceshot) {
         this.iceshot = iceshot;
     }
-
-    public void setPosition(Position position) {
-        this.position=position;
-    }
-
-    /*
-    public Player_ getPlayer1() {
-        return player1;
-    }
-    public Player_ getPlayer2() {
-        return player2;
-    }
-
-     */
-
 
     public Player getPlayer1() {
         return players.get(0);
@@ -103,44 +78,41 @@ public class Field {
 
     public boolean isEmpty(Position position) {
         for (Wall wall : walls)
-            if (wall.getPosition().equals(position))
+            if (wall.getPosition().equal(position))
                 return false;
         return true;
     }
     public boolean isPlayer(Position position) {
         for (Player player : players)
-            if (player.getPosition().equals(position))
+            if (player.getPosition().equal(position))
                 return true;
         return false;
     }
 
     public boolean isFruit(Position position) {
         for (Fruit fruit:fruits)
-            if (fruit.getPosition().equals(position))
+            if (fruit.getPosition().equal(position))
                 return true;
         return false;
     }
     public boolean isIceCube(Position position) {
-            if (iceCube.getPosition().equals(position))
+            if (iceCube.getPosition().equal(position))
                 return true;
         return false;
     }
 
     public Enemy isMonster(Position position) {
         for (Enemy monster : enemies)
-            if (monster.getPosition().equals(position))
+            if (monster.getPosition().equal(position))
                 return monster;
         return null;
     }
-    /*
-    public boolean isMonster(Position position) {
-        for (Enemy monster : enemies)
-            if (monster.getPosition().equals(position))
-                return true;
-        return false;
+
+    public void setFruit(List<Fruit> fruit) {
+        this.fruits=fruit;
     }
 
- */
-
+    public void setEnemy(List<Enemy> enemies) {
+        this.enemies=enemies;
+    }
 }
-

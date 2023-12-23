@@ -38,26 +38,22 @@ public class ReadMap {
         try {
             char[][] map = readMapFromFile(filename);
             return drawMap(map);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (FontFormatException e) {
-            throw new RuntimeException(e);
         }
-        return null;
+        catch (IOException | URISyntaxException | FontFormatException e) {
+            throw new RuntimeException("Failed to read the map from file", e);
+        }
     }
 
-    private char[][] readMapFromFile(String fileName) throws IOException {
-        URL resource = ReadMap.class.getClassLoader().getResource(fileName);
+    private char[][] readMapFromFile(String filename) throws IOException {
+        URL resource = ReadMap.class.getClassLoader().getResource(filename);
 
         if (resource == null) {
-            throw new IOException("Resource not found: " + fileName);
+            throw new IOException("Resource not found: " + filename);
         }
 
         try {
             String decodedPath = URLDecoder.decode(resource.getFile(), StandardCharsets.UTF_8.toString());
-            BufferedReader reader = new BufferedReader(new FileReader(decodedPath));
+            BufferedReader reader = new BufferedReader(new FileReader(decodedPath,StandardCharsets.UTF_8));
 
             String line;
             int rows = 0;
@@ -71,7 +67,7 @@ public class ReadMap {
 
             char[][] map = new char[rows][cols];
 
-            reader = new BufferedReader(new FileReader(decodedPath));
+            reader = new BufferedReader(new FileReader(decodedPath,StandardCharsets.UTF_8));
             int row = 0;
             while ((line = reader.readLine()) != null) {
                 for (int col = 0; col < line.length(); col++) {
@@ -89,7 +85,6 @@ public class ReadMap {
     }
 
     public Field drawMap(char[][] map) throws IOException, URISyntaxException, FontFormatException {
-        //Field field = new Field(55, 23);
         Field field = new Field(55, 23,new NormalPlayerState(player1Pos,player2Pos), speed);
         List<Wall> walls = field.getWalls();
         List<Fruit> fruits = field.getFruits();

@@ -1,47 +1,41 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
 import l04gr07.model.Game.FieldElements.IceShot;
 import l04gr07.model.Game.FieldElements.Player;
 import l04gr07.model.Game.FieldElements.PlayerState.HugeIceCreamState;
-import l04gr07.model.Game.FieldElements.PlayerState.PlayerState;
 import l04gr07.model.Game.GameModel;
 import l04gr07.model.Position;
 import l04gr07.states.GameOverState;
 import l04gr07.states.GameState;
-import l04gr07.states.MainMenuState;
 import l04gr07.states.WinState;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static java.lang.System.exit;
+
 
 public class GameController extends Controller implements Control {
-    private Screen screen = null;
-    //private Field field = new Field(25, 25);
     private Field field;
     private PlayerController playerController;
     private GameState gameState;
-    private IceShot iceShot;
     private long time;
     private long lastMovement=0;
     private long lastMovementIce = 0;
-    private PlayerState playerState;
     protected Boolean isHugeIceCream = false;
     protected Boolean iceCube = false;
-    private final GameModel gameModel;
+
 
 
     public GameController(GameState gameState, GameModel gameModel, long time) {
         this.gameState = gameState;
-        this.gameModel=gameModel;
         this.field = gameState.getModel().getField();
-        this.playerState = field.getPlayerState();
 
         this.playerController = new PlayerController(field, this);
         this.time=time;
@@ -49,28 +43,23 @@ public class GameController extends Controller implements Control {
 
     public GameState getGameState() {
         return gameState;
-       // this.playerController = new PlayerController(field, gameState.getModel(), gameState);
-
     }
 
     public void setTime(long time){
-        //System.out.println("TIME UPDATED");
         this.time = time;}
 
-/*
-            if (time - lastMovement > field.getSpeed()) {
-                for (Enemy enemy : field.getEnemies())
-                    moveEnemy(enemy, enemy.getPosition().getRandomPosition());
-                lastMovement = time;
+    public long getTime() {
+        return time;
+    }
 
- */
+    public long getLastMovementIce() {
+        return lastMovementIce;
+    }
 
     public void randomIceShot(IceShot iceShot) throws IOException, URISyntaxException, FontFormatException {
         String direction = iceShot.getDirection();
-      //  System.out.println("Random iceshot");
         time=System.currentTimeMillis();
         if (time - lastMovementIce > 200) {
-           // for (IceShot iceShot : field.getIceShot())
                 moveIceShot(iceShot, direction);
             lastMovementIce = time;
         }
@@ -98,13 +87,11 @@ public class GameController extends Controller implements Control {
             iceShot.setposition(nextPosition);
         }
         if(field.isMonster(nextPosition)!=null) {
-            System.out.println(field.getEnemies().size());
-            System.out.println("Monster");
+            AudioController.getInstance().playAudio("./src/main/resources/KillMonster.wav");
             field.getEnemies().remove(field.isMonster(nextPosition));
             if(field.getEnemies().size()==0){
-                gameState.getGUI().close();gameState.stopRunning();setControllerState(new WinState());
+                gameState.getGUI().close(); setControllerState(new WinState());
             }
-            System.out.println(field.getEnemies().size());
         }
         if(!field.isEmpty(nextPosition)){
             iceShot.setposition(new Position(-1,-1));}
@@ -123,25 +110,27 @@ public class GameController extends Controller implements Control {
         if (field.isEmpty(position)){
             enemy.setposition(position);
             for(Player player: field.getPlayers()){
-                if(player.getPosition().equals(position)){
-                    gameState.getGUI().close(); gameState.stopRunning();setControllerState(new GameOverState());
+                if(player.getPosition().equal(position)){
+                    gameState.getGUI().close(); setControllerState(new GameOverState());
                 }
             }
         }
     }
 
     public void retrieveFruits() {
-        if(field.getFruits().size() == 0){iceCube = true;notifyIceCubeObserver();}
+        if(field.getFruits().isEmpty()){iceCube = true;notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
-            if ((field.getPlayer1().getPosition().equals(fruit.getposition())) || (field.getPlayer2().getPosition().equals(fruit.getposition()))) {
+            if (field.getPlayer1().getPosition().equal(fruit.getposition()) || field.getPlayer2().getPosition().equal(fruit.getposition())) {
+                AudioController.getInstance().playAudio("./src/main/resources/CollectedFruit.wav");
                 field.getFruits().remove(fruit);
                 break;
             }
     }
     public void retrieveIceCube() throws IOException, URISyntaxException, FontFormatException {
-            if ((field.getPlayer1().getPosition().equals(field.getIceCube().getposition())) || (field.getPlayer2().getPosition().equals(field.getIceCube().getposition()))) {
+            if (field.getPlayer1().getPosition().equal(field.getIceCube().getposition()) || field.getPlayer2().getPosition().equal(field.getIceCube().getposition())) {
+                AudioController.getInstance().playAudio("./src/main/resources/getIceCube.wav");
                 Position position;
-                if(field.getPlayer1().getPosition().equals(field.getIceCube().getposition())){position = field.getPlayer1().getPosition();}
+                if(field.getPlayer1().getPosition().equal(field.getIceCube().getposition())){position = field.getPlayer1().getPosition();}
                 else{position = field.getPlayer2().getPosition();}
                 iceCube = false;notifyIceCubeObserver();
                 isHugeIceCream = true;playerController.setHugeIceCream(true);
@@ -159,12 +148,13 @@ public class GameController extends Controller implements Control {
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
         playerController.processKey(key);
-
         if(!iceCube && field.getIceCube()!=null && !isHugeIceCream) retrieveFruits();
         if(iceCube && !isHugeIceCream){retrieveIceCube();}
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
+            gameState.getGUI().close();exit(0);
+        }
     }
     public void IceShot() throws IOException, URISyntaxException, FontFormatException {
-        if(field.getIceShot().getDirection()=="NO"){iceShot= new IceShot(-1,-1,"NO");}
         randomIceShot(field.getIceShot());
     }
 }

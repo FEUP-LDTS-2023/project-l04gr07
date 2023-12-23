@@ -26,12 +26,14 @@ public abstract class Viewer <T extends Model> implements IceCubeObserver {
 
     @Override
     public void spawnIceCube() {
-        System.out.println("SPAWNED ICE CUBE");
         drawIceCube = true;
     }
     @Override
     public void deSpawnIceCube() {
-        System.out.println("DESPAWNED ICE CUBE");
         drawIceCube = false;
+    }
+
+    public Boolean getDrawIceCube() {
+        return drawIceCube;
     }
 }
