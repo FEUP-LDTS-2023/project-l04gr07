@@ -18,9 +18,9 @@ import static org.mockito.Mockito.*;
 public class GameOverControllerTest {
     GameOverState state=new GameOverState();
     LanternGUI gui=mock(LanternGUI.class);
+
     @Test
     public void testProcessKeyCharacter() throws IOException, URISyntaxException, FontFormatException {
-        gui.createGameOverScreen(10,12);
         state.setGUI(gui);
         verify(gui, never()).close();
         KeyStroke key=KeyStroke.fromString("a");
