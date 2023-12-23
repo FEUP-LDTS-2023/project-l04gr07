@@ -1,6 +1,7 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Game.Difficulty.EasyDifficulty;
 import l04gr07.model.Game.Difficulty.HardDifficulty;
 import l04gr07.model.Game.Difficulty.MediumDifficulty;
@@ -41,8 +42,9 @@ public class DifficultyController extends Controller implements Control{
                     difficultyState.getGUI().close(); setControllerState(new GameState(new EasyDifficulty()));}
             }
             case Character -> {
-                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
-                    exit(0);
+                if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
+                    difficultyState.getGUI().close();exit(0);
+                }
             }
             default -> {break;}
         }

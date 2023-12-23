@@ -32,4 +32,8 @@ public abstract class Viewer <T extends Model> implements IceCubeObserver {
     public void deSpawnIceCube() {
         drawIceCube = false;
     }
+
+    public Boolean getDrawIceCube() {
+        return drawIceCube;
+    }
 }

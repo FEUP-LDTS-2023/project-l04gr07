@@ -1,4 +1,4 @@
-package l04gr07.view;
+package l04gr07.view.ElementsView;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;

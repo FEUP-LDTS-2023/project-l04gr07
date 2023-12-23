@@ -307,7 +307,8 @@ public class PlayerController extends Controller implements Control{
                         movePlayer(field.getPlayer1(), field.getPlayer1().moveRight());break;}
                     case 'Q':
                     case 'q': {
-                        exit(0);break;}
+                            gameState.getGUI().close();exit(0);
+                    }
                 }
                 break;
             }

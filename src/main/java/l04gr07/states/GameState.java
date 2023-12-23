@@ -25,9 +25,6 @@ public class GameState extends State {
     private GameController gameControl;
     private LanternGUI gui;
 
-
-    public GameState(){}
-
     public GameState(DifficultyStrategy difficulty) throws IOException {
         super();
         gameModel = new GameModel(difficulty);
@@ -71,12 +68,7 @@ public class GameState extends State {
             gameControl.IceShot();
             gameView.draw();
             KeyStroke key = gui.getScreen().pollInput();
-            if(key!=null){
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q' &&key.getCharacter() == 'Q'){
-                exit(0);gui.getScreen().close();
-            }
-            if (key.getKeyType() == KeyType.EOF){break;}
-                gameControl.processKey(key);}
+            if(key!=null){gameControl.processKey(key);}
 
             long elapsedTime = System.currentTimeMillis() - currentTime;
             long sleepTime = frameTime - elapsedTime;

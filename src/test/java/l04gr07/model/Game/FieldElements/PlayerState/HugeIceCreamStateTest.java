@@ -1,4 +1,4 @@
-package l04gr07.states;
+package l04gr07.model.Game.FieldElements.PlayerState;
 
 import l04gr07.control.PlayerController;
 import l04gr07.model.Game.FieldElements.Player;

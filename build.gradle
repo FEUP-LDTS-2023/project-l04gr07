@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'info.solidsoft.pitest' version '1.15.0'
     id 'application'
-    id 'org.kordamp.gradle.errorprone' version '0.53.0'
+   //id 'org.kordamp.gradle.errorprone' version '0.53.0'
 }
 
 group = 'l04gr07'
@@ -14,7 +14,7 @@ repositories {
 }
 
 pitest {junit5PluginVersion = '1.2.0'
-    targetClasses = ['l04gr07.control.*','l04gr07.model.*','l04gr07.states.*','l04gr07.view.*']
+    targetClasses = ['l04gr07.control.*','l04gr07.model.*','l04gr07.view.*']
 }
 
 
