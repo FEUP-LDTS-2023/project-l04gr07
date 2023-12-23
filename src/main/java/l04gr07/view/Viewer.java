@@ -20,7 +20,6 @@ public abstract class Viewer <T extends Model> implements IceCubeObserver {
        graphics=screen.newTextGraphics();
 
     }
-    public Screen getScreen(){return screen;}
 
     public abstract void draw() throws IOException;
 
