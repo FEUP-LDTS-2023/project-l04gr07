@@ -4,13 +4,10 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
 import l04gr07.control.InstructionController;
-import l04gr07.control.MainMenuController;
 import l04gr07.gui.LanternGUI;
 import l04gr07.model.Menu.InstructionsModel;
-import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.model.Model;
 import l04gr07.view.GameView.InstructionView;
-import l04gr07.view.GameView.MainMenuView;
 import l04gr07.view.Viewer;
 
 import java.awt.*;
@@ -29,7 +26,7 @@ public class InstructionState extends State{
         return instructionView;
     }
 
-    @Override
+   // @Override
     public Control getControl() {
         return instructionController;
     }
@@ -57,6 +54,10 @@ public class InstructionState extends State{
             KeyStroke key = gui.getScreen().readInput();
             instructionController.processKey(key);
         }
+    }
+
+    public void stopRunning() throws IOException {
+        gui.getScreen().close();
     }
 }
 

@@ -3,13 +3,10 @@ package l04gr07.states;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import l04gr07.control.Control;
-import l04gr07.control.MainMenuController;
 import l04gr07.control.WinController;
 import l04gr07.gui.LanternGUI;
-import l04gr07.model.Menu.MainMenuModel;
 import l04gr07.model.Menu.WinModel;
 import l04gr07.model.Model;
-import l04gr07.view.GameView.MainMenuView;
 import l04gr07.view.GameView.WinView;
 import l04gr07.view.Viewer;
 
@@ -29,7 +26,7 @@ public class WinState extends State{
     public Viewer getViewer() {
         return winView;
     }
-    @Override
+//    @Override
     public Control getControl() {
         return winControl;
     }
@@ -57,5 +54,9 @@ public class WinState extends State{
             KeyStroke key = gui.getScreen().readInput();
             winControl.processKey(key);
         }
+    }
+
+    public void stopRunning() throws IOException {
+        gui.getScreen().close();
     }
 }

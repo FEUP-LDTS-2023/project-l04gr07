@@ -25,9 +25,6 @@ public class GameState extends State {
     private GameController gameControl;
     private LanternGUI gui;
 
-
-    public GameState(){}
-
     public GameState(DifficultyStrategy difficulty) throws IOException {
         super();
         gameModel = new GameModel(difficulty);
@@ -39,7 +36,7 @@ public class GameState extends State {
         return gameView;
     }
 
-    @Override
+    //@Override
     public Control getControl() {
         return gameControl ;
     }

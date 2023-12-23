@@ -90,8 +90,10 @@ public class LanternGUI {
         return fontConfig;
     }
 
-
-    public void close() throws IOException {screen.close();}
+    public void close() throws IOException {
+        screen.close();
+        this.screen=null;
+    }
 
     public Screen getScreen() {
         return screen;
