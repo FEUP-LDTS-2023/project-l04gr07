@@ -19,7 +19,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/MainMenu.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Main Menu </i></b>
+  <b><i>Fig 1. Main Menu </i></b>
 </p>
 
 <br>
@@ -29,7 +29,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/InstructionsMenu.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Instructions Menu </i></b>
+  <b><i>Fig 2. Instructions Menu </i></b>
 </p>
 
 <br>
@@ -39,7 +39,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/DifficultyMenu.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Difficulty Menu </i></b>
+  <b><i>Fig 3. Difficulty Menu </i></b>
 </p>
 
 <br>
@@ -49,7 +49,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Menus/GameOver.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. GameOver Menu </i></b>
+  <b><i>Fig 4. GameOver Menu </i></b>
 </p>
 
 <br>
@@ -71,7 +71,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/Normal_gameplay.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. 2 Players State </i></b>
+  <b><i>Fig 6. 2 Players State </i></b>
 </p>
 
 <br>
@@ -81,7 +81,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/AllFruitsPickedUp_GetIceCube.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. All fruits collected Sate </i></b>
+  <b><i>Fig 7. All fruits collected Sate </i></b>
 </p>
 
 <br>
@@ -91,7 +91,7 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/HugeIceCream_gameplay.png"/>
 </p>
 <p align="center">  
-  <b><i>Fig 5. Huge Ice Cream State </i></b>
+  <b><i>Fig 8. Huge Ice Cream State </i></b>
 </p>
 
 <br>
