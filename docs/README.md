@@ -112,7 +112,7 @@ A figura que representa o diagrama UML está presente no ficheiro e na figura se
 https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/de1047b29a661b3ef1659d33c4613df84d97ed51/docs/UML.png
 
 <p align="center" justify="center">
-  <img src="UML.png"/>
+  <img src="IntermediateDeliveryUML.png"/>
 </p>
 
 ## Known Code Smells
@@ -137,7 +137,7 @@ FruitView, IceCubeView e IceShotView são classes que não fazem muito e irão i
 
 https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/docs/TestCoverage.png
 <p align="center" justify="center">
-  <img src="TestCoverage.png"/>
+  <img src="TestCoverageIntermediateDelivery.png"/>
 </p>
 
 ### Link to mutation testing report
