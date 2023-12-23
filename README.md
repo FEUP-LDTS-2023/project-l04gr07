@@ -133,7 +133,11 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/Normal_gameplay.png"/>
 </p>
 <p align="center">  
+<<<<<<< HEAD
   <b><i>Fig 12. Players State </i></b>
+=======
+  <b><i>Fig 6. 2 Players State </i></b>
+>>>>>>> 7ecc39872d04d1bbb209155a530ed54a34897e06
 </p>
 
 <br>
@@ -143,7 +147,11 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/AllFruitsPickedUp_GetIceCube.png"/>
 </p>
 <p align="center">  
+<<<<<<< HEAD
   <b><i>Fig 13. All fruits collected Sate </i></b>
+=======
+  <b><i>Fig 7. All fruits collected Sate </i></b>
+>>>>>>> 7ecc39872d04d1bbb209155a530ed54a34897e06
 </p>
 
 <br>
@@ -153,7 +161,11 @@ Os screenshots seguintes ilustram uma visão geral do jogo.
   <img src="docs/Mockups/HugeIceCream_gameplay.png"/>
 </p>
 <p align="center">  
+<<<<<<< HEAD
   <b><i>Fig 14. Huge Ice Cream State </i></b>
+=======
+  <b><i>Fig 8. Huge Ice Cream State </i></b>
+>>>>>>> 7ecc39872d04d1bbb209155a530ed54a34897e06
 </p>
 
 <br>
