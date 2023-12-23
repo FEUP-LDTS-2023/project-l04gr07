@@ -32,8 +32,7 @@ Para contornar este problema decidimos aplicar o State Pattern. Este pattern per
 
 #### Implementation:
 As classes podem ser encontradas nos ficheiros seguintes:
-- [Player1] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/model/Game/FieldElements/Player1.java)
-- [Player2] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/model/Game/FieldElements/Player2.java)
+- [Player] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/135b060b7f8a49a9d2ef27952b7d84fbcb9c71a6/src/main/java/l04gr07/model/Game/FieldElements/Player.java)
 - [HugeIceCreamState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/model/Game/FieldElements/PlayerState/HugeIceCreamState.java)
 - [NormalPlayerState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/model/Game/FieldElements/PlayerState/NormalPlayerState.java)
 - [PlayerState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/model/Game/FieldElements/PlayerState/PlayerState.java)
@@ -149,6 +148,14 @@ As implementações podem ser encontradas nas seguintes classes:
 - [GameController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/GameController.java)
 - [PlayerController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/PlayerController.java)
 
+<p align="center" justify="center">
+  <img src="FinalDeliveryUMLs/audioUML.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 6. Singleton Pattern  UML Diagram</i></b>
+</p>
+
+
 #### Consequences:
 Este pattern traz-nos vários benefícios tais como ter apenas um ponto de acesso a toda a lógica relacionada com o som que pode ser acedida de qualquer parte do código o que evita duplicações de código. Para além disso, torna-se mais simples adicionar novos métodos relacionados com o som e testar uma única instância controlada é mais simples e eficaz do que várias independentes.
 
@@ -169,7 +176,7 @@ As implementação pode ser encontradas nos ficheiros dos diretórios seguintes:
   <img src="FinalDeliveryUMLs/mvc.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 6. Model, Controller and Viewer pattern design</i></b>
+  <b><i>Fig 7. Model, Controller and Viewer pattern design</i></b>
 </p>
 
 #### Consequences:
@@ -179,7 +186,8 @@ A figura que representa o diagrama UML está presente no ficheiro e na figura se
 https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/de1047b29a661b3ef1659d33c4613df84d97ed51/docs/UML.png
 
 <p align="center" justify="center">
-  <img src="IntermediateDeliveryUML.png"/>
+  <img src="FinalDeliveryUMLs/finalUML.png"/>
+    <b><i>Fig 8. Final UML</i></b>
 </p>
 
 ## Known Code Smells
@@ -204,7 +212,8 @@ FruitView, IceCubeView e IceShotView são classes que não fazem muito e irão i
 
 https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa3533fe7b3a724e5/docs/TestCoverage.png
 <p align="center" justify="center">
-  <img src="TestCoverageIntermediateDelivery.png"/>
+  <img src="TestCoverageFinalDelivery.png"/>
+ <b><i>Fig 9. Test Coverage</i></b>
 </p>
 
 ### Link to mutation testing report
