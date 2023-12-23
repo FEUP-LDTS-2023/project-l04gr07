@@ -1,9 +1,6 @@
 package l04gr07.control;
 
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import l04gr07.gui.LanternGUI;
-import l04gr07.states.GameState;
+import l04gr07.control.Audio.AudioController;
 import l04gr07.states.MainMenuState;
 import l04gr07.states.State;
 import l04gr07.view.Viewer;

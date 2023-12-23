@@ -1,32 +1,23 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import l04gr07.control.Audio.AudioController;
 import l04gr07.gui.LanternGUI;
-import l04gr07.model.Game.Difficulty.EasyDifficulty;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.*;
-import l04gr07.model.Game.FieldElements.PlayerState.HugeIceCreamState;
 import l04gr07.model.Game.GameModel;
-import l04gr07.model.Menu.WinModel;
-import l04gr07.model.Model;
 import l04gr07.model.Position;
-import l04gr07.states.GameOverState;
 import l04gr07.states.GameState;
-import l04gr07.states.WinState;
 import l04gr07.view.Viewer;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GameControllerTest {
     @Test

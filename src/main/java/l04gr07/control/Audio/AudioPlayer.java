@@ -1,4 +1,4 @@
-package l04gr07.control;
+package l04gr07.control.Audio;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

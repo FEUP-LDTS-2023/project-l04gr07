@@ -1,5 +1,6 @@
 package l04gr07.control;
 
+import l04gr07.control.Audio.AudioPlayer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
