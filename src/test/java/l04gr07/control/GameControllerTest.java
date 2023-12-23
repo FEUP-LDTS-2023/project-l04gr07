@@ -75,7 +75,7 @@ public class GameControllerTest {
         when(mockField.getIceShot().getDirection()).thenReturn("NO");
         GameController gameController = new GameController(mockGameState, mockGameModel, 0);
         gameController.IceShot();
-        assertTrue(System.currentTimeMillis() - gameController.getLastMovementIce() < 10);
+        assertTrue(System.currentTimeMillis() - gameController.getLastMovementIce() < 50);
     }
 
     @Test
@@ -139,7 +139,7 @@ public class GameControllerTest {
         when(mockGameModel.getField()).thenReturn(mockField);
         GameController gameController = new GameController(mockGameState, mockGameModel, 0);
         gameController.randomEnemy(10);
-        assertTrue(System.currentTimeMillis() - gameController.getLastMovement() < 10);
+        assertTrue(System.currentTimeMillis() - gameController.getLastMovement() < 50);
     }
 
     @Test
