@@ -27,11 +27,7 @@ public class LanternGUI {
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        } catch (FontFormatException e) {
+        } catch (IOException |URISyntaxException|FontFormatException e) {
             throw new RuntimeException(e);
         }
     }

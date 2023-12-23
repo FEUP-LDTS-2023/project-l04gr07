@@ -17,7 +17,7 @@ public class AudioPlayer {
             clip.open(inputStream);
             fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
