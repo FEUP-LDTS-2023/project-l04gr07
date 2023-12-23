@@ -43,14 +43,18 @@ public class GameController extends Controller implements Control {
 
     public GameState getGameState() {
         return gameState;
-
-
     }
 
     public void setTime(long time){
         this.time = time;}
 
+    public long getTime() {
+        return time;
+    }
 
+    public long getLastMovementIce() {
+        return lastMovementIce;
+    }
 
     public void randomIceShot(IceShot iceShot) throws IOException, URISyntaxException, FontFormatException {
         String direction = iceShot.getDirection();
