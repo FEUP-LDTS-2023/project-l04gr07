@@ -16,6 +16,7 @@ import org.mockito.MockitoAnnotations;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class PlayerControllerTest {
         Position mockPosition = mock(Position.class);
         when(mockPosition.getx()).thenReturn(1);
         when(mockPosition.gety()).thenReturn(2);
+
         Wall mockWall = mock(Wall.class);
         Position mockWallPosition = mock(Position.class);
         when(mockWall.getPosition()).thenReturn(mockWallPosition);
