@@ -105,17 +105,28 @@ public class PlayerControllerTest {
 
     @Test
     void testCreateWallsUp() {
-        // arrange
         when(mockPlayer.getLastDirection()).thenReturn("UP");
         when(mockPlayer.getPosition()).thenReturn(new Position(5, 5));
+        when(mockField.isEmpty(any(Position.class))).thenReturn(true);
+        when(mockField.isPlayer(any(Position.class))).thenReturn(false);
+        boolean result = playerController.createWalls(mockPlayer);
+        assertTrue(result);
+        verify(mockField, times(5)).getWalls();
+    }
+    @Test
+    void testCreateWallsDown() {
+        when(mockPlayer.getLastDirection()).thenReturn("DOWN");
+        when(mockPlayer.getPosition()).thenReturn(new Position(5, 0));
+        when(mockField.getHeight()).thenReturn(5);
         when(mockField.isEmpty(any(Position.class))).thenReturn(true);
         when(mockField.isPlayer(any(Position.class))).thenReturn(false);
 
         boolean result = playerController.createWalls(mockPlayer);
 
         assertTrue(result);
-        verify(mockField, times(5)).getWalls();
+        verify(mockField, times(mockField.getHeight())).getWalls();
     }
+
 
     @Test
     void testCreateWallsLeft() {
@@ -123,11 +134,22 @@ public class PlayerControllerTest {
         when(mockPlayer.getPosition()).thenReturn(new Position(5, 5));
         when(mockField.isEmpty(any(Position.class))).thenReturn(true);
         when(mockField.isPlayer(any(Position.class))).thenReturn(false);
+        boolean result = playerController.createWalls(mockPlayer);
+        assertTrue(result);
+        verify(mockField, times(5)).getWalls();
+    }
+    @Test
+    void testCreateWallsRight() {
+        when(mockPlayer.getLastDirection()).thenReturn("RIGHT");
+        when(mockPlayer.getPosition()).thenReturn(new Position(0, 5));
+        when(mockField.getWidth()).thenReturn(5);
+        when(mockField.isEmpty(any(Position.class))).thenReturn(true);
+        when(mockField.isPlayer(any(Position.class))).thenReturn(false);
 
         boolean result = playerController.createWalls(mockPlayer);
 
         assertTrue(result);
-        verify(mockField, times(5)).getWalls();
+        verify(mockField, times(mockField.getWidth())).getWalls();
     }
 
     @Test
