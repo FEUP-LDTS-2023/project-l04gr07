@@ -10,6 +10,11 @@ import java.util.List;
 public class GameOverView extends MenuViewer {
 
     private List<String> gameOverText;
+
+    public List<String> getGameOverText() {
+        return gameOverText;
+    }
+
     public GameOverView(GameOverModel gameOverModel, Screen screen) throws IOException {
         super(gameOverModel, screen);
         this.gameOverText = gameOverModel.getGameOverText();
