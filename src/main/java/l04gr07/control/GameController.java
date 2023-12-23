@@ -56,6 +56,13 @@ public class GameController extends Controller implements Control {
         return lastMovementIce;
     }
 
+    public long getLastMovement() {
+        return lastMovement;
+    }
+    public boolean getIceCube() {
+        return iceCube;
+    }
+
     public void randomIceShot(IceShot iceShot) throws IOException, URISyntaxException, FontFormatException {
         String direction = iceShot.getDirection();
         time=System.currentTimeMillis();
@@ -118,7 +125,8 @@ public class GameController extends Controller implements Control {
     }
 
     public void retrieveFruits() {
-        if(field.getFruits().isEmpty()){iceCube = true;notifyIceCubeObserver();}
+        if(field.getFruits().isEmpty()){
+            iceCube = true;notifyIceCubeObserver();}
         for (Fruit fruit : field.getFruits())
             if (field.getPlayer1().getPosition().equal(fruit.getposition()) || field.getPlayer2().getPosition().equal(fruit.getposition())) {
                 AudioController.getInstance().playAudio("./src/main/resources/CollectedFruit.wav");
@@ -157,4 +165,5 @@ public class GameController extends Controller implements Control {
     public void IceShot() throws IOException, URISyntaxException, FontFormatException {
         randomIceShot(field.getIceShot());
     }
+
 }
