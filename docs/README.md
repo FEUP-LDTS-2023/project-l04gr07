@@ -216,6 +216,7 @@ https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/c1b38505419adf164a52ed3fa
 </p>
 
 ### Link to mutation testing report
+(https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/e83e3860907fdb64d5810c6b2740dd6fa15842b7/docs/pitest/index.html)
 
 
 ### Auto-avaliação
