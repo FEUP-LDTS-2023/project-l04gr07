@@ -59,13 +59,13 @@ Tendo em consideração este problema, achamos que seria mais adequado aplicar n
 #### Implementation:
 As classes podem ser encontradas nos ficheiros seguintes:
 
-- [State] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/State.java)
-- [GameState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/GameState.java)
-- [InstructionState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/InstructionState.java)
-- [MainMenuState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/MainMenuState.java)
-- [WinState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/WinState.java)
-- [DifficultyState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/DifficultyState.java)
-- [GameOverState] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/states/GameOverState.java)
+- [State] 
+- [GameState]
+- [InstructionState]
+- [MainMenuState]
+- [WinState] 
+- [DifficultyState]
+- [GameOverState]
 
 <p align="center" justify="center">
   <img src="FinalDeliveryUMLs/statesUML.png"/>
@@ -85,8 +85,8 @@ Decidimos então que a aplicação do design pattern Observer seria uma melhor s
 
 #### Implementation:
 As classes podem ser encontradas nos ficheiros seguintes:
-- [GameController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/GameController.java)
-- [Interface IceCubeObserver] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/IceCubeObserver.java)
+- [GameController] 
+- [Interface IceCubeObserver]
 
 <p align="center" justify="center">
   <img src="NotifyIceCube.png"/>
@@ -118,10 +118,9 @@ Decidimos então que a aplicação do Strategy pattern seria a solução mais ad
 #### Implementation:
 As classes podem ser encontradas nos ficheiros seguintes:
 
-- [DifficultyStrategy] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/DifficultyStrategy.java)
-- [EasyDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/EasyDifficulty.java)
-- [MediumDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/MediumDifficulty.java)
-- [HardDifficulty] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/model/Game/Difficulty/HardDifficulty.java)
+- [DifficultyStrategy]
+- [EasyDifficulty] 
+- [HardDifficulty] 
 
 
 
@@ -143,10 +142,10 @@ Para resolver esta situação recorremos ao Singleton Pattern. Este pattern gara
 #### Implementation:
 As implementações podem ser encontradas nas seguintes classes:
 
-- [AudioController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/AudioController.java)
-- [AudioPlayer] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/AudioPlayer.java)
-- [GameController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/GameController.java)
-- [PlayerController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/PlayerController.java)
+- [AudioController] 
+- [AudioPlayer] 
+- [GameController] 
+- [PlayerController] 
 
 <p align="center" justify="center">
   <img src="FinalDeliveryUMLs/audioUML.png"/>
@@ -168,9 +167,9 @@ Para isso utilizamos o architectural pattern Model-View-Controller(MVC). Este pa
 
 #### Implementation:
 As implementação pode ser encontradas nos ficheiros dos diretórios seguintes:
-- [model] (https://github.com/FEUP-LDTS-2023/project-l04gr07/tree/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/model)
-- [view] (https://github.com/FEUP-LDTS-2023/project-l04gr07/tree/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/view)
-- [control] (https://github.com/FEUP-LDTS-2023/project-l04gr07/tree/c1b38505419adf164a52ed3fa3533fe7b3a724e5/src/main/java/l04gr07/control)
+- [model] 
+- [view] 
+- [control] 
 
 <p align="center" justify="center">
   <img src="FinalDeliveryUMLs/mvc.png"/>

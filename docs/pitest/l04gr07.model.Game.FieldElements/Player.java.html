@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=windows-1252">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Player.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package l04gr07.model.Game.FieldElements;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.googlecode.lanterna.graphics.TextGraphics;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import l04gr07.model.Position;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Player extends Element {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public String lastDirection = &#34;&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Player(int x, int y){super(x,y);}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setPosition(Position positionn) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        position=positionn;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveUp(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_14'/>
+14
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_14'>2</a>
+<span>
+
+1. moveUp : replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveUp &rarr; KILLED<br/>
+
+2. moveUp : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getx(), position.gety()-1);}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveDown(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_16'/>
+16
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_16'>2</a>
+<span>
+
+1. moveDown : replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveDown &rarr; KILLED<br/>
+
+2. moveDown : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getx(), position.gety()+1);}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveLeft(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_18'/>
+18
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_18'>2</a>
+<span>
+
+1. moveLeft : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+2. moveLeft : replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveLeft &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getx()-1, position.gety());}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveRight(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_20'/>
+20
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_20'>2</a>
+<span>
+
+1. moveRight : replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveRight &rarr; KILLED<br/>
+
+2. moveRight : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getx()+1, position.gety());}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_22'/>
+22
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_22'>1</a>
+<span>
+
+1. getPosition : replaced return value with null for l04gr07/model/Game/FieldElements/Player::getPosition &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public Position getPosition(){return position;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_23'/>
+23
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_23'>1</a>
+<span>
+
+1. getLastDirection : replaced return value with &#34;&#34; for l04gr07/model/Game/FieldElements/Player::getLastDirection &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public String getLastDirection(){return lastDirection;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public void setLastDirection(String lastDirection){this.lastDirection = lastDirection;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@67b5e613_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67b5e613_14'>14</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_14'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveUp<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:movePlayer1()]</span></span> replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveUp &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveUp<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:movePlayer1()]</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67b5e613_16'>16</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_16'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveDown<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:movePlayer1()]</span></span> replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveDown &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveDown<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:movePlayer1()]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67b5e613_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_18'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveLeft<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:moveHorizontalPlayer2()]</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveLeft<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:moveHorizontalPlayer2()]</span></span> replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveLeft &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67b5e613_20'>20</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_20'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveRight<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:moveHorizontalPlayer2()]</span></span> replaced return value with null for l04gr07/model/Game/FieldElements/Player::moveRight &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveRight<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:moveHorizontalPlayer2()]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67b5e613_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_22'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getPosition<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:moveHorizontalPlayer2()]</span></span> replaced return value with null for l04gr07/model/Game/FieldElements/Player::getPosition &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@67b5e613_23'>23</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@67b5e613_23'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getLastDirection<br/><b>Killed by : </b>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:testLastDirection()]</span></span> replaced return value with &#34;&#34; for l04gr07/model/Game/FieldElements/Player::getLastDirection &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+
+<li class='mutator'>EMPTY_RETURNS</li>
+
+<li class='mutator'>FALSE_RETURNS</li>
+
+<li class='mutator'>INCREMENTS</li>
+
+<li class='mutator'>INVERT_NEGS</li>
+
+<li class='mutator'>MATH</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+
+<li class='mutator'>NULL_RETURNS</li>
+
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+
+<li class='mutator'>TRUE_RETURNS</li>
+
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:movePlayer1()] (0 ms)</li><li>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:moveHorizontalPlayer2()] (2 ms)</li><li>l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest]/[method:testGetViewer()] (0 ms)</li><li>l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest]/[method:testGetControl()] (0 ms)</li><li>l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest]/[method:testGetModel()] (0 ms)</li><li>l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerState.NormalPlayerStateTest]/[method:testInitializing()] (1 ms)</li><li>l04gr07.model.Game.Field.FieldTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.Field.FieldTest]/[method:testSetGetIsPlayers()] (0 ms)</li><li>l04gr07.model.Game.Difficulty.HardDifficultyTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.Difficulty.HardDifficultyTest]/[method:testCreateField()] (2 ms)</li><li>l04gr07.model.Game.Difficulty.MediumDifficultyTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.Difficulty.MediumDifficultyTest]/[method:testCreateField()] (2 ms)</li><li>l04gr07.model.Game.Difficulty.EasyDifficultyTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.Difficulty.EasyDifficultyTest]/[method:testCreateField()] (3 ms)</li><li>l04gr07.control.GameControllerTest.[engine:junit-jupiter]/[class:l04gr07.control.GameControllerTest]/[method:testProcessKeyCharacterA()] (21 ms)</li><li>l04gr07.model.Game.FieldElements.PlayerTest.[engine:junit-jupiter]/[class:l04gr07.model.Game.FieldElements.PlayerTest]/[method:testLastDirection()] (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.15.0
+
+</body>
+</html>
