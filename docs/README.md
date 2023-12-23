@@ -1,6 +1,6 @@
 # LDTS_<04><07> - Huge Ice Cream
 
-O nosso jogo tem o nome "Huge Ice Cream" e é baseado no conhecido e divertido jogo do friv "Bad Ice cream", porém iremos realizar diversas mudanças de modo a tornar o jogo mais complexo e desafiante. Este jogo irá ter 3 modos: "Easy", "Medium" e "Hard" para que o utilizador possa escolher o nível de dificuldade que pretende jogar. Este jogo é composto por dois jogadores que têm como objetivo matar o monstro sem que ele os apanhe primeiro. Para isso, os jogadores terão de colecionar todas as frutas(Fruits) presentes no mapa do jogo. Após completarem esta tarefa, irá aparecer no mapa um cubo de gelo (IceCube) que os jogadores devem apanhar podendo, deste modo, entrar em modo "Huge Ice Cream". Este modo faz com que os dois jogadores se fundam num só e tenham uma nova funcionalidade: atirar bloquinhos de gelo. Neste modo, um dos jogadores irá controlar o movimento da personagem Ice Cream e o outro irá controlar o disparo dos bloquinhos de gelo. O objetivo nesta fase do jogo é matarem o monstro com os bloquinhos de gelo que este novo modo "Huge Ice Cream" lhe permite disparar. Assim, este é um jogo de extrema cooperação entre os dois jogadores o que torna o jogo muito mais desafiante. Como já referido, este jogo possui 3 níveis distintos de dificulddade que diferirem no número de monstros e a velocidade da movimentação dos mesmos, no número de frutas para colecionar e no design do mapa.
+O nosso jogo tem o nome "Huge Ice Cream" e é baseado no conhecido e divertido jogo do friv "Bad Ice cream", porém iremos realizar diversas mudanças de modo a tornar o jogo mais complexo e desafiante. Este jogo irá ter 3 modos: "Easy", "Medium" e "Hard" para que o utilizador possa escolher o nível de dificuldade que pretende jogar. Este jogo é composto por dois jogadores que têm como objetivo matar o monstro sem que ele os apanhe primeiro. Para isso, os jogadores conseguem quebrar e criar blocos de gelo para evitar que os monstros os apanhem. Este jogo é constituído por duas etapas distintas: Primeiramente, os jogadores terão de colecionar todas as frutas(Fruits) presentes no mapa do jogo. Após completarem esta tarefa, irá aparecer no mapa um cubo de gelo (IceCube) que os jogadores devem apanhar podendo, deste modo, entrar em modo "Huge Ice Cream". Este modo faz com que os dois jogadores se fundam num só e tenham uma nova funcionalidade: atirar bloquinhos de gelo. Neste modo, um dos jogadores irá controlar o movimento da personagem Ice Cream e o outro irá controlar o disparo dos bloquinhos de gelo. O objetivo nesta fase do jogo é matarem o monstro com os bloquinhos de gelo que este novo modo "Huge Ice Cream" lhe permite disparar. Os jogadores continuam a poder quebrar e criar blocos de gelo que se possam proteger dos monstros. Assim, este é um jogo de extrema cooperação entre os dois jogadores o que torna o jogo muito mais desafiante. Como já referido, este jogo possui 3 níveis distintos de dificulddade que diferirem no número de monstros e a velocidade da movimentação dos mesmos, no número de frutas para colecionar e no design do mapa.
 
 Este projeto foi realizado por Beatriz Bernardo (up202206097@fe.up.pt), Diana Nunes (up202208247@fe.up.pt) e Marta Silva (up202208258@fe.up.pt) para LDTS 2023/2024.
 
@@ -58,8 +58,8 @@ Decidimos então que a aplicação do design pattern Observer seria uma melhor s
 
 #### Implementation:
 As classes podem ser encontradas nos ficheiros seguintes:
-- GameController
-- Interface Ice Cube observer
+- [GameController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/GameController.java)
+- [Interface IceCubeObserver] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/IceCubeObserver.java)
 
 <p align="center" justify="center">
   <img src="NotifyIceCube.png"/>
@@ -79,11 +79,22 @@ As classes podem ser encontradas nos ficheiros seguintes:
 A aplicação deste pattern traz vários benefícios nomeadamente, separar a lógica de coletar frutas da lógica de notificar IceCube tornando o código mais eficiente e fácil de ler. A possível adição de novos observers torna-se também mais fácil. Porém, a aplicação deste padrão leva-nos a ter de ter um maior cuidado a gerenciar corretamente os observers, evitando notificações desnecessárias, o que não é díficil visto que o IceCube só será notificado uma vez.
 
 ### Diferentes sons são reproduzidos com base nas ações dos jogadores
-
+#### Problem in Context:
 O nosso jogo requer a reprodução de sons em vários momentos distintos, por exemplo quando os jogadores apanham frutas, apanham o IceCub, disparam, etc. Tal como no problema anterior poderíamos implementar esta lógica de forma ad-hoc, ou seja, ao definir um mesmo método, mas com diferentes implementações e parâmetros. Porém, como já referido anteriormente isto iria levar a violações do Single Responsibility Pattern e tornava o código desorganizado e difícil de manter.
-Para resolver esta situação voltamos a recorrer ao Observer Pattern que será utilizado para notificar o objeto da reprodução de um certo som quando certos eventos ocorrem. Este objeto atuará então como observer que espera por informação dos eventos específicos para reproduzir o som associado.
-Neste contexto, este pattern também ainda não foi aplicado, visto que a reprodução de sons é uma feature que ainda não foi implementada no nosso jogo.
-Tal como referido anteriormente este pattern traz-nos vários benefícios tais como separar a lógica do jogo da lógica de reprodução de sons e a adição de sons a cada evento específico torna-se mais fácil. É necessário haver maior cuidado em gerir corretamente os observers para não haver notificações desnecessários, porém o número de eventos é razoável pelo que não se torna difícil fazer a gestão correta.
+
+#### The Pattern:
+Para resolver esta situação recorremos ao Singleton Pattern. Este pattern garante que uma classe, neste caso AudioController, tenha apenas uma instância e fornece um ponto de acesso global a essa instância. Para além, o estado do som será sempre compartilhado e é o ponto de controlo para todas as operações relacionadas ao som.
+
+#### Implementation:
+As implementações podem ser encontradas nas seguintes classes:
+
+- [AudioController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/AudioController.java)
+- [AudioPlayer] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/AudioPlayer.java)
+- [GameController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/GameController.java)
+- [PlayerController] (https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/97dd4ae384a51db7059f11748a7bcd76079d32bc/src/main/java/l04gr07/control/PlayerController.java)
+
+#### Consequences:
+Este pattern traz-nos vários benefícios tais como ter apenas um ponto de acesso a toda a lógica relacionada com o som que pode ser acedida de qualquer parte do código o que evita duplicações de código. Para além disso, torna-se mais simples adicionar novos métodos relacionados com o som e testar uma única instância controlada é mais simples e eficaz do que várias independentes.
 
 ### ORGANIZAÇÃO CÓDIGO
 #### Problem in Context:
@@ -119,18 +130,15 @@ https://github.com/FEUP-LDTS-2023/project-l04gr07/blob/de1047b29a661b3ef1659d33c
 
 #### **Long Switch States**
 
-Na classe GameController o método processKey apresenta uma série de cases no método switch. De facto, ao ter dois jogadores tivemos a necessidade de criar comandos diferentes na movimentação de cada um deles o que levou a que este método implementasse uma estrutura "switch" muito longa. Porém achamos que justificável manter este método assim, uma vez que não foi necessário estendê-lo e por ser um jogo para dois jogadores necessitamos deste método.
+Na classe PlayerController o método processKey apresenta uma série de cases no método switch. De facto, ao ter dois jogadores tivemos a necessidade de criar comandos diferentes na movimentação de cada um deles o que levou a que este método implementasse uma estrutura "switch" muito longa. Porém achamos justificável manter este método assim, uma vez que não foi necessário estendê-lo e por ser um jogo para dois jogadores necessitamos deste método.
 
 #### **Large Class**
 
 A class ReadMap pode ser um code smell de uma large class por ter diversas responsabilidades. De facto, esta classe vai ler o mapa de um ficheiro e criar todos os elementos do mapa desde paredes, frutas e monstros o que faz com que esta classe fica mais extensa e com diversos métodos. Como esta classe não interfere com mais nenhuma lógica do jogo, apenas a criação inicial de cada nível, consideramos deixa-la assim.
 
-A classe Field implementa também diversos métodos apesar de serem mais pequenos e de fácil compreensão. No entanto, pode ser também um indício de code smell já que iremos ter a tendencia de adicionar ainda mais métodos nesta classe à medida que vamos desenvolvendo o nosso projeto.
-
-
 #### **Lazy Classes**
 
-FruitView, IceCubeView e IceShotView são classes que não fazem muito e irão implementar métodos semelhantes. Talvez uma forma mais eficaz de fazer esta abordagem seria mover os seus métodos para outra classe, recorrendo a refactoring tools.
+FruitView, IceCubeView e IceShotView são classes que não fazem muito e irão implementar métodos semelhantes. Porém, achamos justificável manter estas classes visto que cada uma delas representa um elemento diferente do jogo e cada uma delas tem a sua responsabilidade específica.
 
 
 ## Testing
