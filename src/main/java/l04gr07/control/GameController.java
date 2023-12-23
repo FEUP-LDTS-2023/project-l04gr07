@@ -1,6 +1,7 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Game.Field.Field;
 import l04gr07.model.Game.FieldElements.Enemy;
 import l04gr07.model.Game.FieldElements.Fruit;
@@ -16,6 +17,8 @@ import l04gr07.states.WinState;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+
+import static java.lang.System.exit;
 
 
 public class GameController extends Controller implements Control {
@@ -143,6 +146,9 @@ public class GameController extends Controller implements Control {
         playerController.processKey(key);
         if(!iceCube && field.getIceCube()!=null && !isHugeIceCream) retrieveFruits();
         if(iceCube && !isHugeIceCream){retrieveIceCube();}
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
+            gameState.getGUI().close();exit(0);
+        }
     }
     public void IceShot() throws IOException, URISyntaxException, FontFormatException {
         randomIceShot(field.getIceShot());

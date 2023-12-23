@@ -53,7 +53,6 @@ public class InstructionState extends State{
             instructionView.draw();
             KeyStroke key = gui.getScreen().readInput();
             instructionController.processKey(key);
-            if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
 

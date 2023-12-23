@@ -10,12 +10,23 @@ import java.io.IOException;
 
 import static java.lang.System.exit;
 
-public class GameOverController {
-    public void processKey(KeyStroke key, LanternGUI gui) throws IOException {
+public class GameOverController implements Control{
+    private GameOverState gameOverState;
+    public GameOverController(GameOverState gameOverState){
+        this.gameOverState = gameOverState;
+    }
+    @Override
+    public void processKey(KeyStroke key) throws IOException {
         if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
-            gui.close();
-            exit(0);
+            gameOverState.getGUI().close();exit(0);
         }
-        if (key.getKeyType() == KeyType.EOF){exit(0);}
+    }
+
+    public void setGameOverState(GameOverState gameOverState) {
+        this.gameOverState = gameOverState;
+    }
+
+    public GameOverState getGameOverState() {
+        return gameOverState;
     }
 }

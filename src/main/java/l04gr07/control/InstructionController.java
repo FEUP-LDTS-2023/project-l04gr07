@@ -17,7 +17,7 @@ public class InstructionController extends Controller implements Control{
     }
     @Override
     public void processKey(KeyStroke key) throws IOException, URISyntaxException, FontFormatException {
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
+        if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q')){
             instructionState.getGUI().getScreen().close();setControllerState(new MainMenuState());
         }
     }

@@ -19,6 +19,8 @@ public abstract class State {
 
   //  public abstract Control getControl();
 
+    public abstract Control getControl();
+
     public abstract Model getModel();
 
     public abstract void initializing(long time) throws IOException, URISyntaxException, FontFormatException;

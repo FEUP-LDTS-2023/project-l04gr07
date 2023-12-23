@@ -53,10 +53,6 @@ public class WinState extends State{
             winView.draw();
             KeyStroke key = gui.getScreen().readInput();
             winControl.processKey(key);
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
-                gui.getScreen().close();
-            }
-            if (key.getKeyType() == KeyType.EOF){break;}
         }
     }
 

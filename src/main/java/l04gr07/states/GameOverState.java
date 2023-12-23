@@ -1,8 +1,6 @@
 package l04gr07.states;
 
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 import l04gr07.control.Control;
 import l04gr07.control.GameOverController;
 import l04gr07.gui.LanternGUI;
@@ -26,10 +24,10 @@ public class GameOverState extends State{
         return gameOverView;
     }
 
-   /* @Override
+    @Override
     public Control getControl() {
         return gameOverController;
-    }*/
+    }
 
     @Override
     public Model getModel() {
@@ -43,7 +41,7 @@ public class GameOverState extends State{
         gui = new LanternGUI();
         gui.createGameOverScreen(40,30);
         gameOverView = new GameOverView(gameOverModel, gui.getScreen());
-        gameOverController = new GameOverController();
+        gameOverController = new GameOverController(this);
     }
 
     @Override
@@ -51,10 +49,7 @@ public class GameOverState extends State{
         while (true){
             gameOverView.draw();
             KeyStroke key = gui.getScreen().readInput();
-            gameOverController.processKey(key, gui);
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q'){
-                //gui.getScreen().close();
-            }
+            gameOverController.processKey(key);
         }
     }
 

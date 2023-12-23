@@ -1,11 +1,9 @@
 package l04gr07.control;
 
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import l04gr07.model.Menu.MainMenuModel;
-import l04gr07.states.DifficultyState;
-import l04gr07.states.GameState;
-import l04gr07.states.InstructionState;
-import l04gr07.states.MainMenuState;
+import l04gr07.states.*;
 
 import java.awt.*;
 import java.io.IOException;
@@ -35,8 +33,9 @@ public class MainMenuController extends Controller implements Control{
 
             }
             case Character -> {
-                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
-                    exit(0);
+                if (key.getCharacter() == 'q' || key.getCharacter() == 'Q'){
+                   mainMenuState.getGUI().close();exit(0);
+                }
             }
             default -> {break;}
         }

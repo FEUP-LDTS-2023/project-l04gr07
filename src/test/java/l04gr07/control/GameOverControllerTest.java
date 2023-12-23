@@ -16,24 +16,21 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class GameOverControllerTest {
-    GameOverController controller=new GameOverController();
     GameOverState state=new GameOverState();
     LanternGUI gui=new LanternGUI();
-    @BeforeEach
-    public void setUp() throws IOException, URISyntaxException, FontFormatException {
-        gui.createGameOverScreen(10,12);
-        state.setGUI(gui);
-        System.out.println(KeyStroke.fromString("q").getCharacter());
-        assertNotNull(state.getGUI().getScreen());
-    }
-
     @Test
     public void testProcessKeyCharacter() throws IOException, URISyntaxException, FontFormatException {
-        System.out.println(KeyStroke.fromString("q").getCharacter());
+        gui.createGameOverScreen(10,12);
         state.setGUI(gui);
-        KeyStroke key=KeyStroke.fromString("q");
-       // controller.processKey(key, gui);
-       // assertThrows(IOException.class, () -> controller.processKey(key, gui));
-     //   assertNull(state.getGUI().getScreen());
+        assertNotNull(state.getGUI().getScreen());
+        state.setGUI(gui);
+        KeyStroke key;
+        key=KeyStroke.fromString("a");
+        assertNotNull(state.getGUI().getScreen());
+        assertNotNull(state.getGUI().getScreen());
+        GameOverController controller = new GameOverController(state);
+        controller.setGameOverState(state);
+        controller.processKey(key);
+        assertNotNull(controller.getGameOverState().getGUI());
     }
 }

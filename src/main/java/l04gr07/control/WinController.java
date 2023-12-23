@@ -35,8 +35,10 @@ public class WinController extends Controller implements Control{
 
             }
             case Character -> {
-                if(key.getCharacter()=='q' ||  key.getCharacter()=='Q')
+                if (key.getCharacter() == 'q' || key.getCharacter() == 'Q') {
+                    winState.getGUI().close();
                     exit(0);
+                }
             }
             default -> {break;}
         }
